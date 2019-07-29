@@ -1,0 +1,109 @@
+属性值
+值	描述
+audio/*	接受所有的声音文件。
+video/*	接受所有的视频文件。
+image/*	接受所有的图像文件。
+MIME_type	一个有效的 MIME 类型，不带参数。请参阅 IANA MIME 类型，获得标准 MIME 类型的完整列表。
+ 
+在上传文件的时候，需要限制指定的文件类型，accept这个属性，
+!!!只在FF和chrome中有效。
+那么accept能限制哪些文件呢？见下表。
+
+扩展名 MIME 描述
+
+*.3gpp	audio/3gpp, video/3gpp	3GPP Audio/Video
+*.ac3	audio/ac3	AC3 Audio
+*.asf	allpication/vnd.ms-asf	Advanced Streaming Format
+*.au	audio/basic	AU Audio
+*.css	text/css	Cascading Style Sheets
+*.csv	text/csv	Comma Separated Values
+*.doc	application/msword	MS Word Document
+*.dot	application/msword	MS Word Template
+*.dtd	application/xml-dtd	Document Type Definition
+*.dwg	image/vnd.dwg	AutoCAD Drawing Database
+*.dxf	image/vnd.dxf	AutoCAD Drawing Interchange Format
+*.gif	image/gif	Graphic Interchange Format
+*.htm	text/html	HyperText Markup Language
+*.html	text/html	HyperText Markup Language
+*.jp2	image/jp2	JPEG-2000
+*.jpe	image/jpeg	JPEG
+*.jpeg	image/jpeg	JPEG
+*.jpg	image/jpeg	JPEG
+*.js	text/javascript, application/javascript	JavaScript
+*.json	application/json	JavaScript Object Notation
+*.mp2	audio/mpeg, video/mpeg	MPEG Audio/Video Stream, Layer II
+*.mp3	audio/mpeg	MPEG Audio Stream, Layer III
+*.mp4	audio/mp4, video/mp4	MPEG-4 Audio/Video
+*.mpeg	video/mpeg	MPEG Video Stream, Layer II
+*.mpg	video/mpeg	MPEG Video Stream, Layer II
+*.mpp	application/vnd.ms-project	MS Project Project
+*.ogg	application/ogg, audio/ogg	Ogg Vorbis
+*.pdf	application/pdf	Portable Document Format
+*.png	image/png	Portable Network Graphics
+*.pot	application/vnd.ms-powerpoint	MS PowerPoint Template
+*.pps	application/vnd.ms-powerpoint	MS PowerPoint Slideshow
+*.ppt	application/vnd.ms-powerpoint	MS PowerPoint Presentation
+*.rtf	application/rtf, text/rtf	Rich Text Format
+*.svf	image/vnd.svf	Simple Vector Format
+*.tif	image/tiff	Tagged Image Format File
+*.tiff	image/tiff	Tagged Image Format File
+*.txt	text/plain	Plain Text
+*.wdb	application/vnd.ms-works	MS Works Database
+*.wps	application/vnd.ms-works	Works Text Document
+*.xhtml	application/xhtml+xml	Extensible HyperText Markup Language
+*.xlc	application/vnd.ms-excel	MS Excel Chart
+*.xlm	application/vnd.ms-excel	MS Excel Macro
+*.xls	application/vnd.ms-excel	MS Excel Spreadsheet
+*.xlt	application/vnd.ms-excel	MS Excel Template
+*.xlw	application/vnd.ms-excel	MS Excel Workspace
+*.xml	text/xml, application/xml	Extensible Markup Language
+*.zip	application/zip	Compressed Archive
+ 
+
+实例 :
+
+ 
+
+1.accept="image/gif, image/jpeg"
+
+2.accept="application/msword"
+3.accept="application/pdf"
+4.accept="application/poscript"
+5.accept="application/rtf"
+6.accept="application/x-zip-compressed"
+7.accept="audio/basic"
+8.accept="audio/x-aiff"
+9.accept="audio/x-mpeg"
+10.accept="audio/x-pn/realaudio"
+11.accept="audio/x-waw"
+12.accept="image/gif"
+13.accept="image/jpeg"
+14.accept="image/tiff"
+15.accept="image/x-ms-bmp"
+16.accept="image/x-photo-cd"
+17.accept="image/x-png"
+18.accept="image/x-portablebitmap"
+19.accept="image/x-portable-greymap"
+20.accept="image/x-portable-pixmap"
+21.accept="image/x-rgb"
+22.accept="text/html"
+23.accept="text/plain"
+24.accept="video/quicktime"
+25.accept="video/x-mpeg2"
+26.accept="video/x-msvideo"
+
+
+office办公软件2007以后版本各文档的后缀名，如docx、xlsx
+ 
+Extension MIME Type
+.xlsx   application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+.xltx   application/vnd.openxmlformats-officedocument.spreadsheetml.template
+.potx   application/vnd.openxmlformats-officedocument.presentationml.template
+.ppsx   application/vnd.openxmlformats-officedocument.presentationml.slideshow
+.pptx   application/vnd.openxmlformats-officedocument.presentationml.presentation
+.sldx   application/vnd.openxmlformats-officedocument.presentationml.slide
+.docx   application/vnd.openxmlformats-officedocument.wordprocessingml.document
+.dotx   application/vnd.openxmlformats-officedocument.wordprocessingml.template
+.xlsm   application/vnd.ms-excel.addin.macroEnabled.12
+.xlsb   application/vnd.ms-excel.sheet.binary.macroEnabled.12
+ 

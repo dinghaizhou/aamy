@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <!-- 
+    常见的字符串函数
+    search  找位置
+    split   切割
+    substring 截取
+    charAt    查找指定位置的
+    replace   替换   //替换敏感词
+    高阶分组  格式化
+    '2018/09/08 haihzou/lala 2017/03/11'.replace(/(\d{4})\/(\d{2})\/(\d{2})/g,'$1-$2-$3')
+
+    正则分组的概念 （）  test  RegExp().$1 为test成功的字符串
+
+    match  把匹配的东西提取出来   如果有()分组，也会相应的得到匹配到的分组元素
+    test   字符串其中一部分符合要求，就是true
+
+    常用的转义字符
+    \d [0-9]
+    \w [A-Za-z0-9_]
+    \s 空白字符
+    \D [^0-9]
+    \W [^A-Za-z0-9_]
+    \S 非空白
+
+    量词
+    {n}  正好出现n次
+    {n,m} n～m
+    {n,}
+    +  {1,}
+    ?  {0,1} 
+    *  {0,}
+
+    ^  字符串开头
+    $  字符串的结尾
+
+
+    正则：字符串匹配工具   贪婪特性
+    写法：1 var reg = new RegExp('a', 'i')
+    第二项 options
+    写法：2 perl 风格  var reg = /a/i
+    match 把所有匹配的东西提取出来
+    \d [0-9]
+    . 任意字符
+
+    方括号
+    [abc]  或的意思
+    [a-z]  范围
+    [^a-z0-9]  排除 [^<>]
+    -->
+    <input id="input" type="text">
+    <input id="btn" type="button" value="验证">
+</body>
+<script>  
+    window.onload = function() {
+        var btn = document.getElementById('btn')
+        var input = document.getElementById('input')
+        // test
+        // 整数或者最多两位小数
+        var reg1 = /^(0|[1-9]+)(\.\d{1,2})$/
+        // 邮箱
+        var reg2 = /\w+@\w+\.[a-wA-W]+/
+        // 获取url参数 code
+        var reg3 = /(^|&)code=([^&]+)(&|$)/
+        btn.onclick = () => {
+            // console.log(input.value.match(reg3))
+            console.log(/(a+)/.test(input.value))
+            console.log(RegExp.$1)
+
+        }
+    }
+</script>
+</html>

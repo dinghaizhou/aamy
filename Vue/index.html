@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	1dasfsdfsadfas
+	
+</body>
+<script type="text/javascript">
+
+	function moneyFormat(val) {
+		let mp = ''
+		let dec = ''
+		let mp_res = val.match(/^([-\+])([\d\D]+)/)
+		if(mp_res) {
+			mp = mp_res[1]
+			val = mp_res[2]
+		}
+		let dec_res = val.match(/([\d\D]+)(\.\d+)/)
+		if (dec_res) {
+			console.log(dec_res)
+			val = dec_res[1]
+			dec = dec_res[2]
+		}
+		val = val.replace(/(?!^)(?=(\d{3})+(\.\d{1,2})?$)/g, ',')
+	    return mp + val + dec
+	}
+	
+
+</script>
+</html>

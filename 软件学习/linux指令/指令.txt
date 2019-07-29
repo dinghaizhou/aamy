@@ -1,0 +1,2 @@
+1.给文件赋权限
+sudo chmod -R 777 /Users/haizhou.ding/Documents/project/cdp/storage/logs/
