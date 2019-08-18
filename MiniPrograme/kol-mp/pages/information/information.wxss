@@ -1,0 +1,11 @@
+/* pages/information/information.wxss */
+.no-join {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 170px 40px;
+    color: #999;
+}
+.btn {
+    margin-top: 20px;
+}

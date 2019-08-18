@@ -1,0 +1,26 @@
+<!--pages/information/information.wxml-->
+<view class="information" hover-class="none" hover-stop-propagation="false">
+    <view wx:if="{{is_joined}}" hover-class="none" hover-stop-propagation="false">
+
+
+
+
+
+
+
+
+
+
+
+
+    </view>
+    <view wx:else class="no-join" hover-class="none" hover-stop-propagation="false">
+        <view class="tips" hover-class="none" hover-stop-propagation="false">
+            您尚为入驻本平台
+        </view>
+        <view class="btn" hover-class="none" hover-stop-propagation="false" bindtap="toJoin">
+            立即入驻
+        </view>
+    </view>
+</view>
+  

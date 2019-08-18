@@ -1,11 +1,14 @@
 {
   "pages": [
-    "pages/mine/mine",
     "pages/login/login",
+    "pages/join/join",
+    "pages/mine/mine",
+    "pages/information/information",
     "pages/order/order",
     "pages/goodsdetail/goodsdetail",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/collect/collect"
   ],
   "window": {
     "backgroundTextStyle": "light",

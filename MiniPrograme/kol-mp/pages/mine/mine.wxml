@@ -8,7 +8,7 @@
             <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <view class="userinfo-nickname">{{userInfo.nickName}}</view>
         </view>
-        <view class="item flex" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="goToInformation" class="item flex" hover-class="none" hover-stop-propagation="false">
             <view>
                 <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
             </view>
@@ -16,7 +16,7 @@
                 个人信息 
             </view>
         </view>
-        <view class="item flex" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="goToCollect" class="item flex" hover-class="none" hover-stop-propagation="false">
             <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
             <view style="padding-top:4px;font-size: 16px;">
                 收藏 

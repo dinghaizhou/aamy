@@ -13,10 +13,14 @@ Page({
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
-    //事件处理函数
-    bindViewTap: function() {
+    goToCollect: function() {
         wx.navigateTo({
-        url: '../logs/logs'
+          url: '../collect/collect'
+        })
+    },
+    goToInformation: function () {
+        wx.navigateTo({
+            url: '../information/information'
         })
     },
     onLoad: function () {
