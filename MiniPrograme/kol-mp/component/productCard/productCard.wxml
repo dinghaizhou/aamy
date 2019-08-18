@@ -1,0 +1,23 @@
+<!--component/productCard/productCard.wxml-->
+<view class="product-card">
+    <image bindtap="goToDetails" src="{{product.cover_url}}" mode="aspectFill" lazy-load="false" />
+    <view class="content">
+        <view class="title" bindtap="goToDetails">
+            {{product.name}}
+        </view>
+        <view class="btn-area">
+            <view class="timebox flex">
+                <view class="" selectable="false">
+                    还剩：
+                </view>
+                <cutdown deadline="{{product.end_date}}"></cutdown>
+            </view>
+            <view class="btn {{beyond_deadline?'disabled':''}}">
+                立即申请
+            </view>
+        </view>
+    </view>
+      
+      
+</view>
+  

@@ -1,0 +1,26 @@
+<view class="cutdown flex">
+    <view class="time" selectable="false">
+        {{day}}
+    </view>
+    <view class="" selectable="false">
+        天
+    </view>
+    <view class="time" selectable="false">
+        {{hour}}
+    </view>
+    <view class="" selectable="false">
+        时
+    </view>
+    <view class="time" selectable="false">
+        {{minute}}
+    </view>
+    <view class="" selectable="false">
+        分
+    </view>
+    <view class="time" selectable="false">
+        {{second}}
+    </view>
+    <view class="" selectable="false">
+        秒 
+    </view>
+</view>

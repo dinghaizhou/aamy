@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cutdown": "/component/cutdown/cutdown",
+    "myDialog": "/component/dialog/dialog"
+  }
+}

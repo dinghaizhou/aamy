@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "searchBar": "/component/searchBar/searchBar",
+        "productCard": "/component/productCard/productCard"
+    },
+    "enablePullDownRefresh": true
+}
