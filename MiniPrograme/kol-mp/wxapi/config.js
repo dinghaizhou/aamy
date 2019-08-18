@@ -1,7 +1,6 @@
-const API_BASE_URL = 'http://kol.com/miniprogram'
-
+import CONFIG from '../config.js'
 const request = (url, method, data, loading) => {
-    let _url = API_BASE_URL + url
+    let _url = CONFIG.API_BASE_URL + url
     if(loading) {
         wx.showToast({
             title: '加载中',
@@ -11,7 +10,6 @@ const request = (url, method, data, loading) => {
         })
     }
     return new Promise((resolve, reject) => {
-        console.log(data)
         wx.request({
             url: _url,
             method: method,

@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/goodsdetail/goodsdetail",
+    "pages/mine/mine",
     "pages/login/login",
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/order/order",
-    "pages/mine/mine"
+    "pages/goodsdetail/goodsdetail",
+    "pages/index/index",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,7 +17,7 @@
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#d83b2a",
-    "borderStyle": "white",
+    "borderStyle": "black",
     "backgroundColor": "#fff",
     "list": [
       {

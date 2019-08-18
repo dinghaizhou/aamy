@@ -1,1 +1,47 @@
 /* pages/mine/mine.wxss */
+.mine {
+    background:#f5f5f5;
+    height:100%;
+}
+.userinfo-btn {
+    padding: 100px 60px;
+}
+.userinfo-btn button{
+    border-radius: 100px;
+    border: none;
+    background: #D83B2A;
+    color: #fff;
+}
+.userInfo {
+    background: #fff;
+    height: 320rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.userinfo-avatar {
+    margin: 25px 0px 10px;
+    width:140rpx;
+    height:140rpx;
+    border-radius: 50%;
+}
+.userinfo-nickname {
+    font-size: 16px;
+    line-height: 22px;
+    color: #4A4A4A;
+}
+
+.item {
+    background: #fff;
+    margin-bottom: 5px;
+    height: 102rpx;
+    border-bottom: 1px solid #DDDDDD;
+    align-items: center;
+    padding-left: 25px;
+}
+.item image{
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}

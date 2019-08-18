@@ -24,5 +24,5 @@ export const calcelCollect = (data, loading =false) => request('/collect/cancel'
  */
 // 申请订单
 export const applyOrder = (data, loading =false) => request('/order/apply', 'post', data, loading)
-// 订单劣币啊
-export const orderList = (data, loading =false) => request('/order/index', 'get', data, loading)
+// 订单列表
+export const getOrderList = (data, loading =false) => request('/order/index', 'get', data, loading)

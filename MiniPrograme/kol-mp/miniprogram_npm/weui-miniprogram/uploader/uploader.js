@@ -168,7 +168,7 @@ Component({
         chooseImage: function chooseImage(e) {
             var _this = this;
 
-            if (this.uploading) return;
+            if (this.uploading) return
             wx.chooseImage({
                 count: this.data.maxCount - this.data.files.length,
                 success: function success(res) {
@@ -243,7 +243,15 @@ Component({
             var index = e.detail.index;
             var files = this.data.files;
             var file = files.splice(index, 1);
+            
+            var previewImageUrls = [];
+            files.map(function (item) {
+                previewImageUrls.push(item.url);
+            });
             this.setData({
+                previewImageUrls: previewImageUrls,
+                previewCurrent: 0,
+                showPreview: false,
                 files: files,
                 currentFiles: files
             });

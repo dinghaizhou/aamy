@@ -1,0 +1,19 @@
+<!--component/orderCard/orderCard.wxml-->
+<view class="order-card" hover-stop-propagation="false">
+    <view class="flex" style="align-items:center;">
+        <view class="left flex" style="align-items:center;" >
+            <image class="" src="http://kol.com/storage/201908/1565940127Q8YgXkxa6CY9vhvw.png" mode="aspectFill" />
+        </view>
+        <view class="right">
+            <view style="font-size: 16px;line-height:22px;" hover-class="none" hover-stop-propagation="false">
+                RAV4 荣放首付3万起，2年0利率，4年超低利息
+            </view>
+            <view class="flex" style="justify-content:space-between;font-size: 14px;line-height:20px;padding-right:20px;" hover-class="none" hover-stop-propagation="false">
+                <view>2017.7.18</view>
+                <view>北京</view>
+                <view>已通过</view>
+            </view>
+        </view>
+    </view>
+</view>
+  

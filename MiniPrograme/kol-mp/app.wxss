@@ -7,6 +7,7 @@ page{
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
     box-sizing: border-box;
     color: #4A4A4A ;
+    height:100%;
 }
 view {
     box-sizing: border-box;

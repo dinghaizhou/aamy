@@ -1,1 +1,31 @@
 /* pages/order/order.wxss */
+.tab {
+    height:38px;
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #F5F5F5;
+}
+.tab .tab-items {
+    width: 25%;
+    text-align: center;
+}
+.tab .tab-items.active {
+    color: #D83B2A;
+}
+.tab .tab-bottom-line {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 33px;
+    height:3px;
+    width: 17px;
+    background:#D83B2A; 
+    transition: left ease 0.3s;
+    transform: translateX(-9px);
+    -webkit-transition: left ease 0.3s;
+}

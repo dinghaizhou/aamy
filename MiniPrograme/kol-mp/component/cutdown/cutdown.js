@@ -14,13 +14,10 @@ Component({
     },
     lifetimes: {
         attached: function() {
-            console.log(this.data)
-            console.log(this.data.deadline,1)
             this.showTime()
             // 在组件实例进入页面节点树时执行
         },
         detached: function() {
-            console.log('detached')
             // 在组件实例被从页面节点树移除时执行
         }
         // observers: {

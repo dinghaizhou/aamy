@@ -87,6 +87,7 @@ swiper {
     font-weight: normal;
     text-align: left;
     line-height: 24px;
+    font-size: 14px;
 }
 .apply-title {
     font-family: PingFangSC-Regular;
@@ -98,7 +99,7 @@ swiper {
     line-height:20px;
     text-align: right;
     font-size: 14px;
-    color: #4A4A4A;
+    color: rgba(0,0,0,0.3);
 }
 .apply-content {
     border: 1px solid #dddddd;
@@ -106,5 +107,45 @@ swiper {
 }
 .apply-content textarea {
     width:100%;
-    height:100px;
+    height:150px;
+}
+.apply-btn {
+    margin-top:29px;
+    display: flex;
+    justify-content: center;
+}
+.apply-btn .btn {
+    background: #D83B2A;
+    border-radius: 100px;
+    height: 32px;
+    width: 116px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 32px;
+}
+.apply-btn .btn:active {
+    opacity: 0.5;
+}
+
+.apply .weui-uploader__input {
+    width:60px;
+    height: 60px;
+}
+.apply .weui-uploader__input-box {
+    width:60px;
+    height: 60px;
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+.apply .weui-uploader__input-box:before{
+    height: 20px;
+}
+.apply .weui-uploader__input-box:after {
+    width: 20px;
+}
+.apply .weui-uploader__img {
+    width:60px;
+    height: 60px;
 }

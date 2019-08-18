@@ -1,2 +1,15 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="order" >
+    <view class="flex tab">
+        <view class="tab-items {{index == 1?'active':''}}" data-index="1" bindtap="switchIndex">全部</view>
+        <view class="tab-items {{index == 2?'active':''}}" data-index="2" bindtap="switchIndex">审核中</view>
+        <view class="tab-items {{index == 3?'active':''}}" data-index="3" bindtap="switchIndex">已通过</view>
+        <view class="tab-items {{index == 4?'active':''}}" data-index="4" bindtap="switchIndex">未通过</view>
+        <view class="tab-bottom-line" style="left: {{left_value}}"></view>
+    </view>
+    <orderCard></orderCard>
+    <orderCard></orderCard>
+    <orderCard></orderCard>
+    <orderCard></orderCard>
+</view>
+  
