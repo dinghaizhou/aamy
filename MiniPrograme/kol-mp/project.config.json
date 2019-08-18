@@ -23,7 +23,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
 	"appid": "wx3604ec8ada3c5e7c",
-	"projectname": "kol-mp",
+	"projectname": "kol-mp-2",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
