@@ -33,6 +33,9 @@ Component({
             this.setData({
                 istrue: false
             })
+        },
+        preventTouchMove() {
+            
         }
     }
 })

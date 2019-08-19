@@ -1,5 +1,6 @@
 // pages/order/order.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
 Page({
 
     /**
@@ -8,17 +9,18 @@ Page({
     data: {
         left_value: '98rpx',
         left_value: '12.5%',
-        index: '1',
+        index: 0,
+        list_0: null,
         list_1: null,
         list_2: null,
         list_3: null,
-        list_4: null,
         list: [],
-        has_more: false
+        has_more: false,
+        is_loading: false 
     },
     switchIndex(e) {
         let index = e.target.dataset.index 
-        let left_value = 12.5 + (index*1 - 1)*25 + '%'
+        let left_value = 12.5 + index*25 + '%'
         let list = this.data['list_' + index].list
         let has_more = this.data['list_' + index].has_more
         this.setData({
@@ -27,22 +29,13 @@ Page({
             list,
             has_more
         })
-
-        // if(index == 1) {
-        //     list = this.data.type_1.list
-        //     has_more = this.data.type_1.has_more
-        //     status = 1
-        // } else {
-        //     list = this.data.type_2.list
-        //     has_more = this.data.type_2.has_more
-        //     status = 2
-        // }
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         this.initList()
+        app.getUnreadCount()
     },
     initList() {
         wx.showToast({
@@ -50,7 +43,7 @@ Page({
             icon: 'loading',
             duration: 10000
         })
-        Promise.all([api.getOrderList({status: 1, page_size: 2}),api.getOrderList({status: 2,page_size: 2}),api.getOrderList({status: 3,page_size: 2}),api.getOrderList({status: 4,page_size: 2})])
+        Promise.all([api.getOrderList({status: 0}),api.getOrderList({status: 1}),api.getOrderList({status: 2}),api.getOrderList({status: 3})])
         .then((res) => {
             wx.hideToast({
                 title: '加载中',
@@ -58,19 +51,19 @@ Page({
                 duration: 10000
             })
             this.setData({
-                list_1: {
+                list_0: {
                     page: 1,
                     ...res[0]
                 },
-                list_2: {
+                list_1: {
                     page: 1,
                     ...res[1]
                 },
-                list_3: {
+                list_2: {
                     page: 1,
                     ...res[2]
                 },
-                list_4: {
+                list_3: {
                     page: 1,
                     ...res[3]
                 },
@@ -94,7 +87,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-  
+        this.initList()
+        app.getUnreadCount()
     },
   
     /**
@@ -116,7 +110,7 @@ Page({
      */
     onPullDownRefresh: function () {
         let { index } = this.data
-        api.getResourceList({status: index*1 - 1, page_size: 2, page: 1}, true)
+        api.getOrderList({status: index, page: 1}, true)
         .then((res) => {
             wx.stopPullDownRefresh()
             this.setData({
@@ -135,7 +129,34 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-  
+        let {has_more, index} = this.data
+        let item = this.data['list_' + index]
+        if(has_more) {
+            item.page = item.page++
+            this.setData({
+                is_loading: true,
+                ['list_' + index]: item
+            })
+            this.getMore()
+        }
+    },
+    getMore() {
+        let { index } = this.data
+        let item = this.data['list_' + index]
+        item.page = item.page + 1 
+        api.getOrderList({status: index, page: item.page})
+        .then((res) => {
+            this.setData({
+                ['list_' + index]: {
+                    page: item.page,
+                    list: item.list.concat(res.list),
+                    has_more: res.has_more,
+                },
+                is_loading: false,
+                list: item.list.concat(res.list),
+                has_more: res.has_more, 
+            })
+        })
     },
   
     /**

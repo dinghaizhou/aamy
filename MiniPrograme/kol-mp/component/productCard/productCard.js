@@ -34,7 +34,6 @@ Component({
     },
     methods: {
         goToDetails() {
-            console.log(3)
             wx.navigateTo({
                 url: '/pages/goodsdetail/goodsdetail?id=' + this.data.product.id,
                 success: (result) => {

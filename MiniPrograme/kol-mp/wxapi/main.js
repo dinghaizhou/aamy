@@ -26,3 +26,13 @@ export const calcelCollect = (data, loading =false) => request('/collect/cancel'
 export const applyOrder = (data, loading =false) => request('/order/apply', 'post', data, loading)
 // 订单列表
 export const getOrderList = (data, loading =false) => request('/order/index', 'get', data, loading)
+// 未读订单数
+export const getUnreadCount = (data, loading =false) => request('/order/unreadCount', 'get', data, loading)
+
+
+// 入驻
+export const KolUserAuth = (data, loading =false) => request('/kol_user/auth', 'post', data, loading)
+// 更新
+export const updateKolUser = (data, loading =false) => request('/kol_user/update', 'post', data, loading)
+// 详情
+export const getKolUserInfo = (data, loading =false) => request('/kol_user/info', 'get', data, loading)

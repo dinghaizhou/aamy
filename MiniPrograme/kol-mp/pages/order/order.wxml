@@ -1,15 +1,28 @@
 <!--pages/order/order.wxml-->
 <view class="order" >
     <view class="flex tab">
-        <view class="tab-items {{index == 1?'active':''}}" data-index="1" bindtap="switchIndex">全部</view>
-        <view class="tab-items {{index == 2?'active':''}}" data-index="2" bindtap="switchIndex">审核中</view>
-        <view class="tab-items {{index == 3?'active':''}}" data-index="3" bindtap="switchIndex">已通过</view>
-        <view class="tab-items {{index == 4?'active':''}}" data-index="4" bindtap="switchIndex">未通过</view>
+        <view class="tab-items {{index == 0?'active':''}}" data-index="{{0}}" bindtap="switchIndex">全部</view>
+        <view class="tab-items {{index == 1?'active':''}}" data-index="{{1}}" bindtap="switchIndex">审核中</view>
+        <view class="tab-items {{index == 2?'active':''}}" data-index="{{2}}" bindtap="switchIndex">已通过</view>
+        <view class="tab-items {{index == 3?'active':''}}" data-index="{{3}}" bindtap="switchIndex">未通过</view>
         <view class="tab-bottom-line" style="left: {{left_value}}"></view>
     </view>
-    <orderCard></orderCard>
-    <orderCard></orderCard>
-    <orderCard></orderCard>
-    <orderCard></orderCard>
+
+
+    <view style="padding-top:100rpx;" wx:if="{{list.length == 0 && list_1}}">
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+    </view>
+    <block wx:for="{{list}}" wx:key="index">
+        <orderCard product="{{item}}"></orderCard> 
+    </block>
+    <view class="weui-loadmore" wx:if="{{is_loading}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:if="{{!has_more && list.length > 6}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底了</view>
+    </view>
 </view>
   

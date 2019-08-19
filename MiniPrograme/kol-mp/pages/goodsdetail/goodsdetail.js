@@ -11,7 +11,9 @@ Page({
         detail: null,
         collect_url: '../../images/shoucang_01@3x.png',
         has_collect: false,
-        show_dialog: false,
+        apply_dialog: false,
+        show_auth_dialog: false,
+        reason_dialog: false,
         content: '',
         contentCount: 0,
         files: [],
@@ -21,8 +23,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let id = 20
-        // let id = options.id
+        let id = options.id
+
         api.getResourceDetail({id}, true)
         .then((res) => {
             this.setData({
@@ -67,14 +69,20 @@ Page({
         })
     },
     applyOrder() {
-        this.setData({
-            show_dialog: true
-        })
+        let auth_status = this.data.detail.auth_status 
+        if(auth_status == 3) {
+            this.setData({
+                apply_dialog: true
+            })
+        } else {
+            this.setData({
+                show_auth_dialog: true
+            })
+        }
     },
 
     // 图片上传
     selectFile(files) {
-        console.log('files', files)
     },
     uplaodFile(files) {
         return new Promise((resolve, reject) => {
@@ -83,7 +91,6 @@ Page({
             })
             Promise.all(promises)
             .then((res) => {
-                console.log(res)
                 resolve({urls: res.map(_=>_.url), data: res})
             })
             .catch((error) => {
@@ -92,7 +99,6 @@ Page({
         })
     },
     uploadError(e) {
-        console.log('upload error', e.detail)
     },
     uploadSuccess(e) {
         this.setData({
@@ -101,7 +107,6 @@ Page({
     },
     deleteFile(e) {
         let files = this.data.files
-        console.log(e.detail.index, files)
         files.splice(e.detail.index,1)
         this.setData({
             files
@@ -146,13 +151,38 @@ Page({
             img_ids: files.map(_ => _.id)
         }, true)
         .then((res) => {
-            console.log(res)
             this.setData({
-                show_dialog: false
+                apply_dialog: false
             })
+            wx.navigateTo({
+                url: '/pages/order/order'
+            });
+              
         })
         .catch(() => {
 
+        })
+    },
+    toJoin() {
+        wx.navigateTo({
+            url: '/pages/join/join',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+          
+    },
+    showReason() {
+        this.setData({
+            reason_dialog: true
+        })
+    },
+    applyAgain() {
+        this.setData({
+            reason_dialog: false,
+            apply_dialog: true
         })
     },
 

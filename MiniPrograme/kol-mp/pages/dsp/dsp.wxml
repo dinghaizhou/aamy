@@ -1,0 +1,45 @@
+<view class="dsp">
+    <view class="my-cells">
+        <view class="my-cell required">
+            <view class="cell-hd">所属平台</view>
+            <view class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{dsp_index}}" 
+                range="{{dsp_arr}}" 
+                range-key="name"  
+                bindchange="bindDspChange">
+                    <view class="my-select">{{dsp_index ? dsp_arr[dsp_index].name : ''}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">粉丝量</view>
+            <view class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{fans_count_index}}" 
+                range="{{fans_count_arr}}" 
+                range-key="name"  
+                bindchange="bindCountChange">
+                    <view class="my-select">{{fans_count_index ? fans_count_arr[fans_count_index].name : ''}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">主页链接</view>
+            <view  class="cell-bd">
+                 <input value="{{home_url}}" placeholder="请输入" bindinput="linkChange"/>
+            </view>
+        </view>
+    </view>
+    <view class="submit flex" bindtap="del">
+        <view style="width:40%;background:#fff;color:#4A4A4A">
+            删除
+        </view>
+        <view style="flex:1" bindtap="save">
+            保存
+        </view>
+    </view>
+</view>
+  

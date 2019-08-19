@@ -1,25 +1,46 @@
 <!--pages/information/information.wxml-->
 <view class="information" hover-class="none" hover-stop-propagation="false">
-    <view wx:if="{{is_joined}}" hover-class="none" hover-stop-propagation="false">
-
-
-
-
-
-
-
-
-
-
-
-
-    </view>
-    <view wx:else class="no-join" hover-class="none" hover-stop-propagation="false">
-        <view class="tips" hover-class="none" hover-stop-propagation="false">
-            您尚为入驻本平台
+    <view class="my-cells">
+        <view class="my-cell" style="height:102px;">
+            <view class="cell-hd">头像</view>
+            <view class="cell-bd">
+                <view class="my-link">
+                    <image style="width:57px;height:57px;border-radius:50%;" src="http://kol.com/storage/201908/1565940127Q8YgXkxa6CY9vhvw.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                      
+                </view>
+            </view>
         </view>
-        <view class="btn" hover-class="none" hover-stop-propagation="false" bindtap="toJoin">
-            立即入驻
+        <view class="my-cell">
+            <view class="cell-hd">昵称</view>
+            <view class="cell-bd">
+                <view class="my-link">
+                    haizhou
+                </view>
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">性别</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    haihzou
+                </view>
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">联系方式</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    haihzou
+                </view>
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">地区</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    haihzou
+                </view>
+            </view>
         </view>
     </view>
 </view>

@@ -1,17 +1,20 @@
 <!--component/orderCard/orderCard.wxml-->
 <view class="order-card" hover-stop-propagation="false">
-    <view class="flex" style="align-items:center;">
+    <view class="flex" style="align-items:center;" bindtap="goToDetail">
         <view class="left flex" style="align-items:center;" >
-            <image class="" src="http://kol.com/storage/201908/1565940127Q8YgXkxa6CY9vhvw.png" mode="aspectFill" />
+            <image class="" src="{{product.goods.cover_url}}" mode="aspectFill" />
         </view>
         <view class="right">
-            <view style="font-size: 16px;line-height:22px;" hover-class="none" hover-stop-propagation="false">
-                RAV4 荣放首付3万起，2年0利率，4年超低利息
+            <view style="font-size: 16px;line-height:22px;font-weight:bold;" hover-class="none" hover-stop-propagation="false">
+                {{product.goods.name}}
             </view>
             <view class="flex" style="justify-content:space-between;font-size: 14px;line-height:20px;padding-right:20px;" hover-class="none" hover-stop-propagation="false">
-                <view>2017.7.18</view>
-                <view>北京</view>
-                <view>已通过</view>
+                <view>{{product.apply_date}}</view>
+                <view>{{product.goods.city}}</view>
+                <view class="status">
+                    {{product.status_name}}
+                    <image wx-if="{{product.msg_status == 1}}" src="../../images/shoucang_01@3x.png" mode="widthFix" lazy-load="false"/>
+                </view>
             </view>
         </view>
     </view>

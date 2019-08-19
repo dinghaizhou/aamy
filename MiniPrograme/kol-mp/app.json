@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/join/join",
-    "pages/mine/mine",
-    "pages/information/information",
     "pages/order/order",
+    "pages/login/login",
+    "pages/information/information",
     "pages/goodsdetail/goodsdetail",
+    "pages/join/join",
+    "pages/dsp/dsp",
+    "pages/mine/mine",
     "pages/index/index",
     "pages/logs/logs",
     "pages/collect/collect"

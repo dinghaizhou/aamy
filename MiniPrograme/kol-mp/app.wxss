@@ -52,12 +52,14 @@ view {
 .weui-cell_example:before{
     left:52px;
 }
-.my-cell {
+.my-cells {
     background: #fff;
 }
 .my-cells .my-cell:first-child {
     border-top: 1rpx solid #DDDDDD;
 }
+
+
 .my-cell {
     height: 60px;
     align-items: center;
@@ -102,6 +104,31 @@ view {
     transform:matrix(.71,.71,-.71,.71,0,0);
     position:absolute;
     top:15px;
+    right:16px;
+}
+
+.my-link {
+    position:relative;
+    height:50px;
+    line-height: 50px;
+    padding-right:40px;
+}
+.my-link.algin-right {
+    text-align: right;
+}
+
+.my-link:before{
+    content:" ";
+    display:inline-block;
+    height:12px;
+    width:12px;
+    border-width:2px 2px 0px 0px;
+    border-color:#9B9B9B;
+    border-style:solid;
+    -webkit-transform:matrix(.71,.71,-.71,.71,0,0);
+    transform:matrix(.71,.71,-.71,.71,0,0);
+    position:absolute;
+    top:20px;
     right:16px;
 }
 

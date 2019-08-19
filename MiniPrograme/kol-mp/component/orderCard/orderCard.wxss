@@ -10,5 +10,21 @@
     height:55.7px;
 }
 .right {
+    flex:1;
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:64px;
+}
+
+.status {
+    position: relative;
+}
+.status image {
+    width:10px;
+    height:10px;
+    position: absolute;
+    right: -8px;
+    top: 0;
 }
