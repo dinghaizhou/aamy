@@ -1,0 +1,23 @@
+<view class="cutdown-simple flex">
+    <view class="time" selectable="false">
+        {{day}}
+    </view>
+    <view class="time" selectable="false">
+        :
+    </view>
+    <view class="time" selectable="false">
+        {{hour}}
+    </view>
+    <view class="time" selectable="false">
+        :
+    </view>
+    <view class="time" selectable="false">
+        {{minute}}
+    </view>
+    <view class="time" selectable="false">
+        :
+    </view>
+    <view class="time" selectable="false">
+        {{second}}
+    </view>
+</view>

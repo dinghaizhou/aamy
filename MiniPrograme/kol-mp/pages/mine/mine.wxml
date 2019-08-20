@@ -1,0 +1,27 @@
+<!--pages/mine/mine.wxml-->
+<view class="mine">
+    <view wx:if="{{!hasUserInfo && canIUse}}" class="userinfo-btn" hover-class="none" hover-stop-propagation="false">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    </view>
+    <view wx:else style="width:100%;">
+        <view class="userInfo" hover-class="none" hover-stop-propagation="false">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+        </view>
+        <view bindtap="goToInformation" class="item flex" hover-class="none" hover-stop-propagation="false">
+            <view>
+                <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+            </view>
+            <view>
+                个人信息 
+            </view>
+        </view>
+        <view bindtap="goToCollect" class="item flex" hover-class="none" hover-stop-propagation="false">
+            <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+            <view style="padding-top:4px;font-size: 16px;">
+                收藏 
+            </view>
+        </view>
+    </view>
+</view>
+  

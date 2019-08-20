@@ -1,0 +1,17 @@
+/* pages/region/region.wxss */
+.region .save {
+    border-top: 1px solid #dddddd;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    height: 50px;
+    background: #D83B2A;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+}
+.region .save:active {
+    background-color:rgb(219, 68, 68)
+}

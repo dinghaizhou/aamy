@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cutdown": "/component/cutdown/cutdown",
+    "myDialog": "/component/dialog/dialog",
+    "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader"
+  }
+}

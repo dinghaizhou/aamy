@@ -1,0 +1,78 @@
+<!--pages/information/information.wxml-->
+<view wx:if="{{information}}" class="information" hover-class="none" hover-stop-propagation="false">
+    <view class="my-cells">
+        <view class="my-cell" style="height:102px;">
+            <view class="cell-hd">头像</view>
+            <view class="cell-bd">
+                <view class="my-link">
+                    <image style="width:57px;height:57px;border-radius:50%;" src="{{information.avatar_url}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                </view>
+            </view>
+        </view>
+        <view class="my-cell" bindtap="goToEdit">
+            <view class="cell-hd" data-type="nick_name">昵称</view>
+            <view class="cell-bd">
+                <view class="my-link">
+                    {{information.nick_name}}
+                </view>
+            </view>
+        </view>
+        <view class="my-cell" bindtap="goToGender">
+            <view class="cell-hd">性别</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    {{information.gender_name}}
+                </view>
+            </view>
+        </view>
+        <view class="my-cell" data-type='phone' bindtap="goToEdit">
+            <view class="cell-hd">联系方式</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    {{information.phone}}
+                </view>
+            </view>
+        </view>
+        <view class="my-cell" bindtap="goToRegion">
+            <view class="cell-hd">地区</view>
+            <view  class="cell-bd">
+                <view class="my-link">
+                    {{information.city}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <block wx:for="{{information.dsp_list}}" wx:key="index">
+        <view class="my-cells" style="margin-top:8px"data-index="{{index}}"  bindtap="changeDsp">
+            <view class="my-cell">
+                <view class="cell-hd">所属平台</view>
+                <view class="cell-bd">
+                    <view class="my-link">
+                        {{item.dsp_name}}
+                    </view>
+                </view>
+            </view>
+            <view class="my-cell">
+                <view class="cell-hd">粉丝量</view>
+                <view class="cell-bd">
+                    <view class="my-link">
+                        {{fans_count_arr[item.fans_count-1].name}}
+                    </view>
+                </view>
+            </view>
+            <view class="my-cell">
+                <view class="cell-hd">主页链接</view>
+                <view class="cell-bd">
+                    <view class="my-link">
+                        {{item.home_url}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view bindtap="addDsp" class="add-dsp" hover-class="none" hover-stop-propagation="false">
+        新增平台
+    </view>
+      
+</view>
+  

@@ -1,0 +1,30 @@
+/* component/orderCard/orderCard.wxss */
+.order-card {
+    padding: 20px 12px;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 2px 3px 2px 1px rgba(156, 154, 154, 0.1);
+    margin-bottom:7px;
+}
+.left image{
+    width: 116px;
+    height:55.7px;
+}
+.right {
+    flex:1;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:64px;
+}
+
+.status {
+    position: relative;
+}
+.status image {
+    width:10px;
+    height:10px;
+    position: absolute;
+    right: -8px;
+    top: 0;
+}

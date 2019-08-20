@@ -1,0 +1,74 @@
+.index {
+    padding-top:48px;
+}
+.top-search {
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+}
+
+.tab {
+    font-weight: bold;
+    padding:0 10px;
+    height:38px;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #F5F5F5;
+}
+.tab .tab-items {
+    width: 62px;
+    text-align: center;
+}
+.tab .tab-items.active {
+    color: #D83B2A;
+}
+.tab .tab-bottom-line {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 33px;
+    height:3px;
+    width: 17px;
+    background:#D83B2A; 
+    transition: left ease 0.3s;
+    -webkit-transition: left ease 0.3s;
+}
+.tab-big {
+    height:37px;
+    font-size: 14px;
+    line-height: 37px;
+    letter-spacing: 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #F5F5F5;
+}
+.tab-big .tab-items {
+    width: 50%;
+    text-align: center;
+}
+.tab-big .tab-items.active {
+    color: #D83B2A;
+}
+.tab-big .tab-bottom-line {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height:2px;
+    width: 50%;
+    background:#D83B2A; 
+    transition: left ease-in-out 0.7s;
+    -webkit-transition: left ease 0.7s;
+}
+.no-data {
+    padding: 200rpx;
+    text-align: center;
+    color: rgb(138, 133, 133);
+}
+

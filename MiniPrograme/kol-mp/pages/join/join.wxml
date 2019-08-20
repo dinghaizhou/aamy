@@ -1,0 +1,108 @@
+<view class="join" hover-class="none" hover-stop-propagation="false">
+    <view class="title" hover-class="" hover-stop-propagation="false">
+        请填写入驻资料
+    </view>
+    <view class="my-cells">
+        <view class="my-cell required">
+            <view class="cell-hd">所属平台</view>
+            <view class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{dsp_index}}" 
+                range="{{dsp_arr}}" 
+                range-key="name"  
+                bindchange="bindDspChange">
+                    <view class="my-select">{{dsp_arr[dsp_index].name}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">粉丝量</view>
+            <view class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{fans_count_index}}" 
+                range="{{fans_count_arr}}" 
+                range-key="name"  
+                bindchange="bindCountChange">
+                    <view class="my-select">{{fans_count_arr[fans_count_index].name}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">主页链接</view>
+            <view  class="cell-bd">
+                 <input value="{{home_url}}" placeholder="请输入" bindinput="linkChange"/>
+            </view>
+        </view>
+    </view>
+
+    <view class="my-cells" wx:for="{{dsp_list}}" wx:key="{{index}}" style="margin-top:6px;" data-index="{{index}}" bindtap="toDspDetail">
+        <view class="my-cell">
+            <view class="cell-hd">所属平台</view>
+            <view class="cell-bd">
+                <view class="my-link">{{item.dsp_name}}</view>
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">粉丝量</view>
+            <view class="cell-bd">
+                {{item.fans_count_name}}
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">主页链接</view>
+            <view  class="cell-bd">
+                 {{item.home_url}}
+            </view>
+        </view>
+    </view>
+    <view class="flex" style="justify-content: center;height:100px;align-items:center;">
+        <view class="btn-min" bindtap="addDsp">新增平台</view>
+    </view>
+    <view class="my-cells">
+        <view class="my-cell required">
+            <view class="cell-hd">联系方式</view>
+            <view  class="cell-bd">
+                 <input placeholder="请输入" bindinput="phoneChange"/>
+            </view>
+        </view>
+        <view class="my-cell">
+            <view class="cell-hd">备注说明</view>
+            <view  class="cell-bd">
+                 <input placeholder="请输入" bindinput="noteChange"/>
+            </view>
+        </view>
+    </view>
+
+    <checkbox-group bindchange="checkboxChange" style="display:none">
+        <checkbox id="agree" value="1" checked="{{is_agree}}"/>{{item.value}}
+    </checkbox-group>
+    <view class="flex-c" style="height:80px">
+        <label for="agree">
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="20" color="#D83B2A" wx:if="{{!is_agree}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="20" color="#D83B2A" wx:if="{{is_agree}}"></icon>
+            </view>
+        </label>
+        <view bindtap="showContract">
+            同意《入驻协议》
+        </view>
+    </view>
+    <view bindtap="submit" class="submit" hover-class="none" hover-stop-propagation="false">
+        提交
+    </view>
+    <myDialog istrue="{{show_dialog}}">
+        <view>
+            <view hover-class="none" hover-stop-propagation="false">
+                <view selectable="false" space="false" decode="false">
+                    入驻协议
+                </view>
+                <view selectable="false" space="false" decode="false">
+                    入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议
+                </view>
+            </view>
+        </view>
+    </myDialog>   
+</view>
+  

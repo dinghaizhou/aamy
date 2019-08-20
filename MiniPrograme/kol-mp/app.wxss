@@ -1,0 +1,138 @@
+/**app.wxss**/
+/* @import 'weui/weui.wxss'; */
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+page{
+    background-color: #ffffff;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    box-sizing: border-box;
+    color: #4A4A4A ;
+    height:100%;
+}
+view {
+    box-sizing: border-box;
+    
+}
+
+.flex {
+    display: flex;
+}
+.flex-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    background: #D83B2A;
+    border-radius: 100px;
+    height: 40px;
+    width: 178px;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 40px;
+}
+.btn:active {
+    opacity: 0.5;
+}
+.btn-min {
+    background: #D83B2A;
+    border-radius: 100px;
+    height: 32px;
+    width: 116px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 32px;
+}
+.btn-min:active {
+    opacity: 0.5;
+}
+.weui-cell_example:before{
+    left:52px;
+}
+.my-cells {
+    background: #fff;
+}
+.my-cells .my-cell:first-child {
+    border-top: 1rpx solid #DDDDDD;
+}
+
+
+.my-cell {
+    height: 60px;
+    align-items: center;
+    display: flex;
+    font-size: 17px;
+    color: #4A4A4A;
+    padding: 18px 24px;
+    border-bottom: 1rpx solid #DDDDDD;
+    position: relative;
+}
+.my-cell.required::before {
+    content: '*';
+    color: #D83B2A;
+    position: absolute;
+    left: 12px;
+    top: 20px;
+}
+.my-cell .cell-hd{
+    font-weight: bold;
+    width: 200rpx;
+    flex-shrink: 0;
+}
+.my-cell .cell-bd {
+    flex: 1;
+    -webkit-flex: 1;
+    width:100%;
+}
+.my-select{
+    position:relative;
+    height:50px;
+    line-height: 50px;
+    text-align: right;
+    padding-right:40px;
+}
+.my-select:before{
+    content:" ";
+    display:inline-block;
+    height:12px;
+    width:12px;
+    border-width:0px 2px 2px 0;
+    border-color:#9B9B9B;
+    border-style:solid;
+    -webkit-transform:matrix(.71,.71,-.71,.71,0,0);
+    transform:matrix(.71,.71,-.71,.71,0,0);
+    position:absolute;
+    top:15px;
+    right:16px;
+}
+
+.my-link {
+    position:relative;
+    height:50px;
+    line-height: 50px;
+    padding-right:40px;
+}
+.my-link.algin-right {
+    text-align: right;
+}
+
+.my-link:before{
+    content:" ";
+    display:inline-block;
+    height:12px;
+    width:12px;
+    border-width:2px 2px 0px 0px;
+    border-color:#9B9B9B;
+    border-style:solid;
+    -webkit-transform:matrix(.71,.71,-.71,.71,0,0);
+    transform:matrix(.71,.71,-.71,.71,0,0);
+    position:absolute;
+    top:20px;
+    right:16px;
+}
+
+ 
+ 
