@@ -4,30 +4,24 @@
 	<title></title>
 </head>
 <body>
-	1dasfsdfsadfas
+	<div id="app">
+		{{ now }}
+	</div>
 	
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
-
-	function moneyFormat(val) {
-		let mp = ''
-		let dec = ''
-		let mp_res = val.match(/^([-\+])([\d\D]+)/)
-		if(mp_res) {
-			mp = mp_res[1]
-			val = mp_res[2]
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue!',
+		},
+		computed: {
+			now: function () {
+				return Date.now()
+			}
 		}
-		let dec_res = val.match(/([\d\D]+)(\.\d+)/)
-		if (dec_res) {
-			console.log(dec_res)
-			val = dec_res[1]
-			dec = dec_res[2]
-		}
-		val = val.replace(/(?!^)(?=(\d{3})+(\.\d{1,2})?$)/g, ',')
-	    return mp + val + dec
-	}
-	3333
-	
-
+	})
 </script>
+
 </html>
