@@ -29,16 +29,15 @@ Component({
             })
         },
         closeDialog: function () {
-            console.log(33333)
             this.setData({
                 istrue: false
             })
         },
         preventTouchMove() {
-
+            return 
         },
-      stopEvent() {
-        
-      }
+        stopEvent() {
+          
+        }
     }
 })
