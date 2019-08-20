@@ -9,8 +9,8 @@
                 </view>
             </view>
         </view>
-        <view class="my-cell" bindtap="goToEdit">
-            <view class="cell-hd" data-type="nick_name">昵称</view>
+        <view class="my-cell" data-type="nick_name" bindtap="goToEdit">
+            <view class="cell-hd">昵称</view>
             <view class="cell-bd">
                 <view class="my-link">
                     {{information.nick_name}}

@@ -1,4 +1,4 @@
-<view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+<view wx:if="{{istrue}}">
     <view class="weui-mask"></view>
     <view class="weui-dialog__wrp" catchtouchmove="preventTouchMove" bindtap="closeDialog">
         <view class="weui-dialog" catchtap="stopEvent">

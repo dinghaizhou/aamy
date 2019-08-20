@@ -15,10 +15,11 @@ Page({
      */
     onLoad: function (options) {
         let type = options.type
+        console.log(type)
         let information = wx.getStorageSync('information');
         let title, value;
         value = information[type]
-        
+      console.log(information[type])
         if(type == 'phone') {
             title = '联系方式'
         }

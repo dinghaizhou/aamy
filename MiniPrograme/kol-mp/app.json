@@ -4,6 +4,7 @@
         "pages/login/login",
         "pages/search/search",
         "pages/collect/collect",
+        "pages/dspinfo/dspinfo",
         "pages/index/index",
         "pages/information/information",
         "pages/region/region",

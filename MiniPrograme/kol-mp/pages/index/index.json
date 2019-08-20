@@ -3,5 +3,6 @@
         "searchBar": "/component/searchBar/searchBar",
         "productCard": "/component/productCard/productCard"
     },
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "KOL首页"
 }

@@ -32,6 +32,10 @@ Page({
         }
         api.getResourceDetail(params, true)
         .then((res) => {
+          let title = res.type == 1 ? '商品详情' : '活动详情'
+          wx.setNavigationBarTitle({
+            title
+          })
             this.setData({
                 detail: res,
                 id,

@@ -19,7 +19,7 @@
 .close-x .icon{
     position: absolute;
     right: 40rpx;
-    top: 10rpx;
+    top: 0rpx;
     font-size: 28px;
     font-weight: 200;
     transform: scaleY(0.8)

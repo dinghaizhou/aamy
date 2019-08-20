@@ -78,8 +78,8 @@
 
 
 
-    <!-- <myDialog istrue="{{apply_dialog}}">
-        <cover-view class="apply">
+    <myDialog istrue="{{apply_dialog}}">
+        <view class="apply">
             <view class="apply-title" hover-class="none" hover-stop-propagation="false">
                 可附加申请信息（选填)
             </view>
@@ -94,8 +94,8 @@
                     申请
                 </view>
             </view>
-        </cover-view>
-    </myDialog> -->
+        </view>
+    </myDialog>
     <myDialog istrue="{{show_auth_dialog}}">
         <view class="auth">
             <view wx:if="{{detail.auth_status == 1}}">

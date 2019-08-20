@@ -91,6 +91,7 @@ Page({
             let userInfo = app.globalData.userInfo
             if(!res.avatar_url) {
                 res.avatar_url = userInfo.avatarUrl
+                res.nick_name = userInfo.nickName
             }
             this.setData({
                 information: res

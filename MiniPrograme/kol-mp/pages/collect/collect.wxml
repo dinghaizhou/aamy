@@ -2,7 +2,7 @@
 <view class="collect" hover-class="none" hover-stop-propagation="false">
     <view style="padding-top:100rpx;" wx:if="{{collect_list.length == 0}}">
         <view class="weui-loadmore weui-loadmore_line">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无收藏</view>
         </view>
     </view>
     <view wx:else>
