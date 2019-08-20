@@ -1,8 +1,8 @@
 <!--component/productCard/productCard.wxml-->
-<view class="product-card">
-    <image bindtap="goToDetails" src="{{product.cover_url}}" mode="aspectFill" lazy-load="false" />
+<view class="product-card" bindtap="goToDetails">
+    <image src="{{product.cover_url}}" mode="aspectFill" lazy-load="false" />
     <view class="content">
-        <view class="title" bindtap="goToDetails">
+        <view class="title">
             {{product.name}}
         </view>
         <view class="btn-area">

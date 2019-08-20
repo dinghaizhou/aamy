@@ -35,7 +35,10 @@ Component({
             })
         },
         preventTouchMove() {
-            
-        }
+
+        },
+      stopEvent() {
+        
+      }
     }
 })

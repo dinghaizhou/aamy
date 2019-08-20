@@ -46,7 +46,7 @@ Component({
                 })
             }
             wx.navigateTo({
-                url: '/pages/goodsdetail/goodsdetail?type=order&id=' + product.goods_id,
+                url: '/pages/goodsdetail/goodsdetail?order_id=' + product.id + '&id=' + product.goods_id,
             });
         }
     }

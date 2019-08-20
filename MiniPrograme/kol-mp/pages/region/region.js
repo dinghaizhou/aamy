@@ -1,31 +1,45 @@
-// pages/login/login.js
+// pages/region/region.js
 import * as api from '../../wxapi/main.js'
-
 Page({
-    /**
-     * 页面的初始数据
-     */
+
+  /**
+   * 页面的初始数据
+   */
     data: {
-        
+        region: ['','',''],
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.login({
-            success: res => {
-                // api.login({code: res.code})
-                api.login({code: '123456'})
-                .then((res) => {
-                    wx.setStorageSync('token', res['miniprogram-api-token'])
-                    wx.switchTab({
-                        url: '/pages/index/index'
-                    })
-                })
-            }
+        let region = this.data.region
+        let information = wx.getStorageSync('information');
+        region[0] = information.province
+        region[1] = information.city
+        this.setData({
+            region
         })
     },
-
+    bindRegionChange: function (e) {
+        this.setData({
+            region: e.detail.value
+        })
+    },
+    save() {
+        let {region} = this.data
+        api.updateKolUser({
+            province: region[0],
+            city: region[1],
+            district: region[2]
+        })
+        .then((res) => {
+            wx.navigateBack({
+                delta: 1
+            });
+              
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

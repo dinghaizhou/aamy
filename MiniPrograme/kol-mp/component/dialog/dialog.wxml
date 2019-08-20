@@ -1,7 +1,7 @@
 <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
-    <view class="weui-mask" bindtap="closeDialog"></view>
-    <view class="weui-dialog__wrp">
-        <view class="weui-dialog" catchtouchmove="preventTouchMove">
+    <view class="weui-mask" catchtouchmove="preventTouchMove"></view>
+    <view class="weui-dialog__wrp" bindtap="closeDialog">
+        <view class="weui-dialog" catchtap="stopEvent">
             <view class="close-x">
                 <view bindtap="closeDialog" class="icon" hover-class="none" hover-stop-propagation="false">
                     X

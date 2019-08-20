@@ -32,10 +32,12 @@ App({
         api.getUnreadCount()
         .then((res) => {
             wx.setStorageSync('msg_count', res.unread_count);
-            wx.setTabBarBadge({
-                index: 1,
-                text: res.unread_count + ''
-            })
+            if(res.unread_count > 0) {
+                wx.setTabBarBadge({
+                    index: 1,
+                    text: res.unread_count + ''
+                })
+            }
         })
     }
 })

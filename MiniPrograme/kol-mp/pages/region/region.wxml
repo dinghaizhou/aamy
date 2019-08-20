@@ -1,0 +1,23 @@
+<!--pages/region/region.wxml-->
+<view class="region" hover-class="none" hover-stop-propagation="false">
+    <view class="my-cells" hover-class="none" hover-stop-propagation="false">
+        <view class="my-cell">
+            <view class="cell-hd">地区</view>
+            <view class="cell-bd">
+                <view class="my-select">
+                    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                        <view class="picker">
+                        {{region[0] ? region[0] : ''}}{{region[1] ?',' +  region[1]  : ''}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="save flex">
+        <view style="flex:1" bindtap="save">
+            保存
+        </view>
+    </view>
+</view>
+  

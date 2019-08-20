@@ -1,4 +1,4 @@
-// pages/edit/edit.js
+// pages/search/search.js
 import * as api from '../../wxapi/main.js'
 Page({
 
@@ -6,59 +6,39 @@ Page({
      * 页面的初始数据
      */
     data: {
-        value:'',
-        type: ''
+        list: [],
+        has_more: false,
+        page: 1
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let type = options.type
-        let information = wx.getStorageSync('information');
-        let title, value;
-        value = information[type]
-        
-        if(type == 'phone') {
-            title = '联系方式'
-        }
-        if(type == 'nick_name') {
-            title = '昵称'
-        }
-        this.setData({
-            value,
-            type
-        })
-
-        wx.setNavigationBarTitle({
-            title
-        })
+        this.search = this.selectComponent('#search')
+        this.search.showInput()
     },
-    save() {
-        let {value, type} = this.data
-        api.updateKolUser({
-            [type]: value
+    searchaa(e) {
+        api.getResourceList({
+            name: e.detail,
+            page: 1
         })
         .then((res) => {
-            console.log(res)
-            wx.navigateBack({
-                delta: 1
-            });
-              
+            this.setData({
+                page: 1,
+                list: res.list,
+                has_more: res.has_more,
+                name: e.detail
+            })
         })
     },
-    inputChange(e) {
-        this.setData({
-            value: e.detail.value
-        })
-    },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
 
     },
+    
 
     /**
      * 生命周期函数--监听页面显示
@@ -92,7 +72,25 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        let { has_more, page, list, name } = this.data
+        if(has_more) {
+            page = page + 1
+            this.setData({
+                is_loading: true,
+            })
+            api.collectList({
+                page,
+                name
+            })
+            .then((res) => {
+                this.setData({
+                    has_more: res.has_more,
+                    is_loading: false,
+                    list: list.concat(res.list),
+                    page
+                })
+            })
+        }
     },
 
     /**

@@ -78,14 +78,14 @@
 
 
 
-    <myDialog istrue="{{apply_dialog}}">
-        <view class="apply">
+    <!-- <myDialog istrue="{{apply_dialog}}">
+        <cover-view class="apply">
             <view class="apply-title" hover-class="none" hover-stop-propagation="false">
                 可附加申请信息（选填)
             </view>
             <view class="txt-num">{{contentCount}}/200</view>
             <view class="apply-content" hover-class="none" hover-stop-propagation="false">
-                <textarea maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">
+                <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">
                 </textarea>
                 <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="8" title="图片上传"></mp-uploader>
             </view>
@@ -94,8 +94,8 @@
                     申请
                 </view>
             </view>
-        </view>
-    </myDialog>
+        </cover-view>
+    </myDialog> -->
     <myDialog istrue="{{show_auth_dialog}}">
         <view class="auth">
             <view wx:if="{{detail.auth_status == 1}}">

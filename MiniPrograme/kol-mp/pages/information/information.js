@@ -44,9 +44,30 @@ Page({
             complete: () => {}
         });
     },
-    goToEdit() {
+    goToEdit(e) {
+        let type = e.currentTarget.dataset.type
         wx.navigateTo({
-            url: '/pages/edit/edit?type=phone',
+            url: '/pages/edit/edit?type=' + type,
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
+    goToRegion() {
+        wx.navigateTo({
+            url: '/pages/region/region',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
+    goToGender() {
+        wx.navigateTo({
+            url: '/pages/gender/gender',
             success: (result) => {
                 
             },

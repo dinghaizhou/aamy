@@ -33,8 +33,18 @@ Page({
     onReady: function () {
         this.initList()
     },
+    goToSearch() {
+        wx.navigateTo({
+            url: '/pages/search/search',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
     search(e) {
-        // console.log(e,'out')
+        console.log(e,'out')
     },
     switchIndex(e) {
         let index = e.target.dataset.index 

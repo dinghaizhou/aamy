@@ -24,8 +24,13 @@ Page({
      */
     onLoad: function (options) {
         let id = options.id
-
-        api.getResourceDetail({id}, true)
+        let order_id = options.order_id
+        let params = {}
+        params.id = id
+        if(order_id) {
+            params.order_id = order_id
+        }
+        api.getResourceDetail(params, true)
         .then((res) => {
             this.setData({
                 detail: res,

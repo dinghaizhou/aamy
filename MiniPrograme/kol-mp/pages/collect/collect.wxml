@@ -1,2 +1,76 @@
 <!--pages/collect/collect.wxml-->
-<text>pages/collect/collect.wxml</text>
+<view class="collect" hover-class="none" hover-stop-propagation="false">
+    <view style="padding-top:100rpx;" wx:if="{{collect_list.length == 0}}">
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+    </view>
+    <view wx:else>
+        <checkbox-group bindchange="checkboxChange">
+            <block wx:for="{{collect_list}}" wx:key="{{index}}">
+                <view class="flex card" hover-class="none" hover-stop-propagation="false" data-id="{{item.goods_id}}" bindtap="goToDetail">
+                    <label class="checkbox" wx:if="{{edit}}">
+                        <checkbox style="display:none" value="{{item.goods_id}}" checked="{{item.checked}}"/>
+                        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="20" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="20" color="#D83B2A" wx:if="{{item.checked}}"></icon>
+                        </view>
+                    </label>
+                    <view style="height:56px;" hover-class="none" hover-stop-propagation="false">
+                        <image src="{{item.cover_url}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                    </view>
+                    <view class="content" hover-class="none" hover-stop-propagation="false">
+                        <view class="name" hover-class="none" hover-stop-propagation="false">
+                            RAV4 还剩多长时间还剩多长时间
+                        </view>
+                        <view class="time" hover-class="none" hover-stop-propagation="false">
+                            <view class="flex" wx:if="{{item.status_name == '进行中'}}">
+                                还剩:<cutdownSimple deadline="{{item.end_date}}"></cutdownSimple>
+                            </view>
+                            <view wx:else hover-class="none" hover-stop-propagation="false">
+                                {{status_name}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block> 
+            <view class="weui-loadmore" wx:if="{{is_loading}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{!has_more && collect_list.length > 10}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底了</view>
+            </view>
+        </checkbox-group>  
+        <view class="bottom-bar flex" hover-class="none" hover-stop-propagation="false">
+            <view style="width:50%" hover-class="none" hover-stop-propagation="false">
+                <div wx:if="{{edit}}">
+                    <checkbox-group bindchange="checkAllChange" style="display:none">
+                        <checkbox id="check_all" value="1" checked="{{all_checked}}"/>
+                    </checkbox-group>
+                    <label for="check_all" class="flex">
+                        <view class="flex" style="align-items:center">
+                            <icon style="height:30px;vertical-align:top;"  type="circle" size="20" wx:if="{{!all_checked}}"></icon>
+                            <icon style="height:30px;"  type="success" size="20" color="#D83B2A" wx:if="{{all_checked}}"></icon>
+                        </view>
+                        <view style="margin-left:10px;">
+                            {{all_checked ? '取消全选' : '全选'}}
+                            
+                        </view>
+                    </label>
+                </div>
+            </view>
+            <view class="flex" style="width:50%;justify-content:flex-end" hover-class="none" hover-stop-propagation="false">
+                <view bindtap="cancelCollect"  wx:if="{{checked_arr.length > 0}}" style="width:50%;text-align:center;" hover-class="none" hover-stop-propagation="false">
+                    取消收藏
+                </view>
+                <view style="width:50%;text-align:right;" bindtap="edit" hover-class="none" hover-stop-propagation="false">
+                     {{edit ? '取消' : '编辑'}}
+                </view>
+            </view>
+        </view>
+    </view>
+      
+
+</view>
+  

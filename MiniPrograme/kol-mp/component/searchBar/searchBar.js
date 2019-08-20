@@ -7,7 +7,11 @@ Component({
         addGlobalClass: true
     },
     properties: {
-        
+        fix: {
+            type: Boolean,
+            value: false,
+            first: true
+        }
     },
 
     /**
@@ -23,9 +27,11 @@ Component({
      */
     methods: {
         showInput: function () {
-            this.setData({
-                inputShowed: true
-            });
+            if(!this.data.fix) {
+                this.setData({
+                    inputShowed: true
+                });
+            }
         },
         hideInput: function () {
             this.setData({
@@ -44,6 +50,7 @@ Component({
             });
         },
         search(e) {
+            console.log(e)
             this.triggerEvent('search', e.detail.value)
         }
     }

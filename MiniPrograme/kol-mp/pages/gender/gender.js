@@ -1,31 +1,47 @@
-// pages/login/login.js
+// pages/region/region.js
 import * as api from '../../wxapi/main.js'
-
 Page({
-    /**
-     * 页面的初始数据
-     */
+
+  /**
+   * 页面的初始数据
+   */
     data: {
-        
+        gender: '',
+        items: [
+            {name: '未知', value: '0'},
+            {name: '男', value: '1'},
+            {name: '女', value: '2'},
+        ]
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.login({
-            success: res => {
-                // api.login({code: res.code})
-                api.login({code: '123456'})
-                .then((res) => {
-                    wx.setStorageSync('token', res['miniprogram-api-token'])
-                    wx.switchTab({
-                        url: '/pages/index/index'
-                    })
-                })
-            }
+        let { items } = this.data
+        let information = wx.getStorageSync('information');
+        let gender = information.gender
+        items[gender*1].checked = true
+        this.setData({
+            items
         })
     },
-
+    radioChange: function (e) {
+        this.setData({
+            gender: e.detail.value
+        })
+    },
+    save() {
+        let {gender} = this.data
+        api.updateKolUser({
+            gender
+        })
+        .then((res) => {
+            wx.navigateBack({
+                delta: 1
+            });
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

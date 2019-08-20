@@ -1,0 +1,6 @@
+/* component/cutdown/cutdown.wxss */
+.cutdown-simple .time {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}

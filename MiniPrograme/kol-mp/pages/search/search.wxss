@@ -1,0 +1,10 @@
+/* pages/search/search.wxss */
+.search {
+    padding-top:48px;
+}
+.top-search {
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+}

@@ -9,15 +9,15 @@
                 </view>
             </view>
         </view>
-        <view class="my-cell">
-            <view class="cell-hd">昵称</view>
+        <view class="my-cell" bindtap="goToEdit">
+            <view class="cell-hd" data-type="nick_name">昵称</view>
             <view class="cell-bd">
                 <view class="my-link">
                     {{information.nick_name}}
                 </view>
             </view>
         </view>
-        <view class="my-cell">
+        <view class="my-cell" bindtap="goToGender">
             <view class="cell-hd">性别</view>
             <view  class="cell-bd">
                 <view class="my-link">
@@ -25,7 +25,7 @@
                 </view>
             </view>
         </view>
-        <view class="my-cell" bindtap="goToEdit">
+        <view class="my-cell" data-type='phone' bindtap="goToEdit">
             <view class="cell-hd">联系方式</view>
             <view  class="cell-bd">
                 <view class="my-link">
@@ -33,7 +33,7 @@
                 </view>
             </view>
         </view>
-        <view class="my-cell">
+        <view class="my-cell" bindtap="goToRegion">
             <view class="cell-hd">地区</view>
             <view  class="cell-bd">
                 <view class="my-link">

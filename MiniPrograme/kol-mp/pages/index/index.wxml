@@ -1,6 +1,6 @@
 <view class="index">
     <view class="top-search">
-        <searchBar bind:search='search'></searchBar>
+        <searchBar bind:search='search' fix="{{true}}" bindtap="goToSearch"></searchBar>
     </view>
     <view class="flex tab">
         <view class="tab-items {{index == 1?'active':''}}" data-index="1" bindtap="switchIndex">商品</view>
