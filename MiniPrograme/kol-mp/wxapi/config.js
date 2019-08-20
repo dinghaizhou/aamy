@@ -29,6 +29,18 @@ const request = (url, method, data, loading) => {
                 let code = request.data.code
                 switch (code) {
                     case 0: resolve(request.data.data);break;
+                    case -1:
+                        wx.navigateTo({
+                            url: '/pages/login/login',
+                            success: (result) => {
+                                
+                            },
+                            fail: () => {},
+                            complete: () => {}
+                        });
+                        reject(request.data);
+                        break;
+                      
                     default: 
                         wx.showToast({
                             title: request.data.msg?request.data.msg:'网络异常',

@@ -5,7 +5,7 @@
         <view class="tab-items {{index == 1?'active':''}}" data-index="{{1}}" bindtap="switchIndex">审核中</view>
         <view class="tab-items {{index == 2?'active':''}}" data-index="{{2}}" bindtap="switchIndex">已通过</view>
         <view class="tab-items {{index == 3?'active':''}}" data-index="{{3}}" bindtap="switchIndex">未通过</view>
-        <view class="tab-bottom-line" style="left: {{left_value}}"></view>
+        <view class="tab-bottom-line" style="left: {{12.5 + index*25}}%"></view>
     </view>
 
 

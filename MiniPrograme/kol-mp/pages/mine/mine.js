@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+import * as api from '../../wxapi/main.js'
 const app = getApp()
 Page({
 
@@ -52,11 +53,16 @@ Page({
         }
     },
     getUserInfo: function(e) {
-        console.log(e)
+        api.updateKolUser({
+            nick_name: e.detail.userInfo.nickName
+        })
+        .then((res) => {
+            console.log(res)
+        })
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
-          userInfo: e.detail.userInfo,
-          hasUserInfo: true
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
         })
     },
     /**

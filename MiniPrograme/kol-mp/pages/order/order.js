@@ -7,8 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        left_value: '98rpx',
-        left_value: '12.5%',
         index: 0,
         list_0: null,
         list_1: null,
@@ -20,12 +18,10 @@ Page({
     },
     switchIndex(e) {
         let index = e.target.dataset.index 
-        let left_value = 12.5 + index*25 + '%'
         let list = this.data['list_' + index].list
         let has_more = this.data['list_' + index].has_more
         this.setData({
             index,
-            left_value,
             list,
             has_more
         })
@@ -34,8 +30,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.initList()
-        app.getUnreadCount()
+        
     },
     initList() {
         wx.showToast({
@@ -89,6 +84,9 @@ Page({
     onShow: function () {
         this.initList()
         app.getUnreadCount()
+        this.setData({
+            index: 0
+        })
     },
   
     /**

@@ -79,11 +79,13 @@ view {
 }
 .my-cell .cell-hd{
     font-weight: bold;
-    width: 100px;
+    width: 200rpx;
+    flex-shrink: 0;
 }
 .my-cell .cell-bd {
     flex: 1;
-    -webkit-flex: 1
+    -webkit-flex: 1;
+    width:100%;
 }
 .my-select{
     position:relative;

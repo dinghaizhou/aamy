@@ -1,77 +1,83 @@
 <view class="goodsDetails">
-    <swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#D83B2A" autoplay="true" circular="true">
-        <block wx:for="{{detail.img_list}}" wx:key="item.id">
-            <swiper-item>
-                <image style="width:100%;height:360rpx" src="{{item.url}}" mode="aspectFill" lazy-load="false"/>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class="title-area box" hover-class="none">
-        <view class="name">
-            {{detail.name}}
+    <view wx:if="{{detail}}">
+        <swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#D83B2A" autoplay="true" circular="true">
+            <block wx:for="{{detail.img_list}}" wx:key="item.id">
+                <swiper-item>
+                    <image style="width:100%;height:360rpx" src="{{item.url}}" mode="aspectFill" lazy-load="false"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="title-area box" hover-class="none">
+            <view class="name">
+                {{detail.name}}
+            </view>
+            <view class="detail flex">
+                <view class="title">
+                    还剩：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    <cutdown deadline="{{detail.end_date}}"></cutdown>
+                </view>
+                
+            </view>
+            <view class="detail flex">
+                <view class="title" selectable="false" space="false" decode="false">
+                    所属公司：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.company}}
+                </view>
+                
+                
+            </view>
+            <view class="detail flex">
+                <view class="title" selectable="false" space="false" decode="false">
+                    报名时间：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.begin_date}} 至 {{detail.end_date}}
+                </view>
+                
+            </view>
         </view>
-        <view class="detail flex">
-            <view class="title">
-                还剩：
+        <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
+            <view class="title">商品介绍:</view>
+            <view class="content">
+                {{detail.content}}
             </view>
-            <view class="content" hover-class="none" hover-stop-propagation="false">
-                <cutdown deadline="{{detail.end_date}}"></cutdown>
-            </view>
-              
         </view>
-        <view class="detail flex">
-            <view class="title" selectable="false" space="false" decode="false">
-                所属公司：
+        <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
+            <view class="title">KOL要求:</view>
+            <view class="content">
+                {{detail.condition}}
             </view>
-            <view class="content" hover-class="none" hover-stop-propagation="false">
-                {{detail.company}}
+        </view>
+        <view class="bottom-bar flex">
+            <view class="love flex" style="align-items: center;">
+                <image catchtap="collect" style="width:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
+                <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
+                    收藏
+                </view>
             </view>
-              
             
-        </view>
-        <view class="detail flex">
-            <view class="title" selectable="false" space="false" decode="false">
-                报名时间：
+            <view wx:if="{{detail.order_status == 1}}" class="btn default disabled">
+                审核中
             </view>
-            <view class="content" hover-class="none" hover-stop-propagation="false">
-                {{detail.begin_date}} 至 {{detail.end_date}}
+            <view wx:elif="{{detail.order_status == 2}}" class="btn default disabled">
+                已通过
             </view>
-              
-        </view>
-    </view>
-    <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
-        <view class="title">商品介绍:</view>
-        <view class="content">
-            {{detail.content}}
-        </view>
-    </view>
-    <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
-        <view class="title">KOL要求:</view>
-        <view class="content">
-            {{detail.condition}}
-        </view>
-    </view>
-    <view class="bottom-bar flex">
-        <view class="love flex" style="align-items: center;">
-            <image catchtap="collect" style="width:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
-            <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
-                收藏
+            <view wx:elif="{{detail.order_status == 3}}" class="btn default" bindtap="showReason">
+                未通过
             </view>
-        </view>
-        
-        <view wx:if="{{detail.order_status == 1}}" class="btn default disabled">
-            审核中
-        </view>
-        <view wx:elif="{{detail.order_status == 2}}" class="btn default disabled">
-            已通过
-        </view>
-        <view wx:elif="{{detail.order_status == 3}}" class="btn default" bindtap="showReason">
-            未通过
-        </view>
-        <view wx:else class="btn" bindtap="applyOrder">
-            立即申请
-        </view>
-    </view>  
+            <view wx:else class="btn" bindtap="applyOrder">
+                立即申请
+            </view>
+        </view> 
+    </view>
+
+
+
+
     <myDialog istrue="{{apply_dialog}}">
         <view class="apply">
             <view class="apply-title" hover-class="none" hover-stop-propagation="false">

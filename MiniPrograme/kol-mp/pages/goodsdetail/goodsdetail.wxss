@@ -86,7 +86,7 @@ swiper {
     background-color:  #D7D7D7;
 }
 .bottom-bar .btn.disabled:active {
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .apply {

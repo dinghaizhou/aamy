@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/order/order",
-    "pages/login/login",
     "pages/information/information",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/edit/edit",
+    "pages/order/order",
     "pages/goodsdetail/goodsdetail",
     "pages/join/join",
     "pages/dsp/dsp",
-    "pages/mine/mine",
     "pages/index/index",
     "pages/logs/logs",
     "pages/collect/collect"
@@ -14,11 +15,11 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "KOL",
     "navigationBarTextStyle": "black",
+  "tabBar": {
     "onReachBottomDistance": 50
   },
-  "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#d83b2a",
     "borderStyle": "black",

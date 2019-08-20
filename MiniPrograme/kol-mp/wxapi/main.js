@@ -36,3 +36,8 @@ export const KolUserAuth = (data, loading =false) => request('/kol_user/auth', '
 export const updateKolUser = (data, loading =false) => request('/kol_user/update', 'post', data, loading)
 // 详情
 export const getKolUserInfo = (data, loading =false) => request('/kol_user/info', 'get', data, loading)
+// 平台保存
+export const saveKolDsp = (data, loading =false) => request('/kol_dsp/save', 'post', data, true)
+// 平台更新
+export const updateKolDsp = (data, loading =false) => request('/kol_dsp/update', 'post', data, true)
+
