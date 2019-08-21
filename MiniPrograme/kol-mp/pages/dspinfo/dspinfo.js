@@ -20,19 +20,22 @@ Page({
         ],
         fans_count_index: '',
         dsp_index: '',
-        home_url: '',
-        id: null
+        home_url: ''
     },
   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
-        let id = options.id
-        if(id) {
+        this.index = options.index
+
+        if(this.index) {
+            let information = wx.getStorageSync('information');
+
+            let dsp = information.dsp_list[this.index]
+            this.id = dsp.id
+
             let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
-            let dsp = wx.getStorageSync('dsp');
             home_url = dsp.home_url
             for(var i in dsp_arr) {
                 if(dsp_arr[i].value == dsp.dsp_id) {
@@ -47,7 +50,6 @@ Page({
                 }
             }
             this.setData({
-                id,
                 dsp,
                 fans_count_index,
                 dsp_index,
@@ -71,19 +73,29 @@ Page({
         })
     },
     save() {
-        let { home_url,fans_count_index,dsp_index,id,fans_count_arr,dsp_arr} = this.data
-        if(!fans_count_index || !dsp_index || !home_url.trim()) {
+        let { home_url,fans_count_index,dsp_index,fans_count_arr,dsp_arr} = this.data
+        if(!fans_count_index || !dsp_index ) {
             wx.showToast({
-                title: '请完善必填信息',
+                title: '请先选择平台和粉丝量',
                 icon: 'none',
                 duration: 2000,
                 mask: true
             })
             return 
         }
-        if(id) {
+        if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
+            wx.showToast({
+                title: '请填写正确的主页链接',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+
+        if(this.index) {
             api.updateKolDsp({
-                id,
+                id: this.id,
                 home_url,
                 fans_count: fans_count_arr[fans_count_index].value,
                 dsp_id: dsp_arr[dsp_index].value,
@@ -91,7 +103,6 @@ Page({
                 dsp_name: dsp_arr[dsp_index].name
             })
             .then((res) => {
-                wx.removeStorageSync('dsp')
                 wx.navigateBack({
                     delta: 1
                 });

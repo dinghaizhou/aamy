@@ -43,21 +43,37 @@ Page({
         // 在没有 open-type=getUserInfo 版本的兼容处理
             wx.getUserInfo({
                 success: res => {
-                app.globalData.userInfo = res.userInfo
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
+                    app.globalData.userInfo = res.userInfo
+                    this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
                 }
             })
         }
     },
     getUserInfo: function(e) {
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+        if(e.detail.userInfo) {
+            app.globalData.userInfo = e.detail.userInfo
+            this.setData({
+                userInfo: e.detail.userInfo,
+                hasUserInfo: true
+            })
+        } else {
+            wx.showToast({
+                title: '需要获取您的昵称和头像用于展示',
+                icon: 'none',
+                image: '',
+                duration: 1500,
+                mask: false,
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+              
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

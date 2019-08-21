@@ -22,9 +22,9 @@
     position: relative;
 }
 .status image {
-    width:10px;
-    height:10px;
+    width:20px;
+    height:20px;
     position: absolute;
-    right: -8px;
-    top: 0;
+    right: -10px;
+    top: -8px;
 }

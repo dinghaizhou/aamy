@@ -12,7 +12,7 @@ Page({
         list_1: null,
         list_2: null,
         list_3: null,
-        list: [],
+        list: null,
         has_more: false,
         is_loading: false 
     },
@@ -33,6 +33,10 @@ Page({
         
     },
     initList() {
+        this.setData({
+            index: 0,
+            list: null
+        })
         wx.showToast({
             title: '加载中',
             icon: 'loading',
@@ -84,9 +88,6 @@ Page({
     onShow: function () {
         this.initList()
         app.getUnreadCount()
-        this.setData({
-            index: 0
-        })
     },
   
     /**

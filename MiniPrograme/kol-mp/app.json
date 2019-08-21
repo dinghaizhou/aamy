@@ -2,18 +2,18 @@
 {
     "pages": [
         "pages/login/login",
+        "pages/information/information",
+        "pages/join/join",
         "pages/search/search",
         "pages/collect/collect",
         "pages/dspinfo/dspinfo",
         "pages/index/index",
-        "pages/information/information",
         "pages/region/region",
         "pages/gender/gender",
         "pages/mine/mine",
         "pages/edit/edit",
         "pages/order/order",
         "pages/goodsdetail/goodsdetail",
-        "pages/join/join",
         "pages/dsp/dsp",
         "pages/logs/logs"
     ],

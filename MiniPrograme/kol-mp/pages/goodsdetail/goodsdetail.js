@@ -124,7 +124,7 @@ Page({
     uploadImg(file) {
         return new Promise((resolve, reject) => {
             wx.uploadFile({
-                url: CONFIG.API_BASE_URL + '/file/uploadOne', //仅为示例，非真实的接口地址
+                url: CONFIG.API_BASE_URL + '/file/uploadOne',
                 filePath: file,
                 header: {
                     'miniprogram-api-token': wx.getStorageSync('token')
@@ -146,14 +146,7 @@ Page({
     
     confirmApply() {
         let {files, content, id} = this.data
-        if(files.length == 0 || !content.trim()) {
-            wx.showToast({
-                title: '请完善信息',
-                icon: 'none',
-                duration: 2000
-            })
-            return 
-        }
+        
         api.applyOrder({
             goods_id: id,
             note: content,
@@ -163,10 +156,14 @@ Page({
             this.setData({
                 apply_dialog: false
             })
-            wx.navigateTo({
-                url: '/pages/order/order'
+            wx.switchTab({
+                url: '/pages/order/order',
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
             });
-              
         })
         .catch(() => {
 

@@ -74,9 +74,18 @@ Page({
     },
     save() {
         let { home_url,fans_count_index,dsp_index, index, dsp_list,fans_count_arr,dsp_arr} = this.data
-        if(!fans_count_index || !dsp_index || !home_url.trim()) {
+        if(!fans_count_index || !dsp_index ) {
             wx.showToast({
-                title: '请填写主页地址',
+                title: '请先选择平台和粉丝量',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+        if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
+            wx.showToast({
+                title: '请填写正确的主页链接',
                 icon: 'none',
                 duration: 2000,
                 mask: true

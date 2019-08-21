@@ -24,7 +24,7 @@ Page({
         home_url: '',
         phone: '',
         apply_note: '',
-        is_agree: true,
+        is_agree: false,
         show_dialog: false,
         dsp_list:[],
     },
@@ -37,15 +37,25 @@ Page({
     },
     addDsp() {
         let {fans_count_index, dsp_index, home_url, fans_count_arr, dsp_arr, dsp_list, phone, apply_note} = this.data
-        if(!fans_count_index || !dsp_index || !home_url.trim()) {
+        if(!fans_count_index || !dsp_index ) {
             wx.showToast({
-                title: '请先完善必填信息',
+                title: '请先选择平台和粉丝量',
                 icon: 'none',
                 duration: 2000,
                 mask: true
             })
             return 
         }
+        if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
+            wx.showToast({
+                title: '请填写正确的主页链接',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+
         dsp_list.push({
             home_url,
             fans_count: fans_count_arr[fans_count_index].value,
@@ -114,15 +124,33 @@ Page({
     },
     submit() {
         let {fans_count_index, dsp_index, home_url, phone, apply_note, is_agree, dsp_list, fans_count_arr, dsp_arr} = this.data
-        if(!fans_count_index || !dsp_index || !home_url.trim() || !phone) {
+        if(!fans_count_index || !dsp_index ) {
             wx.showToast({
-                title: '请先完善必填信息',
+                title: '请先选择平台和粉丝量',
                 icon: 'none',
                 duration: 2000,
                 mask: true
             })
             return 
         }
+        if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
+            wx.showToast({
+                title: '请填写正确的主页链接',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+        if(!(/^1[3456789]\d{9}$/.test(phone))){ 
+            wx.showToast({
+                title: '请填写正确的电话号码',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return false; 
+        } 
 
         let list = JSON.parse(JSON.stringify(dsp_list))
         list.push({
@@ -148,7 +176,17 @@ Page({
             dsp_list: list
         },true)
         .then((res) => {
-            res
+            wx.switchTab({
+                url: '/pages/index/index',
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        })
+        .catch((error) => {
+            console.log(error)
         })
 
     },

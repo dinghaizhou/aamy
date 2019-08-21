@@ -23,10 +23,8 @@ Page({
     },
     changeDsp(e) {
         let index = e.currentTarget.dataset.index
-        var dsp = this.data.information.dsp_list[index]
-        wx.setStorageSync('dsp', dsp);
         wx.navigateTo({
-            url: '/pages/dspinfo/dspinfo?id=' + dsp.id,
+            url: '/pages/dspinfo/dspinfo?index=' + index,
             success: (result) => {
                 
             },

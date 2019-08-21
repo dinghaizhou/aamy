@@ -14,8 +14,8 @@ Page({
     onLoad: function (options) {
         wx.login({
             success: res => {
-                // api.login({code: res.code})
-                api.login({code: '123456'})
+                api.login({code: res.code}, true)
+                // api.login({code: '123456'}, true)
                 .then((res) => {
                     wx.setStorageSync('token', res['miniprogram-api-token'])
                     wx.switchTab({

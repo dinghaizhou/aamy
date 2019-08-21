@@ -1,5 +1,6 @@
 {
     "usingComponents": {
         "myDialog": "/component/dialog/dialog"
-    }
+    },
+    "navigationBarTitleText": "申请入驻"
 }
