@@ -53,12 +53,6 @@ Page({
         }
     },
     getUserInfo: function(e) {
-        api.updateKolUser({
-            nick_name: e.detail.userInfo.nickName
-        })
-        .then((res) => {
-            console.log(res)
-        })
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
             userInfo: e.detail.userInfo,

@@ -52,10 +52,11 @@ const request = (url, method, data, loading) => {
             },
             fail(error) {
                 wx.showToast({
-                    title: '网络异常',
+                    title: error.errMsg ? error.errMsg : '网络异常',
                     icon: 'none',
                     duration: 2000
                 })
+                console.log(error)
                 reject(error)
             },
             complete(res) {

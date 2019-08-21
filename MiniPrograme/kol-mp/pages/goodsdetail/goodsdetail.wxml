@@ -27,8 +27,22 @@
                 <view class="content" hover-class="none" hover-stop-propagation="false">
                     {{detail.company}}
                 </view>
-                
-                
+            </view>
+            <view class="detail flex" wx:if="{{detail.type == 2 || detail.type == 3}}">
+                <view class="title" selectable="false" space="false" decode="false">
+                    活动类型：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.type == 2 ? '线上' : '线下'}}
+                </view>
+            </view>
+            <view class="detail flex" wx:if="{{detail.type == 2 || detail.type == 3}}">
+                <view class="title" selectable="false" space="false" decode="false">
+                    活动地区
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.city}}
+                </view>
             </view>
             <view class="detail flex">
                 <view class="title" selectable="false" space="false" decode="false">
@@ -54,7 +68,7 @@
         </view>
         <view class="bottom-bar flex">
             <view class="love flex" style="align-items: center;">
-                <image catchtap="collect" style="width:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
+                <image catchtap="collect" style="width:22px;height:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
                 <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
                     收藏
                 </view>

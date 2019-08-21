@@ -13,7 +13,7 @@
         <view class="tab-bottom-line" style="left: {{type == 'online'?'0':'50%'}}"></view>
     </view>  
     <view>  
-        <view style="padding-top:100rpx;" wx:if="{{list.length == 0 && type_1}}">
+        <view style="padding-top:300rpx;" wx:if="{{list.length == 0 && type_1}}">
             <view class="weui-loadmore weui-loadmore_line">
                 <view class="weui-loadmore__tips weui-loadmore__tips_in-line">敬请期待</view>
             </view>

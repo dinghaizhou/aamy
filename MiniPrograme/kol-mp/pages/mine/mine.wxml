@@ -10,14 +10,14 @@
         </view>
         <view bindtap="goToInformation" class="item flex" hover-class="none" hover-stop-propagation="false">
             <view>
-                <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                <image class="" src="../../images/ziliao@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
             </view>
             <view>
                 个人信息 
             </view>
         </view>
         <view bindtap="goToCollect" class="item flex" hover-class="none" hover-stop-propagation="false">
-            <image class="" src="../../images/shoucang_02@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+            <image class="" src="../../images/shoucang@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
             <view style="padding-top:4px;font-size: 16px;">
                 收藏 
             </view>

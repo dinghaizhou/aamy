@@ -13,7 +13,7 @@
                 <view>{{product.goods.city}}</view>
                 <view class="status">
                     {{product.status_name}}
-                    <image wx-if="{{product.msg_status == 1}}" src="../../images/shoucang_01@3x.png" mode="widthFix" lazy-load="false"/>
+                    <image wx-if="{{product.msg_status == 1}}" src="../../images/new@3x.png" mode="widthFix" lazy-load="false"/>
                 </view>
             </view>
         </view>
