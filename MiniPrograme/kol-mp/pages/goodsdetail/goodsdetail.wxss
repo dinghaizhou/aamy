@@ -100,7 +100,7 @@ swiper {
     font-size: 17px;
     color: #4A4A4A;
     letter-spacing: 0;
-    padding:14px;
+    padding: 0 0 14px 0;
 }
 .txt-num {
     line-height:20px;

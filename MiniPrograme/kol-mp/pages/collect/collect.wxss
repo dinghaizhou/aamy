@@ -9,7 +9,8 @@
     align-items: center;
     height: 100px;
     background: #fff;
-    margin-bottom:6px;
+    margin-bottom: 6px;
+    border-bottom: 1rpx solid #DDDDDD;
 }
 .card image {
     width: 116px;

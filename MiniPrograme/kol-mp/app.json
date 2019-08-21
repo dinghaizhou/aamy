@@ -2,26 +2,27 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/logs/logs",
+        "pages/edit/edit",
+        "pages/collect/collect",
+        "pages/avatar/avatar",
         "pages/information/information",
+        "pages/logs/logs",
         "pages/join/join",
         "pages/search/search",
-        "pages/collect/collect",
         "pages/dspinfo/dspinfo",
         "pages/index/index",
         "pages/region/region",
         "pages/gender/gender",
         "pages/mine/mine",
-        "pages/edit/edit",
         "pages/order/order",
         "pages/goodsdetail/goodsdetail",
         "pages/dsp/dsp"
     ],
     "window": {
+      "navigationBarTextStyle": "black",
       "backgroundTextStyle": "light",
       "navigationBarBackgroundColor": "#fff",
       "navigationBarTitleText": "KOL",
-      "navigationBarTextStyle": "black",
       "onReachBottomDistance": 50
     },
     "tabBar": {

@@ -1,0 +1,41 @@
+/* pages/avatar/avatar.wxss */
+.avatar {
+    padding-top:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar .avatar-img {
+    width:140px;
+    height: 140px;
+    border: 1px #dddddd solid;
+}
+.avatar .photo {
+    width: 20px;
+    height: 20px;
+}
+.btn {
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    line-height: 36px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+.avatar .save {
+    border-top: 1px solid #dddddd;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    height: 50px;
+    background: #D83B2A;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+}
+.avatar .save:active {
+    background-color:rgb(219, 68, 68)
+}

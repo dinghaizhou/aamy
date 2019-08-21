@@ -12,7 +12,8 @@ Page({
     data: {
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        information: null
     },
     goToCollect: function() {
         wx.navigateTo({
@@ -25,6 +26,15 @@ Page({
         })
     },
     onLoad: function () {
+        // 获取后台存储用户信息
+        api.getKolUserInfo()
+        .then((res) => {
+            this.setData({
+                information: res
+            })
+        })
+
+        // 调微信接口获取用户信息
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -55,6 +65,7 @@ Page({
     getUserInfo: function(e) {
         if(e.detail.userInfo) {
             app.globalData.userInfo = e.detail.userInfo
+            this.setInformation()
             this.setData({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
@@ -71,13 +82,30 @@ Page({
                 },
                 fail: () => {},
                 complete: () => {}
-            });
-              
+            }); 
         }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
+    setInformation() {
+        let { information } = this.data
+        let params = {}
+        if(!information.avatar_url) {
+            params.avatar_url = app.globalData.userInfo.avatarUrl
+        }
+        if(!information.nick_name) {
+            params.nick_name = app.globalData.userInfo.nickName
+        }
+        api.updateKolUser(params, true)
+        .then((res) => {
+            information.avatar_url = app.globalData.userInfo.avatarUrl
+            information.nick_name = app.globalData.userInfo.nickName
+            this.setData({
+                information
+            })
+        })
+    },
     onReady: function () {
 
     },

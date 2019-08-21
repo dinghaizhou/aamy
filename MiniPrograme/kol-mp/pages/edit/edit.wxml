@@ -4,6 +4,9 @@
         <view style="border-bottom: 1px solid #DDDDDD;padding: 7px 0;" hover-class="none" hover-stop-propagation="false">
             <input value="{{value}}" placeholder="请输入" bindinput="inputChange"/>
         </view>
+        <view style="text-align:right;color:#4A4A4A;line-height:32px;font-size:28rpx;" hover-class="none" hover-stop-propagation="false">
+            {{value.length}}/20
+        </view>
     </view>
     <view class="save flex">
         <view style="flex:1" bindtap="save">

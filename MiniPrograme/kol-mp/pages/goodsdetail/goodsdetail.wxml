@@ -68,6 +68,7 @@
         </view>
         <view class="bottom-bar flex">
             <view class="love flex" style="align-items: center;">
+                <view></view>
                 <image catchtap="collect" style="width:22px;height:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
                 <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
                     收藏
@@ -97,7 +98,7 @@
             <view class="apply-content" hover-class="none" hover-stop-propagation="false">
                 <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">
                 </textarea>
-                <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="8" title="图片上传"></mp-uploader>
+                <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="5" title="图片上传"></mp-uploader>
             </view>
             <view class="apply-btn" hover-class="none" hover-stop-propagation="false">
                 <view class="btn" bindtap="confirmApply">

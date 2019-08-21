@@ -73,6 +73,16 @@ Page({
             complete: () => {}
         });
     },
+    goToAvatar() {
+        wx.navigateTo({
+            url: '/pages/avatar/avatar',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -89,6 +99,8 @@ Page({
             let userInfo = app.globalData.userInfo
             if(!res.avatar_url) {
                 res.avatar_url = userInfo.avatarUrl
+            }
+            if(!res.nick_name) {
                 res.nick_name = userInfo.nickName
             }
             this.setData({

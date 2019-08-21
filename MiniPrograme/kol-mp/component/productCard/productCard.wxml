@@ -12,6 +12,9 @@
                 </view>
                 <cutdown deadline="{{product.end_date}}"></cutdown>
             </view>
+            <view wx:if="{{product.city}}">
+                {{product.city}}
+            </view>
             <view class="btn {{beyond_deadline?'disabled':''}}">
                 立即申请
             </view>

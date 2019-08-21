@@ -18,9 +18,10 @@
 }
 .close-x .icon{
     position: absolute;
+    color:#9B9B9B;
     right: 40rpx;
-    top: 0rpx;
-    font-size: 28px;
+    top: 6rpx;
+    font-size: 24px;
     font-weight: 200;
     transform: scaleY(0.8)
 }

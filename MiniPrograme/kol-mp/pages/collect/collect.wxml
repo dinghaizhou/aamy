@@ -21,14 +21,14 @@
                     </view>
                     <view class="content" hover-class="none" hover-stop-propagation="false">
                         <view class="name" hover-class="none" hover-stop-propagation="false">
-                            RAV4 还剩多长时间还剩多长时间
+                            {{item.name}}
                         </view>
                         <view class="time" hover-class="none" hover-stop-propagation="false">
                             <view class="flex" wx:if="{{item.status_name == '进行中'}}">
                                 还剩:<cutdownSimple deadline="{{item.end_date}}"></cutdownSimple>
                             </view>
                             <view wx:else hover-class="none" hover-stop-propagation="false">
-                                {{status_name}}
+                                {{item.status_name}}
                             </view>
                         </view>
                     </view>
@@ -70,7 +70,18 @@
             </view>
         </view>
     </view>
-      
-
+    <myDialog istrue="{{show_dialog}}">
+        <view style="font-size:18px;">
+            确定取消收藏吗？
+        </view>
+        <view style="font-size:18px;margin-top:32px;justify-content: space-around" class="flex" hover-class="none" hover-stop-propagation="false">
+            <view hover-class="none" hover-stop-propagation="false" bindtap="confirm">
+                确认
+            </view>
+            <view style="color: #D83B2A" hover-class="none" hover-stop-propagation="false" bindtap="closeDialog">
+                取消
+            </view>
+        </view>
+    </myDialog>
 </view>
   

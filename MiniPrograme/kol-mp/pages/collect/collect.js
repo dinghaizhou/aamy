@@ -12,7 +12,8 @@ Page({
         all_checked: false,
         page: 1,
         has_more: false,
-        is_loading: false
+        is_loading: false,
+        show_dialog: false
     },
 
     /**
@@ -95,13 +96,27 @@ Page({
             checked_arr
         })
     },
+    
     cancelCollect() {
+        this.setData({
+            show_dialog: true
+        })
+    },
+    confirm() {
         api.calcelCollect({
             goods_ids: this.data.checked_arr
         })
         .then((res) => {
+            this.setData({
+                show_dialog: false
+            })
             this.edit()
             this.getList()
+        })
+    },
+    closeDialog() {
+        this.setData({
+            show_dialog: false
         })
     },
 

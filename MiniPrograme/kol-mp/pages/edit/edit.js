@@ -14,12 +14,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let type = options.type
-        console.log(type)
+        let type = options.type ? options.type : ''
         let information = wx.getStorageSync('information');
         let title, value;
-        value = information[type]
-      console.log(information[type])
+        value = information[type] ? information[type]:''
         if(type == 'phone') {
             title = '联系方式'
         }
@@ -49,9 +47,16 @@ Page({
         })
     },
     inputChange(e) {
-        this.setData({
-            value: e.detail.value
-        })
+        let value = this.data.value 
+        if(value.length > 19) {
+            this.setData({
+                value
+            })
+        } else {
+            this.setData({
+                value: e.detail.value
+            })
+        }
     },
 
     /**

@@ -1,7 +1,7 @@
 <!--pages/information/information.wxml-->
 <view wx:if="{{information}}" class="information" hover-class="none" hover-stop-propagation="false">
     <view class="my-cells">
-        <view class="my-cell" style="height:102px;">
+        <view class="my-cell" style="height:102px;" bindtap="goToAvatar">
             <view class="cell-hd">头像</view>
             <view class="cell-bd">
                 <view class="my-link">
