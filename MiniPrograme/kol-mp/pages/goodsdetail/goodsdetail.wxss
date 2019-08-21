@@ -90,7 +90,6 @@ swiper {
 }
 
 .apply {
-    padding: 0 24px;
     font-weight: normal;
     text-align: left;
     line-height: 24px;

@@ -2,6 +2,7 @@
 {
     "pages": [
         "pages/login/login",
+        "pages/logs/logs",
         "pages/information/information",
         "pages/join/join",
         "pages/search/search",
@@ -14,8 +15,7 @@
         "pages/edit/edit",
         "pages/order/order",
         "pages/goodsdetail/goodsdetail",
-        "pages/dsp/dsp",
-        "pages/logs/logs"
+        "pages/dsp/dsp"
     ],
     "window": {
       "backgroundTextStyle": "light",

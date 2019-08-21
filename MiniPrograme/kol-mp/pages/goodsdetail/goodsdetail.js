@@ -32,12 +32,16 @@ Page({
         }
         api.getResourceDetail(params, true)
         .then((res) => {
-          let title = res.type == 1 ? '商品详情' : '活动详情'
-          wx.setNavigationBarTitle({
-            title
-          })
+            let title = res.type == 1 ? '商品详情' : '活动详情'
+            wx.setNavigationBarTitle({
+                title
+            })
+            if(res.order_status == 3) {
+                var reason_dialog = true
+            }
             this.setData({
                 detail: res,
+                reason_dialog,
                 id,
                 has_collect: res.has_collect
             })

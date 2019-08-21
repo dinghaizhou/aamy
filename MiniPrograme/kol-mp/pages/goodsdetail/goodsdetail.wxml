@@ -88,10 +88,6 @@
             </view>
         </view> 
     </view>
-
-
-
-
     <myDialog istrue="{{apply_dialog}}">
         <view class="apply">
             <view class="apply-title" hover-class="none" hover-stop-propagation="false">
