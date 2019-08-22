@@ -6,7 +6,8 @@
         </view>
         <view wx:else style="width:100%;">
             <view class="userInfo" hover-class="none" hover-stop-propagation="false">
-                <image class="userinfo-avatar" src="{{information.avatar_url}}" mode="cover"></image>
+                <image class="userinfo-avatar" src="{{information.avatar_url ? information.avatar_url : userInfo.avatarUrl }}" mode="cover" binderror="imageError"></image>
+
                 <view class="userinfo-nickname">{{information.nick_name}}</view>
             </view>
             <view bindtap="goToInformation" class="item flex" hover-class="none" hover-stop-propagation="false">
@@ -18,7 +19,7 @@
                 </view>
             </view>
             <view bindtap="goToCollect" class="item flex" hover-class="none" hover-stop-propagation="false">
-                <image class="" src="../../images/shoucang@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                <image src="../../images/shoucang@3x.png" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
                 <view style="padding-top:4px;font-size: 16px;">
                     收藏 
                 </view>

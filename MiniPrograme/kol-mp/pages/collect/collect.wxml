@@ -23,12 +23,15 @@
                         <view class="name" hover-class="none" hover-stop-propagation="false">
                             {{item.name}}
                         </view>
-                        <view class="time" hover-class="none" hover-stop-propagation="false">
+                        <view class="time flex" hover-class="none" hover-stop-propagation="false">
                             <view class="flex" wx:if="{{item.status_name == '进行中'}}">
                                 还剩:<cutdownSimple deadline="{{item.end_date}}"></cutdownSimple>
                             </view>
                             <view wx:else hover-class="none" hover-stop-propagation="false">
                                 {{item.status_name}}
+                            </view>
+                            <view wx:if="{{item.city}}" hover-class="none" hover-stop-propagation="false">
+                                {{item.city}}
                             </view>
                         </view>
                     </view>

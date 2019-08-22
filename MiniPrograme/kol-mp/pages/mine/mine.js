@@ -101,6 +101,7 @@ Page({
         .then((res) => {
             information.avatar_url = app.globalData.userInfo.avatarUrl
             information.nick_name = app.globalData.userInfo.nickName
+
             this.setData({
                 information
             })
@@ -115,6 +116,9 @@ Page({
      */
     onShow: function () {
 
+    },
+    imageError(e) {
+        console.log(e)
     },
 
     /**

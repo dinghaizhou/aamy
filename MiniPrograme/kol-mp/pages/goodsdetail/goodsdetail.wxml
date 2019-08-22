@@ -109,15 +109,17 @@
     </myDialog>
     <myDialog istrue="{{show_auth_dialog}}">
         <view class="auth">
-            <view wx:if="{{detail.auth_status == 1}}">
+            <view class="auth-title" wx:if="{{detail.auth_status == 1}}">
                 您尚未入驻本平台
             </view>
-            <view wx:elif="{{detail.auth_status == 2}}">
+            <view class="auth-title" wx:elif="{{detail.auth_status == 2}}">
                 您的入驻审核还未通过，请耐心等待
             </view>
             <view wx:else>
-                您的入驻审核被拒
-                <view>
+                <view class="auth-title" hover-class="none" hover-stop-propagation="false">
+                    您的入驻审核被拒
+                </view>
+                <view class="auth-content">
                     原因：{{detail.auth_audit_note}}
                 </view>
             </view>
@@ -130,8 +132,13 @@
     </myDialog>
 
     <myDialog istrue="{{reason_dialog}}">
-        <view class="reason_dialog">
-            拒绝理由：{{detail.order_audit_note}}
+        <view class="auth">
+            <view class="auth-title" hover-class="none" hover-stop-propagation="false">
+                您的申请被拒
+            </view>
+            <view class="auth-content">
+                原因：{{detail.order_audit_note}}
+            </view>
         </view>
          <view class="apply-btn" hover-class="none" hover-stop-propagation="false">
             <view class="btn" bindtap="applyAgain">

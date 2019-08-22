@@ -85,8 +85,8 @@
                 <icon class="weui-icon-checkbox_success" type="success" size="20" color="#D83B2A" wx:if="{{is_agree}}"></icon>
             </view>
         </label>
-        <view bindtap="showContract">
-            同意《入驻协议》
+        <view>
+            同意<text bindtap="showContract" style="color:#D83B2A">《入驻协议》</text>
         </view>
     </view>
     <view bindtap="submit" class="submit" hover-class="none" hover-stop-propagation="false">
@@ -98,9 +98,15 @@
                 <view selectable="false" space="false" decode="false">
                     入驻协议
                 </view>
-                <view selectable="false" space="false" decode="false">
-                    入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议
-                </view>
+                <text>
+                    最终解释权为本平台所有š
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                </text>
             </view>
         </view>
     </myDialog>   
