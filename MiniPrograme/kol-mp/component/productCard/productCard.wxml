@@ -10,7 +10,7 @@
                 <view class="" selectable="false">
                     还剩：
                 </view>
-                <cutdown deadline="{{product.end_date}}"></cutdown>
+                <cutdown deadline="{{product.remain_time}}"></cutdown>
             </view>
             <view wx:if="{{product.city}}">
                 {{product.city}}

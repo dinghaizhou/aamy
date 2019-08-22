@@ -25,7 +25,7 @@
                         </view>
                         <view class="time flex" hover-class="none" hover-stop-propagation="false">
                             <view class="flex" wx:if="{{item.status_name == '进行中'}}">
-                                还剩:<cutdownSimple deadline="{{item.end_date}}"></cutdownSimple>
+                                还剩:<cutdownSimple deadline="{{item.remain_time}}"></cutdownSimple>
                             </view>
                             <view wx:else hover-class="none" hover-stop-propagation="false">
                                 {{item.status_name}}

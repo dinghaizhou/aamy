@@ -16,7 +16,7 @@
                     还剩：
                 </view>
                 <view class="content" hover-class="none" hover-stop-propagation="false">
-                    <cutdown deadline="{{detail.end_date}}"></cutdown>
+                    <cutdown deadline="{{detail.remain_time}}"></cutdown>
                 </view>
                 
             </view>

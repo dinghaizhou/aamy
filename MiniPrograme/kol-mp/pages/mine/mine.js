@@ -26,13 +26,13 @@ Page({
         })
     },
     onLoad: function () {
-        // 获取后台存储用户信息
-        api.getKolUserInfo()
-        .then((res) => {
-            this.setData({
-                information: res
-            })
-        })
+        // // 获取后台存储用户信息
+        // api.getKolUserInfo()
+        // .then((res) => {
+        //     this.setData({
+        //         information: res
+        //     })
+        // })
 
         // 调微信接口获取用户信息
         if (app.globalData.userInfo) {
@@ -115,7 +115,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        
+        api.getKolUserInfo()
+        .then((res) => {
+            this.setData({
+                information: res
+            })
+        })
     },
     imageError(e) {
         console.log(e)

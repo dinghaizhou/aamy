@@ -91,7 +91,7 @@ Page({
             icon: 'loading',
             duration: 10000
         })
-        Promise.all([api.getResourceList({type: 1, page_size: 2}),api.getResourceList({type: 2,page_size: 2}),api.getResourceList({type: 3,page_size: 2})])
+        Promise.all([api.getResourceList({type: 1}),api.getResourceList({type: 2}),api.getResourceList({type: 3})])
         .then((res) => {
             wx.hideToast({
                 title: '加载中',
@@ -123,7 +123,7 @@ Page({
         let { fetch_type } = this.data
         let item = this.data['type_' + fetch_type]
         item.page = item.page + 1 
-        api.getResourceList({type: fetch_type, page_size: 2, page: item.page})
+        api.getResourceList({type: fetch_type, page: item.page})
         .then((res) => {
             this.setData({
                 ['type_' + fetch_type]: {
@@ -167,7 +167,7 @@ Page({
         let { fetch_type } = this.data
         let item = this.data['type_' + fetch_type]
         item.page = 1 
-        api.getResourceList({type: fetch_type, page_size: 2, page: item.page}, true)
+        api.getResourceList({type: fetch_type, page: item.page}, true)
         .then((res) => {
             wx.stopPullDownRefresh()
             this.setData({
