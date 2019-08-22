@@ -1,13 +1,12 @@
 <!--pages/avatar/avatar.wxml-->
 <view class="avatar" hover-class="none" hover-stop-propagation="false">
     
-    <image class="avatar-img" bindtap="preview" src="{{url}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+    <image class="avatar-img" bindtap="preview" src="{{url}}" mode="aspectFill"/>
     <view class="btn flex" bindtap="changeAvatar">
-        <image class="photo" src="../../images/photo.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        <image class="photo" src="../../images/photo.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
         <view style="margin-left:6px;" hover-class="none" hover-stop-propagation="false">
             更换图片
         </view>
-          
     </view>
     <view class="save flex">
         <view style="flex:1" bindtap="save">

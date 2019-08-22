@@ -4,8 +4,8 @@
         <view class="my-cell" style="height:102px;" bindtap="goToAvatar">
             <view class="cell-hd">头像</view>
             <view class="cell-bd">
-                <view class="my-link">
-                    <image style="width:57px;height:57px;border-radius:50%;" src="{{information.avatar_url}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                <view class="my-link" style="height:57px;">
+                    <image style="width:57px;height:57px;border-radius:50%;" src="{{information.avatar_url}}" mode="aspectFill"/>
                 </view>
             </view>
         </view>
