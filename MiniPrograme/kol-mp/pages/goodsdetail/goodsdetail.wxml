@@ -36,7 +36,7 @@
                     {{detail.type == 2 ? '线上' : '线下'}}
                 </view>
             </view>
-            <view class="detail flex" wx:if="{{detail.type == 2 || detail.type == 3}}">
+            <view class="detail flex" wx:if="{{detail.type == 3}}">
                 <view class="title" selectable="false" space="false" decode="false">
                     活动地区：
                 </view>
