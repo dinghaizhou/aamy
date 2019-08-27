@@ -29,6 +29,15 @@ const request = (url, method, data, loading) => {
                 let code = request.data.code
                 switch (code) {
                     case 0: resolve(request.data.data);break;
+                    case 1: 
+                        if(request.data.msg) {
+                            wx.showToast({
+                                title: request.data.msg,
+                                icon: 'none',
+                                duration: 2000
+                            }) 
+                        }
+                        reject(request.data.data);break;
                     case -1:
                         wx.navigateTo({
                             url: '/pages/login/login',

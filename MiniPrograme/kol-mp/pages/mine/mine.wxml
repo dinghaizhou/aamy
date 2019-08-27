@@ -6,7 +6,7 @@
         </view>
         <view wx:else style="width:100%;">
             <view class="userInfo" hover-class="none" hover-stop-propagation="false">
-                <image class="userinfo-avatar" src="{{information.avatar_url ? information.avatar_url : userInfo.avatarUrl }}" mode="cover" binderror="imageError"></image>
+                <image class="userinfo-avatar" src="{{information.avatar_url ? information.avatar_url : userInfo.avatarUrl }}" mode="aspectFill" binderror="imageError"></image>
 
                 <view class="userinfo-nickname">{{information.nick_name}}</view>
             </view>

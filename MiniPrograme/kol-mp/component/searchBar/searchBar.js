@@ -48,9 +48,10 @@ Component({
             this.setData({
                 inputVal: e.detail.value
             });
+            this.triggerEvent('input', e.detail.value)
         },
         search(e) {
-            console.log(e)
+            
             this.triggerEvent('search', e.detail.value)
         }
     }

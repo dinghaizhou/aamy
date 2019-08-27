@@ -1,11 +1,11 @@
 <view class="search">
     <view class="top-search">
-        <searchBar id="search" bind:search="searchaa"></searchBar>
+        <searchBar id="search" bind:search="searchaa" bind:input="handleInput"></searchBar>
     </view> 
     <view>  
-        <view style="padding-top:100rpx;" wx:if="{{list.length == 0}}">
-            <view class="weui-loadmore weui-loadmore_line">
-                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        <view style="padding-top:200rpx;" wx:if="{{list.length == 0}}">
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{has_searched}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">搜索不到数据</view>
             </view>
         </view>
         <view>

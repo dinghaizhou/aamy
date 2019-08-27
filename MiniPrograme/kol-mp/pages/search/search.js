@@ -8,7 +8,8 @@ Page({
     data: {
         list: [],
         has_more: false,
-        page: 1
+        page: 1,
+        has_searched: false
     },
 
     /**
@@ -22,14 +23,22 @@ Page({
         api.getResourceList({
             name: e.detail,
             page: 1
-        })
+        }, true)
         .then((res) => {
             this.setData({
                 page: 1,
                 list: res.list,
                 has_more: res.has_more,
-                name: e.detail
+                has_searched: true
             })
+        })
+    },
+    handleInput(e) {
+        this.setData({
+            page: 1,
+            list: [],
+            has_more: false,
+            has_searched: false
         })
     },
     /**

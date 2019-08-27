@@ -11,7 +11,7 @@ Page({
         type: 'online',
         fetch_type: 1,
         scrollTop: 0,
-        list: [],
+        list: null,
         page: 1,
         has_more: 0,
 
@@ -143,7 +143,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-  
+        if(!this.data.list) {
+            this.initList()
+        }
     },
   
     /**

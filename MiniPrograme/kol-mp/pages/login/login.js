@@ -12,15 +12,18 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options)
         wx.login({
             success: res => {
                 api.login({code: res.code}, true)
                 // api.login({code: '123456'}, true)
                 .then((res) => {
+                    let currentPages =  getCurrentPages();
                     wx.setStorageSync('token', res['miniprogram-api-token'])
                     wx.switchTab({
                         url: '/pages/index/index'
                     })
+                    
                 })
             }
         })

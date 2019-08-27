@@ -55,7 +55,7 @@
             </view>
         </view>
         <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
-            <view class="title">商品介绍：</view>
+            <view class="title">{{detail.type == 1 ? '商品介绍：' : '活动介绍：'}}</view>
             <view class="content">
                 {{detail.content}}
             </view>
@@ -67,11 +67,10 @@
             </view>
         </view>
         <view class="bottom-bar flex">
-            <view class="love flex" style="align-items: center;">
-                <view></view>
-                <image catchtap="collect" style="width:22px;height:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
-                <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
-                    收藏
+            <view catchtap="collect" class="love flex" style="align-items: center;">
+                <image style="width:22px;height:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
+                <view style="font-size:14px;margin-left: 8px;min-width:120rpx;" class="" hover-class="none" hover-stop-propagation="false">
+                    {{has_collect ? '取消收藏' : '收藏'}}
                 </view>
             </view>
             

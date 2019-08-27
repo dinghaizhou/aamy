@@ -16,7 +16,7 @@ Page({
         reason_dialog: false,
         content: '',
         contentCount: 0,
-        files: [],
+        files: []
     },
     /**
      * 生命周期函数--监听页面加载
@@ -61,12 +61,29 @@ Page({
         }
         api[url](param,true)
         .then((res) => {
+            if(url == 'addCollect') {
+                wx.showToast({
+                    title: '收藏成功',
+                    icon: 'none',
+                    image: '',
+                    duration: 1500,
+                    mask: true
+                });
+            } else {
+                wx.showToast({
+                    title: '取消收藏',
+                    icon: 'none',
+                    image: '',
+                    duration: 1500,
+                    mask: true
+                });
+            }
             this.setData({
                 has_collect: !this.data.has_collect
             })
         })
         .catch((res) => {
-            console.log(res)
+              
         })
         
     },
@@ -146,9 +163,8 @@ Page({
             })
         })
     },
-    
     confirmApply() {
-        let {files, content, id} = this.data
+        let {files, content, id, detail} = this.data
         
         api.applyOrder({
             goods_id: id,
@@ -156,17 +172,22 @@ Page({
             img_ids: files.map(_ => _.id)
         }, true)
         .then((res) => {
+            detail.order_status = 1
+
+
+
             this.setData({
-                apply_dialog: false
+                apply_dialog: false,
+                detail
             })
-            wx.switchTab({
-                url: '/pages/order/order',
-                success: (result) => {
+            // wx.switchTab({
+            //     url: '/pages/order/order',
+            //     success: (result) => {
                     
-                },
-                fail: () => {},
-                complete: () => {}
-            });
+            //     },
+            //     fail: () => {},
+            //     complete: () => {}
+            // });
         })
         .catch(() => {
 
@@ -206,7 +227,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        let currentPages =  getCurrentPages();
+                    console.log(currentPages)
+        console.log(wx.getLaunchOptionsSync())
     },
 
     /**
