@@ -93,6 +93,12 @@ Page({
                 dsp_name: dsp_arr[dsp_index].name
             })
             .then((res) => {
+                wx.showToast({
+                    title: '修改成功',
+                    icon: 'success',
+                    duration: 2000,
+                    mask: true
+                })
                 wx.navigateBack({
                     delta: 1
                 });
@@ -106,6 +112,12 @@ Page({
                 dsp_name: dsp_arr[dsp_index].name
             }) 
             .then(() => {
+                wx.showToast({
+                    title: '添加成功',
+                    icon: 'success',
+                    duration: 2000,
+                    mask: true
+                })
                 wx.navigateBack({
                     delta: 1
                 });
@@ -118,7 +130,20 @@ Page({
             title: '确定删除？',
             success (res) {
                 if (res.confirm) {
-                    
+                    api.delKolDsp({
+                        id: _this.id
+                    })
+                    .then(() => {
+                        wx.showToast({
+                            title: '删除成功',
+                            icon: 'success',
+                            duration: 2000,
+                            mask: true
+                        })
+                        wx.navigateBack({
+                            delta: 1
+                        });
+                    })
                 } else if (res.cancel) {
 
                 }
