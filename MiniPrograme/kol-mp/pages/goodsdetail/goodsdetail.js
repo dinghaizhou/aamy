@@ -2,7 +2,6 @@
 import * as api from '../../wxapi/main.js'
 import CONFIG from '../../config.js'
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -13,21 +12,57 @@ Page({
         has_collect: false,
         apply_dialog: false,
         show_auth_dialog: false,
-        reason_dialog: false,
+        reason_dialog: false, 
         content: '',
         contentCount: 0,
-        files: []
+        files: [],
+        share_type: ''
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let id = options.id
-        let order_id = options.order_id
+        this.id = options.id
+        this.order_id = options.order_id ? options.order_id : ''
+        let share_type = options.type ? options.type  : ''
+
+        if(!wx.getStorageSync('token') && share_type == 'goods') {
+            wx.login({
+                success: res => {
+                    api.login({code: res.code}, true)
+                    .then((res) => {
+                        wx.setStorageSync('token', res['miniprogram-api-token'])
+                        this.getDetails()
+                    })
+                }
+            })
+        } else {
+            this.getDetails()
+        }
+
+        this.setData({
+            share_type,
+            selectFile: this.selectFile.bind(this),
+            uplaodFile: this.uplaodFile.bind(this)
+        })
+    },
+    goToIndex() {
+        wx.switchTab({
+            url: '/pages/index/index',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+          
+    },
+    getDetails() {
+        let { reason_dialog } = this.data
         let params = {}
-        params.id = id
-        if(order_id) {
-            params.order_id = order_id
+        params.id = this.id
+        if(this.order_id) {
+            params.order_id = this.order_id
         }
         api.getResourceDetail(params, true)
         .then((res) => {
@@ -36,27 +71,22 @@ Page({
                 title
             })
             if(res.order_status == 3) {
-                var reason_dialog = true
+                reason_dialog = true
             }
             this.setData({
                 detail: res,
                 reason_dialog,
-                id,
                 has_collect: res.has_collect
             })
-        })
-        this.setData({
-            selectFile: this.selectFile.bind(this),
-            uplaodFile: this.uplaodFile.bind(this)
         })
     },
     collect() {
         let param, url;
         if(this.data.has_collect) {
-            param = {goods_ids: [this.data.id]}
+            param = {goods_ids: [this.id]}
             url = 'calcelCollect'
         } else {
-            param = {goods_id: this.data.id}
+            param = {goods_id: this.id}
             url = 'addCollect'
         }
         api[url](param,true)
@@ -164,30 +194,39 @@ Page({
         })
     },
     confirmApply() {
-        let {files, content, id, detail} = this.data
+        let {files, content, detail} = this.data
         
         api.applyOrder({
-            goods_id: id,
+            goods_id: this.id,
             note: content,
             img_ids: files.map(_ => _.id)
         }, true)
         .then((res) => {
+            // 改变上个页面的商品状态
+            let currentPages =  getCurrentPages();
+            console.log(currentPages)
+            if(currentPages.length > 1) {
+                let prevPage = currentPages[currentPages.length - 2];    // 上一个页面
+                console.log(prevPage.route)
+                if(prevPage.route == 'pages/index/index') {
+                    let list =  prevPage.data.list
+                    for(let item of list) {
+                        if(item.id == this.id) {
+                            item.order_status = 1
+                        }
+                    }
+                    console.log(list)
+                    prevPage.setData({
+                        list                     
+                    })
+                }
+            }
+                        
             detail.order_status = 1
-
-
-
             this.setData({
                 apply_dialog: false,
                 detail
             })
-            // wx.switchTab({
-            //     url: '/pages/order/order',
-            //     success: (result) => {
-                    
-            //     },
-            //     fail: () => {},
-            //     complete: () => {}
-            // });
         })
         .catch(() => {
 
@@ -227,9 +266,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        let currentPages =  getCurrentPages();
-                    console.log(currentPages)
-        console.log(wx.getLaunchOptionsSync())
+
     },
 
     /**
@@ -264,6 +301,9 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return {
+            title: '你的好友给您KOL资源',
+            path: '/pages/goodsdetail/goodsdetail?id=' + this.id + '&type=goods'
+        }
     }
 })

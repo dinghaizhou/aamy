@@ -41,6 +41,5 @@ App({
         })
     },
     onShow() {
-        console.log(wx.getLaunchOptionsSync())
     }
 })

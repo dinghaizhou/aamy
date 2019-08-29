@@ -62,6 +62,29 @@
     </view>
     <view class="my-cells">
         <view class="my-cell required">
+            <view class="cell-hd">性别</view>
+            <view  class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{gender_index}}" 
+                range="{{gender_arr}}" 
+                range-key="name"  
+                bindchange="bindGenderChange">
+                    <view class="my-select">{{gender_arr[gender_index].name}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">地区</view>
+            <view  class="cell-bd">
+                <regionPicker value="{{region}}" bind:regionChange="bindRegionChange">
+                    <view class="my-select">
+                    {{region[0] ? region[0] : ''}}{{region[1] ?',  ' +  region[1]  : ''}}
+                    </view>
+                </regionPicker>
+            </view>
+        </view>
+        <view class="my-cell required">
             <view class="cell-hd">联系方式</view>
             <view  class="cell-bd">
                  <input placeholder="请输入" bindinput="phoneChange"/>
@@ -99,7 +122,7 @@
                     入驻协议
                 </view>
                 <text>
-                    最终解释权为本平台所有š
+                    最终解释权为本平台所有。
                     最终解释权为本平台所有。
                     最终解释权为本平台所有。
                     最终解释权为本平台所有。

@@ -51,7 +51,6 @@ Component({
             this.triggerEvent('input', e.detail.value)
         },
         search(e) {
-            
             this.triggerEvent('search', e.detail.value)
         }
     }

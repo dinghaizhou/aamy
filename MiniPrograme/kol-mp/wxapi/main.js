@@ -41,3 +41,6 @@ export const saveKolDsp = (data, loading =false) => request('/kol_dsp/save', 'po
 // 平台更新
 export const updateKolDsp = (data, loading =false) => request('/kol_dsp/update', 'post', data, true)
 
+
+// 城市地址
+export const getRegion = (data, loading =false) => request('/region/index', 'get', data, true)

@@ -30,23 +30,25 @@ Page({
      */
     onLoad: function (options) {
         let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
-        let index = options.index
         let dsp_list = wx.getStorageSync('dsp_list');
-        let dsp = dsp_list[index*1]
-        home_url = dsp.home_url
-        for(var i in dsp_arr) {
-            if(dsp_arr[i].value == dsp.dsp_id) {
-                dsp_index = i
-                break
-            }
-        }
-        for(var i in fans_count_arr) {
-            if(fans_count_arr[i].value == dsp.fans_count) {
-                fans_count_index = i
-                break 
-            }
-        }
+        let index = options.index
 
+        if(index) {
+            let dsp = dsp_list[index*1]
+            home_url = dsp.home_url
+            for(var i in dsp_arr) {
+                if(dsp_arr[i].value == dsp.dsp_id) {
+                    dsp_index = i
+                    break
+                }
+            }
+            for(var i in fans_count_arr) {
+                if(fans_count_arr[i].value == dsp.fans_count) {
+                    fans_count_index = i
+                    break 
+                }
+            }
+        }
         this.setData({
             index,
             dsp_list,
@@ -56,8 +58,6 @@ Page({
         })
     },
     linkChange(e) {
-
-        console.log(e)
         this.setData({
             home_url: e.detail.value
         })
@@ -92,12 +92,25 @@ Page({
             })
             return 
         }
-        dsp_list[index*1] = {
-            home_url,
-            fans_count: fans_count_arr[fans_count_index].value,
-            dsp_id: dsp_arr[dsp_index].value,
-            fans_count_name: fans_count_arr[fans_count_index].name,
-            dsp_name: dsp_arr[dsp_index].name
+
+        if(index) {
+            dsp_list[index*1] = {
+                home_url,
+                fans_count: fans_count_arr[fans_count_index].value,
+                dsp_id: dsp_arr[dsp_index].value,
+                fans_count_name: fans_count_arr[fans_count_index].name,
+                dsp_name: dsp_arr[dsp_index].name
+            }
+        } else {
+            dsp_list.push(
+                {
+                    home_url,
+                    fans_count: fans_count_arr[fans_count_index].value,
+                    dsp_id: dsp_arr[dsp_index].value,
+                    fans_count_name: fans_count_arr[fans_count_index].name,
+                    dsp_name: dsp_arr[dsp_index].name
+                }
+            )
         }
         wx.setStorageSync('dsp_list', dsp_list);
         wx.navigateBack({
@@ -105,15 +118,16 @@ Page({
         });
     },
     del() {
-        console.log('del')
         var _this = this
         wx.showModal({
             title: '确定删除？',
             success (res) {
                 if (res.confirm) {
                     let { index, dsp_list } = _this.data
-                    dsp_list.splice(index*1, 1)
-                    wx.setStorageSync('dsp_list', dsp_list);
+                    if(index) {
+                        dsp_list.splice(index*1, 1)
+                        wx.setStorageSync('dsp_list', dsp_list);
+                    }
                     wx.navigateBack({
                         delta: 1
                     });

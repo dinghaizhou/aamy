@@ -19,6 +19,10 @@ Page({
             {value: '4', name: '微博'},
             {value: '5', name: '其他'},
         ],
+        gender_arr: [
+            {value: '1', name: '男'},
+            {value: '2', name: '女'},
+        ],
         fans_count_index: '',
         dsp_index: '',
         home_url: '',
@@ -27,13 +31,15 @@ Page({
         is_agree: false,
         show_dialog: false,
         dsp_list:[],
+        region: [],
+        gender_index: '',
     },
   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log('load')
+
     },
     addDsp() {
         let {fans_count_index, dsp_index, home_url, fans_count_arr, dsp_arr, dsp_list, phone, apply_note} = this.data
@@ -55,20 +61,15 @@ Page({
             })
             return 
         }
-
-        dsp_list.push({
-            home_url,
-            fans_count: fans_count_arr[fans_count_index].value,
-            dsp_id: dsp_arr[dsp_index].value,
-            fans_count_name: fans_count_arr[fans_count_index].name,
-            dsp_name: dsp_arr[dsp_index].name
-        })
-        this.setData({
-            dsp_list,
-            home_url: '',
-            fans_count_index: '',
-            dsp_index: ''
-        })
+        wx.setStorageSync('dsp_list', this.data.dsp_list);
+        wx.navigateTo({
+            url: '/pages/dsp/dsp',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
     },
     linkChange(e) {
         this.setData({
@@ -83,6 +84,16 @@ Page({
     bindDspChange(e) {
         this.setData({
             dsp_index: e.detail.value
+        })
+    },
+    bindGenderChange(e) {
+        this.setData({
+            gender_index: e.detail.value
+        })
+    },
+    bindRegionChange: function (e) {
+        this.setData({
+            region: e.detail
         })
     },
     checkboxChange(e) {
@@ -123,7 +134,7 @@ Page({
         })
     },
     submit() {
-        let {fans_count_index, dsp_index, home_url, phone, apply_note, is_agree, dsp_list, fans_count_arr, dsp_arr} = this.data
+        let {gender_index, region, fans_count_index, dsp_index, home_url, phone, apply_note, is_agree, dsp_list, fans_count_arr, dsp_arr} = this.data
         if(!fans_count_index || !dsp_index ) {
             wx.showToast({
                 title: '请先选择平台和粉丝量',
@@ -142,6 +153,24 @@ Page({
             })
             return 
         }
+        if(!gender_index) {
+            wx.showToast({
+                title: '请选择性别',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+        if(region.length == 0) {
+            wx.showToast({
+                title: '请选择地区',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
         if(!(/^1[3456789]\d{9}$/.test(phone))){ 
             wx.showToast({
                 title: '请填写正确的电话号码',
@@ -151,8 +180,8 @@ Page({
             })
             return false; 
         } 
-
         let list = JSON.parse(JSON.stringify(dsp_list))
+
         list.push({
             home_url,
             fans_count: fans_count_arr[fans_count_index].value,
@@ -202,7 +231,6 @@ Page({
      */
     onShow: function () {
         var dsp_list = wx.getStorageSync('dsp_list');
-        console.log(dsp_list)
         if(dsp_list) {
             this.setData({
                 dsp_list
@@ -215,7 +243,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-        console.log('hide')
+
     },
   
     /**

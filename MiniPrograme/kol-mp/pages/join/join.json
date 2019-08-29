@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "myDialog": "/component/dialog/dialog"
+        "myDialog": "/component/dialog/dialog",
+        "regionPicker": "/component/regionPicker/regionPicker"
     },
     "navigationBarTitleText": "申请入驻"
 }

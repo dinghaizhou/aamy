@@ -4,11 +4,11 @@
         <view class="my-cell">
             <view class="cell-hd">地区</view>
             <view class="cell-bd">
-                <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <regionPicker bind:regionChange="bindRegionChange" value="{{region}}">
                     <view class="picker my-select">
                     {{region[0] ? region[0] : ''}}{{region[1] ?',' +  region[1]  : ''}}
                     </view>
-                </picker>
+                </regionPicker>
             </view>
         </view>
     </view>

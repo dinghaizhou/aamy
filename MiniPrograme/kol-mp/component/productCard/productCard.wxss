@@ -48,7 +48,8 @@ image {
     opacity: 0.5;
 }
 .content .btn.disabled {
-    background: #eee;
+    color: #9B9B9B;
+    background:  #D7D7D7;
 }
 .content .btn.disabled:active {
     opacity: 1;

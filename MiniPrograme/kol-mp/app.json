@@ -2,14 +2,14 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/index/index",
-        "pages/mine/mine",
         "pages/join/join",
         "pages/information/information",
+        "pages/logs/logs",
+        "pages/index/index",
+        "pages/mine/mine",
         "pages/collect/collect",
         "pages/edit/edit",
         "pages/avatar/avatar",
-        "pages/logs/logs",
         "pages/search/search",
         "pages/dspinfo/dspinfo",
         "pages/region/region",

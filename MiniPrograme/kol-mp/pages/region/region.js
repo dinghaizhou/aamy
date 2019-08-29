@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
     data: {
-        region: ['','',''],
+        region: [],
     },
 
     /**
@@ -23,7 +23,7 @@ Page({
     },
     bindRegionChange: function (e) {
         this.setData({
-            region: e.detail.value
+            region: e.detail
         })
     },
     save() {

@@ -1,5 +1,10 @@
 <view class="goodsDetails">
     <view wx:if="{{detail}}">
+        <view class="back-index flex" wx:if="{{share_type == 'goods'}}" bindtap="goToIndex">
+            <view>返回</view>
+            <view>首页</view>
+        </view>
+
         <swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#D83B2A" autoplay="true" circular="true">
             <block wx:for="{{detail.img_list}}" wx:key="item.id">
                 <swiper-item>
@@ -93,6 +98,19 @@
             <view class="apply-title" hover-class="none" hover-stop-propagation="false">
                 可附加申请信息（选填)
             </view>
+            <view>
+                报价（元）
+            </view>
+            <view class="apply-input">
+                <input type="number" placeholder="请输入报价" maxlength="20" auto-focus/>
+            </view>
+            <view>
+                手机号
+            </view>
+            <view class="apply-input">
+                <input placeholder="请输入手机号码" maxlength="20" auto-focus/>
+            </view>
+              
             <view class="txt-num">{{contentCount}}/200</view>
             <view class="apply-content" hover-class="none" hover-stop-propagation="false">
                 <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">

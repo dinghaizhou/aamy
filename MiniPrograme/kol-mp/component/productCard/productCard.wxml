@@ -15,8 +15,19 @@
             <view wx:if="{{product.city}}">
                 {{product.city}}
             </view>
-            <view class="btn {{beyond_deadline?'disabled':''}}">
-                立即申请
+            <view>
+                <view wx:if="{{product.order_status == 1}}" class="btn default disabled">
+                    审核中
+                </view>
+                <view wx:elif="{{product.order_status == 2}}" class="btn default disabled">
+                    已通过
+                </view>
+                <view wx:elif="{{product.order_status == 3}}" class="btn default">
+                    未通过
+                </view>
+                <view wx:else class="btn">
+                    立即申请
+                </view>
             </view>
         </view>
     </view>
