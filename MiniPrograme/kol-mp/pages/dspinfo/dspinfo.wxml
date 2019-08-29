@@ -34,6 +34,9 @@
         </view>
     </view>
     <view class="submit flex">
+        <view bindtap="del" style="width:40%;background:#fff;color:#4A4A4A">
+            删除
+        </view>
         <view style="flex:1" bindtap="save">
             保存
         </view>

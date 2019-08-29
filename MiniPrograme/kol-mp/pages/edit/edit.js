@@ -35,11 +35,22 @@ Page({
     },
     save() {
         let {value, type} = this.data
+        if(type == 'phone') {
+            if(!(/^1[3456789]\d{9}$/.test(value))){ 
+                wx.showToast({
+                    title: '请填写正确的电话号码',
+                    icon: 'none',
+                    duration: 1500,
+                    mask: true
+                })
+                return false; 
+            }
+        }
+
         api.updateKolUser({
             [type]: value
         })
         .then((res) => {
-            console.log(res)
             wx.navigateBack({
                 delta: 1
             });
@@ -47,16 +58,9 @@ Page({
         })
     },
     inputChange(e) {
-        let value = this.data.value 
-        if(value.length > 19) {
-            this.setData({
-                value
-            })
-        } else {
-            this.setData({
-                value: e.detail.value
-            })
-        }
+        this.setData({
+            value: e.detail.value
+        })
     },
 
     /**

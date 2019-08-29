@@ -2,7 +2,7 @@
 <view class="edit" hover-class="none" hover-stop-propagation="false">
     <view style="width:100%;padding:0 28px;margin-top:40px;">
         <view style="border-bottom: 1px solid #DDDDDD;padding: 7px 0;" hover-class="none" hover-stop-propagation="false">
-            <input value="{{value}}" placeholder="请输入" bindinput="inputChange"/>
+            <input type="{{type == 'phone'? 'number': ''}}" value="{{value}}" placeholder="请输入" bindinput="inputChange" maxlength="20"/>
         </view>
         <view style="text-align:right;color:#4A4A4A;line-height:32px;font-size:28rpx;" hover-class="none" hover-stop-propagation="false">
             {{value.length}}/20

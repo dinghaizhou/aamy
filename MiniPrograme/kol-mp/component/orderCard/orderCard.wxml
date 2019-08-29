@@ -1,6 +1,6 @@
 <!--component/orderCard/orderCard.wxml-->
 <view class="order-card" hover-stop-propagation="false">
-    <view class="flex" style="align-items:center;" bindtap="goToDetail">
+    <view class="flex" style="align-items:center;">
         <view class="left flex" style="align-items:center;" >
             <image class="" src="{{product.goods.cover_url}}" mode="aspectFill" />
         </view>

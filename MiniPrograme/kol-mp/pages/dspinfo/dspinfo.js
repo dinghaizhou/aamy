@@ -6,18 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        fans_count_arr: [
-            {value: '1', name: '10万以内'},
-            {value: '2', name: '10万~50万'},
-            {value: '3', name: '50万以上'},
-        ],
-        dsp_arr: [
-            {value: '1', name: '抖音'},
-            {value: '2', name: '小红书'},
-            {value: '3', name: '火山'},
-            {value: '4', name: '微博'},
-            {value: '5', name: '其他'},
-        ],
+        fans_count_arr: wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): [],
+        dsp_arr: wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] ,
         fans_count_index: '',
         dsp_index: '',
         home_url: ''
@@ -38,13 +28,13 @@ Page({
             let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
             home_url = dsp.home_url
             for(var i in dsp_arr) {
-                if(dsp_arr[i].value == dsp.dsp_id) {
+                if(dsp_arr[i].id == dsp.dsp_id) {
                     dsp_index = i
                     break
                 }
             }
             for(var i in fans_count_arr) {
-                if(fans_count_arr[i].value == dsp.fans_count) {
+                if(fans_count_arr[i].id == dsp.fans_count) {
                     fans_count_index = i
                     break 
                 }
@@ -97,8 +87,8 @@ Page({
             api.updateKolDsp({
                 id: this.id,
                 home_url,
-                fans_count: fans_count_arr[fans_count_index].value,
-                dsp_id: dsp_arr[dsp_index].value,
+                fans_count: fans_count_arr[fans_count_index].id,
+                dsp_id: dsp_arr[dsp_index].id,
                 fans_count_name: fans_count_arr[fans_count_index].name,
                 dsp_name: dsp_arr[dsp_index].name
             })
@@ -110,8 +100,8 @@ Page({
         } else {
             api.saveKolDsp({
                 home_url,
-                fans_count: fans_count_arr[fans_count_index].value,
-                dsp_id: dsp_arr[dsp_index].value,
+                fans_count: fans_count_arr[fans_count_index].id,
+                dsp_id: dsp_arr[dsp_index].id,
                 fans_count_name: fans_count_arr[fans_count_index].name,
                 dsp_name: dsp_arr[dsp_index].name
             }) 
@@ -121,6 +111,19 @@ Page({
                 });
             })
         }
+    },
+    del() {
+        var _this = this
+        wx.showModal({
+            title: '确定删除？',
+            success (res) {
+                if (res.confirm) {
+                    
+                } else if (res.cancel) {
+
+                }
+            }
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

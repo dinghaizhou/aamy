@@ -54,7 +54,7 @@
 					"id": 0,
 					"name": "分享",
 					"pathName": "pages/goodsdetail/goodsdetail",
-					"query": "id=20&type=goods",
+					"query": "id=6&type=goods",
 					"scene": 1011
 				}
 			]

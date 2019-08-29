@@ -15,6 +15,10 @@ Page({
         reason_dialog: false, 
         content: '',
         contentCount: 0,
+        phone: '',
+        price: '',
+        priceCount: 0,
+        phoneCount: 0,
         files: [],
         share_type: ''
     },
@@ -127,6 +131,25 @@ Page({
             contentCount
         })
     },
+    handlePriceInput(e) {
+        const value = e.detail.value
+        let price = value
+        let priceCount = value.length  //计算已输入的正文字数
+        this.setData({
+            price,
+            priceCount
+        })
+    },
+    handlePhoneInput(e) {
+        const value = e.detail.value
+        let phone = value
+        let phoneCount = value.length  //计算已输入的正文字数
+        this.setData({
+            phone,
+            phoneCount
+        })
+    },
+    
     applyOrder() {
         let auth_status = this.data.detail.auth_status 
         if(auth_status == 3) {
@@ -194,9 +217,28 @@ Page({
         })
     },
     confirmApply() {
-        let {files, content, detail} = this.data
-        
+        let {files, content, detail, phone, price} = this.data
+        if(!price) {
+            wx.showToast({
+                title: '请填写报价',
+                icon: 'none',
+                duration: 1000,
+                mask: true
+            })
+            return 
+        }
+        if(!(/^1[3456789]\d{9}$/.test(phone))){ 
+            wx.showToast({
+                title: '请填写正确的电话号码',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+            })
+            return false; 
+        } 
         api.applyOrder({
+            price,
+            phone,
             goods_id: this.id,
             note: content,
             img_ids: files.map(_ => _.id)
@@ -204,10 +246,8 @@ Page({
         .then((res) => {
             // 改变上个页面的商品状态
             let currentPages =  getCurrentPages();
-            console.log(currentPages)
             if(currentPages.length > 1) {
                 let prevPage = currentPages[currentPages.length - 2];    // 上一个页面
-                console.log(prevPage.route)
                 if(prevPage.route == 'pages/index/index') {
                     let list =  prevPage.data.list
                     for(let item of list) {
@@ -215,13 +255,19 @@ Page({
                             item.order_status = 1
                         }
                     }
-                    console.log(list)
                     prevPage.setData({
                         list                     
                     })
                 }
-            }
-                        
+            }   
+
+            //  
+            wx.showToast({
+                title: '您的申请已提交',
+                icon: 'success',
+                duration: 1500,
+                mask: true
+            })
             detail.order_status = 1
             this.setData({
                 apply_dialog: false,
@@ -296,7 +342,6 @@ Page({
     onReachBottom: function () {
 
     },
-
     /**
      * 用户点击右上角分享
      */

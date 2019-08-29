@@ -15,7 +15,7 @@
         </view>
     </view>
     <block wx:for="{{list}}" wx:key="index">
-        <orderCard product="{{item}}"></orderCard> 
+        <orderCard bind:tap="goToDetail" data-item="{{item}}" product="{{item}}"></orderCard> 
     </block>
     <view class="weui-loadmore" wx:if="{{is_loading}}">
         <view class="weui-loading"></view>

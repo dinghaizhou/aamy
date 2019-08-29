@@ -19,7 +19,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        api.getDspCondition()
+        .then((res) => {
+            // 获取选择条件
+            wx.setStorageSync('dsp_arr', res.dsp_list);
+            wx.setStorageSync('fans_count_arr', res.fans_count_list);
+        })
     },
     changeDsp(e) {
         let index = e.currentTarget.dataset.index
@@ -122,7 +127,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        wx.removeStorageSync('dsp_arr')
+        wx.removeStorageSync('fans_count_arr')
     },
 
     /**

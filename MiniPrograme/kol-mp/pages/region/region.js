@@ -15,7 +15,9 @@ Page({
     onLoad: function (options) {
         let region = this.data.region
         let information = wx.getStorageSync('information');
+        if(information.province) 
         region[0] = information.province
+        if(information.city) 
         region[1] = information.city
         this.setData({
             region

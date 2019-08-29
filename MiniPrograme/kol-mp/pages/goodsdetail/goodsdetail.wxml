@@ -95,25 +95,47 @@
     </view>
     <myDialog istrue="{{apply_dialog}}">
         <view class="apply">
-            <view class="apply-title" hover-class="none" hover-stop-propagation="false">
-                可附加申请信息（选填)
+            <view style="font-size:17px;color:#4A4A4A;padding:0 0 6px 0;text-align:center" hover-class="none" hover-stop-propagation="false">
+                申请信息
             </view>
-            <view>
-                报价（元）
+            <view class="apply-title">
+                <view class="flex">
+                    <view style="color:red;margin-right:4px;">
+                        *
+                    </view>
+                    报价（元）
+                </view>
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{priceCount}}/20
+                </view>
             </view>
             <view class="apply-input">
-                <input type="number" placeholder="请输入报价" maxlength="20" auto-focus/>
+                <input type="number" bindinput="handlePriceInput" placeholder="请输入报价" maxlength="20" auto-focus/>
             </view>
-            <view>
-                手机号
+            <view class="apply-title">
+                <view class="flex">
+                    <view style="color:red;margin-right:4px;">
+                        *
+                    </view>
+                    手机号
+                </view>
+                <view type="number" class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{phoneCount}}/20
+                </view>
             </view>
             <view class="apply-input">
-                <input placeholder="请输入手机号码" maxlength="20" auto-focus/>
+                <input placeholder="请输入手机号码" bindinput="handlePhoneInput" maxlength="20" auto-focus/>
             </view>
-              
-            <view class="txt-num">{{contentCount}}/200</view>
+            <view class="apply-title">
+                <view class="flex">
+                    可附加申请信息(选填)
+                </view>
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{contentCount}}/200
+                </view>
+            </view>
             <view class="apply-content" hover-class="none" hover-stop-propagation="false">
-                <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">
+                <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput" fixed>
                 </textarea>
                 <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="5" title="图片上传"></mp-uploader>
             </view>

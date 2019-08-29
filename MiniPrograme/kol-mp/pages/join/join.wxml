@@ -87,7 +87,7 @@
         <view class="my-cell required">
             <view class="cell-hd">联系方式</view>
             <view  class="cell-bd">
-                 <input placeholder="请输入" bindinput="phoneChange"/>
+                 <input type="number" placeholder="请输入" value="{{phone}}" bindinput="phoneChange"/>
             </view>
         </view>
         <view class="my-cell">

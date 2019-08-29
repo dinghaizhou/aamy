@@ -4,6 +4,8 @@
         "pages/login/login",
         "pages/join/join",
         "pages/information/information",
+        "pages/gender/gender",
+        "pages/order/order",
         "pages/logs/logs",
         "pages/index/index",
         "pages/mine/mine",
@@ -13,8 +15,6 @@
         "pages/search/search",
         "pages/dspinfo/dspinfo",
         "pages/region/region",
-        "pages/gender/gender",
-        "pages/order/order",
         "pages/goodsdetail/goodsdetail",
         "pages/dsp/dsp"
     ],

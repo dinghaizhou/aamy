@@ -11,7 +11,10 @@ Component({
             value: [],
             observer: function observer(newVal) {
                 if(this.data.first_time) {
-                    this.bindValueChange(newVal)
+                    clearTimeout(this.time)
+                    this.time = setTimeout(() => {
+                        this.bindValueChange(newVal)
+                    }, 500)
                 }
             }
         }
@@ -92,7 +95,7 @@ Component({
         },
         bindValueChange(value) {
             let { multiArray, city_data, multiIndex} = this.data
-            if(value.length > 0) {
+            if(value.length > 0 && value[0] && value[1]) {
                 api.getRegion()
                 .then((res_1) => {
                     var idx_1 = res_1.findIndex(item => value[0].includes(item.name))

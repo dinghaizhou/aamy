@@ -56,7 +56,7 @@
                 <view class="cell-hd">粉丝量</view>
                 <view class="cell-bd">
                     <view class="my-link">
-                        {{fans_count_arr[item.fans_count-1].name}}
+                        {{item.fans_count_name}}
                     </view>
                 </view>
             </view>

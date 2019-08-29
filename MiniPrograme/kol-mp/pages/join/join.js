@@ -7,24 +7,14 @@ Page({
      */
     data: {
         date: '1',
-        fans_count_arr: [
-            {value: '1', name: '10万以内'},
-            {value: '2', name: '10万~50万'},
-            {value: '3', name: '50万以上'},
-        ],
-        dsp_arr: [
-            {value: '1', name: '抖音'},
-            {value: '2', name: '小红书'},
-            {value: '3', name: '火山'},
-            {value: '4', name: '微博'},
-            {value: '5', name: '其他'},
-        ],
+        fans_count_arr: [],
+        dsp_arr: [] ,
         gender_arr: [
-            {value: '1', name: '男'},
-            {value: '2', name: '女'},
+            {id: '1', name: '男'},
+            {id: '2', name: '女'},
         ],
         fans_count_index: '',
-        dsp_index: '',
+        dsp_index: '0',
         home_url: '',
         phone: '',
         apply_note: '',
@@ -39,7 +29,62 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let {gender_index, phone, region, home_url, dsp_list, fans_count_arr, dsp_arr, fans_count_index, dsp_index} = this.data
+        api.getDspCondition()
+        .then((res) => {
+            // 获取选择条件
+            dsp_arr = res.dsp_list,
+            fans_count_arr = res.fans_count_list
+            wx.setStorageSync('dsp_arr', res.dsp_list);
+            wx.setStorageSync('fans_count_arr', res.fans_count_list);
 
+            // 获取已经填写的值，并赋值
+            api.getKolUserInfo()
+            .then((r) => {
+                if(r.gender && r.gender != 0) {
+                    gender_index = r.gender - 1
+                }
+                if(r.phone) phone = r.phone
+                if(r.province) region[0] = r.province
+                if(r.city) region[1] = r.city
+
+                if(r.dsp_list.length > 0) {
+                    let dsp = r.dsp_list[0]
+                    home_url = dsp.home_url
+                    for(var i in dsp_arr) {
+                        if(dsp_arr[i].id == dsp.dsp_id) {
+                            dsp_index = i
+                            break
+                        }
+                    }
+                    for(var i in fans_count_arr) {
+                        if(fans_count_arr[i].id == dsp.fans_count) {
+                            fans_count_index = i
+                            break 
+                        }
+                    }
+                    if(r.dsp_list.length > 1) {
+                        let list = JSON.parse(JSON.stringify(r.dsp_list))
+                        list.splice(0,1)
+                        dsp_list = list
+                    }
+                }
+
+                this.setData({
+                    dsp_arr,
+                    fans_count_arr,
+                    gender_index,
+                    phone,
+                    region,
+                    home_url,
+                    dsp_index,
+                    fans_count_index,
+                    dsp_list
+                })
+            })
+        })
+
+        
     },
     addDsp() {
         let {fans_count_index, dsp_index, home_url, fans_count_arr, dsp_arr, dsp_list, phone, apply_note} = this.data
@@ -47,7 +92,7 @@ Page({
             wx.showToast({
                 title: '请先选择平台和粉丝量',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
@@ -56,7 +101,7 @@ Page({
             wx.showToast({
                 title: '请填写正确的主页链接',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
@@ -73,7 +118,7 @@ Page({
     },
     linkChange(e) {
         this.setData({
-            home_url: e.detail.value
+            home_url: e.detail.value.trim()
         })
     },
     bindCountChange(e) {
@@ -134,21 +179,22 @@ Page({
         })
     },
     submit() {
-        let {gender_index, region, fans_count_index, dsp_index, home_url, phone, apply_note, is_agree, dsp_list, fans_count_arr, dsp_arr} = this.data
+        let {gender_index, region, fans_count_index, dsp_index, home_url, phone, apply_note, is_agree, dsp_list, fans_count_arr, dsp_arr, gender_arr} = this.data
         if(!fans_count_index || !dsp_index ) {
             wx.showToast({
                 title: '请先选择平台和粉丝量',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
         }
+
         if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
             wx.showToast({
                 title: '请填写正确的主页链接',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
@@ -157,7 +203,7 @@ Page({
             wx.showToast({
                 title: '请选择性别',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
@@ -166,7 +212,7 @@ Page({
             wx.showToast({
                 title: '请选择地区',
                 icon: 'none',
-                duration: 2000,
+                duration: 1000,
                 mask: true
             })
             return 
@@ -175,21 +221,39 @@ Page({
             wx.showToast({
                 title: '请填写正确的电话号码',
                 icon: 'none',
-                duration: 2000,
+                duration: 1500,
                 mask: true
             })
             return false; 
         } 
         let list = JSON.parse(JSON.stringify(dsp_list))
-
         list.push({
             home_url,
-            fans_count: fans_count_arr[fans_count_index].value,
-            dsp_id: dsp_arr[dsp_index].value,
+            fans_count: fans_count_arr[fans_count_index].id,
+            dsp_id: dsp_arr[dsp_index].id,
             fans_count_name: fans_count_arr[fans_count_index].name,
             dsp_name: dsp_arr[dsp_index].name
         })
-
+        
+        let has_same = false
+        for(var i = 0;i < list.length - 1; i++) {
+            if(has_same) break
+            for(var j = i + 1; j < list.length; j++) {
+                if(list[i].home_url == list[j].home_url) {
+                    has_same = true
+                    break;
+                }
+            }
+        }
+        if(has_same) {
+            wx.showToast({
+                title: '所填平台的主页链接不能完全相同',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+            })
+            return
+        }
         if(!is_agree) {
             wx.showToast({
                 title: '请同意入驻协议',
@@ -202,7 +266,10 @@ Page({
         api.KolUserAuth({
             phone,
             apply_note,
-            dsp_list: list
+            dsp_list: list,
+            gender: gender_arr[gender_index].id,
+            province: region[0],
+            city: region[1]
         },true)
         .then((res) => {
             wx.switchTab({
@@ -250,7 +317,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-  
+        wx.removeStorageSync('dsp_arr')
+        wx.removeStorageSync('fans_count_arr')
     },
   
     /**
