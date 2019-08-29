@@ -59,7 +59,7 @@ Component({
                     });
     
                 } else {
-                    api.getRegion({pid: province_data[index].id})
+                    api.getRegion({pid: province_data[index].id}, true)
                     .then((res) => {
                         multiIndex[1] = 0;
                         multiArray[1] = res.map(item => item.name)
@@ -99,11 +99,12 @@ Component({
                 api.getRegion()
                 .then((res_1) => {
                     var idx_1 = res_1.findIndex(item => value[0].includes(item.name))
+                    
                     var pid = res_1[idx_1].id
                     api.getRegion({pid}) 
                     .then((res_2) => {
                         var idx_2 = res_2.findIndex(item => value[1].includes(item.name))
-                        city_data[pid] = res_2
+                        city_data[idx_1] = res_2
                         multiArray[0] = res_1.map(item => item.name)
                         multiArray[1] = res_2.map(item => item.name)
                         multiIndex = [idx_1, idx_2]
