@@ -38,6 +38,7 @@ Component({
                 inputVal: "",
                 inputShowed: false
             });
+            this.triggerEvent('input', '')
         },
         clearInput: function () {
             this.setData({
@@ -52,7 +53,11 @@ Component({
             this.triggerEvent('input', e.detail.value)
         },
         search() {
-            this.triggerEvent('search')
+            if(this.data.inputVal.length > 0) {
+                this.triggerEvent('search')
+            } else {
+                this.hideInput()
+            }
         }
     }
 })

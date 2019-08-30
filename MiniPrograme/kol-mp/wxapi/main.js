@@ -45,7 +45,7 @@ export const delKolDsp = (data, loading =false) => request('/kol_dsp/del', 'post
 
 
 // 城市地址
-export const getRegion = (data, loading =false) => request('/region/index', 'get', data, loading)
+export const getRegion = (data, loading =false) => request('/region/index', 'get', data, true)
 // 平台条件
 export const getDspCondition = (data, loading =false) => request('/kol_dsp/condition', 'get', data, loading)
 
