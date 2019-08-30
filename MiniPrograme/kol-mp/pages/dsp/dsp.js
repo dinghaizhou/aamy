@@ -5,8 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        fans_count_arr: wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): [],
-        dsp_arr: wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] ,
+        fans_count_arr: [],
+        dsp_arr: [],
         fans_count_index: '',
         dsp_index: '0',
         home_url: '',
@@ -19,6 +19,9 @@ Page({
      */
     onLoad: function (options) {
         let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
+        fans_count_arr = wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): []
+        dsp_arr = wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] 
+
         let dsp_list = wx.getStorageSync('dsp_list');
         let index = options.index
         if(index) {
@@ -38,11 +41,13 @@ Page({
             }
         }
         this.setData({
+            fans_count_arr,
+            dsp_arr,
             index,
             dsp_list,
             fans_count_index,
             dsp_index,
-            home_url
+            home_url,
         })
     },
     linkChange(e) {

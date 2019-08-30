@@ -43,6 +43,7 @@ Component({
             this.setData({
                 inputVal: ""
             });
+            this.triggerEvent('input', '')
         },
         inputTyping: function (e) {
             this.setData({
@@ -50,8 +51,8 @@ Component({
             });
             this.triggerEvent('input', e.detail.value)
         },
-        search(e) {
-            this.triggerEvent('search', e.detail.value)
+        search() {
+            this.triggerEvent('search')
         }
     }
 })

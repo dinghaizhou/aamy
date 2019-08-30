@@ -2,8 +2,8 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/join/join",
         "pages/information/information",
+        "pages/join/join",
         "pages/gender/gender",
         "pages/order/order",
         "pages/logs/logs",

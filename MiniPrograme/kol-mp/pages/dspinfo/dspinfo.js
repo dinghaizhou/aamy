@@ -6,8 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        fans_count_arr: wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): [],
-        dsp_arr: wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] ,
+        fans_count_arr: [],
+        dsp_arr: [],
         fans_count_index: '',
         dsp_index: '',
         home_url: ''
@@ -17,15 +17,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.index = options.index
+        let { fans_count_arr, dsp_arr } = this.data
+        fans_count_arr = wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): []
+        dsp_arr = wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] 
+        
 
+        this.index = options.index
         if(this.index) {
             let information = wx.getStorageSync('information');
-
             let dsp = information.dsp_list[this.index]
-            this.id = dsp.id
-
-            let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
+            this.id = dsp.id 
+            let {fans_count_index, dsp_index, home_url} = this.data
             home_url = dsp.home_url
             for(var i in dsp_arr) {
                 if(dsp_arr[i].id == dsp.dsp_id) {
@@ -43,9 +45,14 @@ Page({
                 dsp,
                 fans_count_index,
                 dsp_index,
-                home_url
+                home_url,
+                fans_count_arr, 
+                dsp_arr
             })
         }
+        this.setData({
+            fans_count_arr, dsp_arr
+        })
     },
     linkChange(e) {
         this.setData({
