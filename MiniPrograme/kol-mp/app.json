@@ -1,13 +1,13 @@
 
 {
     "pages": [
+        "pages/index/index",
         "pages/login/login",
         "pages/information/information",
         "pages/join/join",
         "pages/gender/gender",
         "pages/order/order",
         "pages/logs/logs",
-        "pages/index/index",
         "pages/mine/mine",
         "pages/collect/collect",
         "pages/edit/edit",

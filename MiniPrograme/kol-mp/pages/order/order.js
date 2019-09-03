@@ -25,6 +25,11 @@ Page({
             list,
             has_more
         })
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 300
+        });
+          
     },
     /**
      * 生命周期函数--监听页面加载
