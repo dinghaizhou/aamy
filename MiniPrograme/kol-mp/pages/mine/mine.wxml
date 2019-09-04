@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
 <view class="mine">
     <view wx:if="{{information}}" class="" hover-class="none" hover-stop-propagation="false">
-        <view wx:if="{{!hasUserInfo && canIUse && (!information.avatar_url || !information.nick_name)}}" class="userinfo-btn" hover-class="none" hover-stop-propagation="false">
+        <view wx:if="{{canIUse && !information.avatar_url }}" class="userinfo-btn" hover-class="none" hover-stop-propagation="false">
             <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
         </view>
         <view wx:else style="width:100%;">

@@ -1,5 +1,7 @@
 // pages/region/region.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+
 Page({
 
   /**
@@ -14,11 +16,9 @@ Page({
      */
     onLoad: function (options) {
         let region = this.data.region
-        let information = wx.getStorageSync('information');
-        if(information.province) 
-        region[0] = information.province
-        if(information.city) 
-        region[1] = information.city
+        let information = app.globalData.userInfo
+        region[0] = information.province ? information.province : ''
+        region[1] = information.city ? information.city : ''
         this.setData({
             region
         })

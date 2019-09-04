@@ -1,5 +1,6 @@
 // pages/edit/edit.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
 Page({
 
     /**
@@ -15,7 +16,7 @@ Page({
      */
     onLoad: function (options) {
         let type = options.type ? options.type : ''
-        let information = wx.getStorageSync('information');
+        let information = app.globalData.userInfo
         let title, value;
         value = information[type] ? information[type]:''
         if(type == 'phone') {

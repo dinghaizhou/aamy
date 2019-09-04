@@ -14,7 +14,6 @@ Page({
         list: null,
         page: 1,
         has_more: 0,
-
         type_1: null,
         type_2: null,
         type_3: null,
@@ -26,12 +25,11 @@ Page({
     onLoad: function (options) {
         app.getUnreadCount()
     },
-  
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        this.initList()
+
     },
     goToSearch() {
         wx.navigateTo({
@@ -142,7 +140,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-       
+        if(!this.data.list) {
+            this.initList()
+        }
     },
   
     /**

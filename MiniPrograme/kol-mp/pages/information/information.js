@@ -25,6 +25,9 @@ Page({
             wx.setStorageSync('dsp_arr', res.dsp_list);
             wx.setStorageSync('fans_count_arr', res.fans_count_list);
         })
+        this.setData({
+            information: app.globalData.userInfo
+        })
     },
     changeDsp(e) {
         let index = e.currentTarget.dataset.index
@@ -99,19 +102,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        api.getKolUserInfo()
-        .then((res) => {
-            let userInfo = app.globalData.userInfo
-            if(!res.avatar_url) {
-                res.avatar_url = userInfo.avatarUrl
-            }
-            if(!res.nick_name) {
-                res.nick_name = userInfo.nickName
-            }
+        app.getUserInfo()
+        .then(() => {
             this.setData({
-                information: res
+                information: app.globalData.userInfo
             })
-            wx.setStorageSync('information', res)
         })
     },
     

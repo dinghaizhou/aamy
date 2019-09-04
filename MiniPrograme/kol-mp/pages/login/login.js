@@ -1,6 +1,7 @@
 // pages/login/login.js
 import * as api from '../../wxapi/main.js'
-
+let app =  getApp();
+  
 Page({
     /**
      * 页面的初始数据
@@ -12,20 +13,29 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.login({
-            success: res => {
-                api.login({code: res.code}, true)
-                // api.login({code: '123456'}, true)
-                .then((res) => {
-                    let currentPages =  getCurrentPages();
-                    wx.setStorageSync('token', res['miniprogram-api-token'])
-                    wx.switchTab({
-                        url: '/pages/index/index'
-                    })
-                    
+        if(wx.getStorageSync('token')) {
+            app.getUserInfo()
+            .then(() => {
+                wx.switchTab({
+                    url: '/pages/index/index'
                 })
-            }
-        })
+            })
+        } else {
+            wx.login({
+                success: res => {
+                    api.login({code: res.code}, true)
+                    .then((res) => {
+                        wx.setStorageSync('token', res['miniprogram-api-token'])
+                        app.getUserInfo({},false)
+                        .then(() => {
+                            wx.switchTab({
+                                url: '/pages/index/index'
+                            })
+                        })
+                    })
+                }
+            })
+        }
     },
 
     /**

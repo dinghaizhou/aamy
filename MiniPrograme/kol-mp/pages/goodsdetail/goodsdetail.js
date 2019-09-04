@@ -1,6 +1,8 @@
 // pages/goodsdetail/goodsdetail.js
 import * as api from '../../wxapi/main.js'
 import CONFIG from '../../config.js'
+let app =  getApp();
+  
 Page({
     /**
      * 页面的初始数据
@@ -29,19 +31,20 @@ Page({
         this.id = options.id
         this.order_id = options.order_id ? options.order_id : ''
         let share_type = options.type ? options.type  : ''
-
         if(!wx.getStorageSync('token') && share_type == 'goods') {
             wx.login({
                 success: res => {
                     api.login({code: res.code}, true)
                     .then((res) => {
                         wx.setStorageSync('token', res['miniprogram-api-token'])
+                        app.getUserInfo()
                         this.getDetails()
                     })
                 }
             })
         } else {
             this.getDetails()
+            if(share_type == 'goods') {app.getUserInfo()}
         }
 
         this.setData({
@@ -279,15 +282,26 @@ Page({
         })
     },
     toJoin() {
-        wx.navigateTo({
-            url: '/pages/join/join',
-            success: (result) => {
-                
-            },
-            fail: () => {},
-            complete: () => {}
-        });
-          
+        console.log(app.globalData.userInfo)
+        if(app.globalData.userInfo && app.globalData.userInfo.avatar_url){
+            wx.navigateTo({
+                url: '/pages/join/join',
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        } else {
+            wx.navigateTo({
+                url: '/pages/auth/auth',
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+        }
     },
     showReason() {
         this.setData({

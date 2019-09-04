@@ -1,6 +1,8 @@
 // pages/avatar/avatar.js
 import CONFIG from '../../config.js'
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+  
 Page({
 
     /**
@@ -15,7 +17,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let information = wx.getStorageSync('information');
+        let information = app.globalData.userInfo
         this.setData({
             url: information.avatar_url
         })

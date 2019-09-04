@@ -10,7 +10,7 @@ Component({
             type: Array,
             value: [],
             observer: function observer(newVal) {
-                if(this.data.first_time) {
+                if(this.data.first_time && newVal.length > 0) {
                     clearTimeout(this.time)
                     this.time = setTimeout(() => {
                         this.bindValueChange(newVal)

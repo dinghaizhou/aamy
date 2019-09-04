@@ -39,6 +39,7 @@ const request = (url, method, data, loading) => {
                         }
                         reject(request.data.data);break;
                     case -1:
+                        wx.removeStorageSync('token');
                         wx.navigateTo({
                             url: '/pages/login/login',
                             success: (result) => {

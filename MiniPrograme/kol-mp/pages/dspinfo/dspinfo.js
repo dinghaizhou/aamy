@@ -1,5 +1,7 @@
 
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+  
 Page({
 
     /**
@@ -21,10 +23,9 @@ Page({
         fans_count_arr = wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): []
         dsp_arr = wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] 
         
-
         this.index = options.index
         if(this.index) {
-            let information = wx.getStorageSync('information');
+            let information = app.globalData.userInfo
             let dsp = information.dsp_list[this.index]
             this.id = dsp.id 
             let {fans_count_index, dsp_index, home_url} = this.data

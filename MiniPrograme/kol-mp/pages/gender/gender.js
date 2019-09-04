@@ -1,5 +1,7 @@
 // pages/region/region.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+
 Page({
 
   /**
@@ -18,7 +20,8 @@ Page({
      */
     onLoad: function (options) {
         let { items } = this.data
-        let information = wx.getStorageSync('information');
+        let information = app.globalData.userInfo
+
         let gender = information.gender
         if(gender > 0) {
             items[gender*1 - 1].checked = true

@@ -1,0 +1,10 @@
+/* pages/auth/auth.wxss */
+.userinfo-btn {
+    padding: 100px 60px;
+}
+.userinfo-btn button{
+    border-radius: 100px;
+    border: none;
+    background: #D83B2A;
+    color: #fff;
+}

@@ -1,0 +1,7 @@
+<!--pages/mine/mine.wxml-->
+<view class="auth">
+    <view wx:if="{{canIUse}}" class="userinfo-btn" hover-class="none" hover-stop-propagation="false">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    </view>
+</view>
+  

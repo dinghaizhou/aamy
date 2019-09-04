@@ -1,5 +1,7 @@
 // pages/join/join.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+  
 Page({
 
     /**
@@ -39,48 +41,46 @@ Page({
             wx.setStorageSync('fans_count_arr', res.fans_count_list);
 
             // 获取已经填写的值，并赋值
-            api.getKolUserInfo()
-            .then((r) => {
-                if(r.gender && r.gender != 0) {
-                    gender_index = r.gender - 1
-                }
-                if(r.phone) phone = r.phone
-                if(r.province) region[0] = r.province
-                if(r.city) region[1] = r.city
+            let userInfo = app.globalData.userInfo
+            if(userInfo.gender && userInfo.gender != 0) {
+                gender_index = userInfo.gender - 1
+            }
+            phone = userInfo.phone ? userInfo.phone : ''
+            region[0] = userInfo.province ? userInfo.province : ''
+            region[1] = userInfo.city ? userInfo.city : ''
 
-                if(r.dsp_list.length > 0) {
-                    let dsp = r.dsp_list[0]
-                    home_url = dsp.home_url
-                    for(var i in dsp_arr) {
-                        if(dsp_arr[i].id == dsp.dsp_id) {
-                            dsp_index = i
-                            break
-                        }
-                    }
-                    for(var i in fans_count_arr) {
-                        if(fans_count_arr[i].id == dsp.fans_count) {
-                            fans_count_index = i
-                            break 
-                        }
-                    }
-                    if(r.dsp_list.length > 1) {
-                        let list = JSON.parse(JSON.stringify(r.dsp_list))
-                        list.splice(0,1)
-                        dsp_list = list
+            if(userInfo.dsp_list.length > 0) {
+                let dsp = userInfo.dsp_list[0]
+                home_url = dsp.home_url
+                for(var i in dsp_arr) {
+                    if(dsp_arr[i].id == dsp.dsp_id) {
+                        dsp_index = i
+                        break
                     }
                 }
+                for(var i in fans_count_arr) {
+                    if(fans_count_arr[i].id == dsp.fans_count) {
+                        fans_count_index = i
+                        break 
+                    }
+                }
+                if(userInfo.dsp_list.length > 1) {
+                    let list = JSON.parse(JSON.stringify(userInfo.dsp_list))
+                    list.splice(0,1)
+                    dsp_list = list
+                }
+            }
 
-                this.setData({
-                    dsp_arr,
-                    fans_count_arr,
-                    gender_index,
-                    phone,
-                    region,
-                    home_url,
-                    dsp_index,
-                    fans_count_index,
-                    dsp_list
-                })
+            this.setData({
+                dsp_arr,
+                fans_count_arr,
+                gender_index,
+                phone,
+                region,
+                home_url,
+                dsp_index,
+                fans_count_index,
+                dsp_list
             })
         })
 

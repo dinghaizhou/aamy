@@ -1,31 +1,21 @@
-// pages/mine/mine.js
+// pages/auth/auth.js
 import * as api from '../../wxapi/main.js'
 let app =  getApp();
-
+  
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
+            canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     },
-    data: {
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        information: null
-    },
-    goToCollect: function() {
-        wx.navigateTo({
-          url: '../collect/collect'
-        })
-    },
-    goToInformation: function () {
-        wx.navigateTo({
-            url: '../information/information'
-        })
-    },
-    onLoad: function () {
-        
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+
     },
     getUserInfo: function(e) {
         if(e.detail.userInfo) {
@@ -45,19 +35,30 @@ Page({
             }); 
         }
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     setInformation(userInfo) {
-        let { information } = this.data
         let params = {}
         params.avatar_url = userInfo.avatarUrl
         params.nick_name = userInfo.nickName
-        this.setData({
-            information: {...information, ...params}
-        })
+        app.globalData.userInfo.avatar_url = userInfo.avatarUrl
+        app.globalData.userInfo.nick_name = userInfo.nickName
+        
         api.updateKolUser(params, true)
+        .then(() => {
+            wx.redirectTo({
+                url: '/pages/join/join',
+                success: (result) => {
+                    
+                },
+                fail: () => {},
+                complete: () => {}
+            });
+              
+        })
     },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
     onReady: function () {
 
     },
@@ -66,12 +67,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.setData({
-            information: app.globalData.userInfo
-        })
-    },
-    imageError(e) {
-        console.log(e)
+
     },
 
     /**
@@ -108,4 +104,4 @@ Page({
     onShareAppMessage: function () {
 
     }
-})
+    })
