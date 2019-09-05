@@ -65,7 +65,6 @@ Page({
           
     },
     getDetails() {
-        let { reason_dialog } = this.data
         let params = {}
         params.id = this.id
         if(this.order_id) {
@@ -77,12 +76,8 @@ Page({
             wx.setNavigationBarTitle({
                 title
             })
-            if(res.order_status == 3) {
-                reason_dialog = true
-            }
             this.setData({
                 detail: res,
-                reason_dialog,
                 has_collect: res.has_collect
             })
         })

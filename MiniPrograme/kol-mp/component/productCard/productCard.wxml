@@ -22,7 +22,7 @@
                 <view wx:elif="{{product.order_status == 2}}" class="btn default disabled">
                     已通过
                 </view>
-                <view wx:elif="{{product.order_status == 3}}" class="btn default">
+                <view wx:elif="{{product.order_status == 3}}" class="btn default disabled">
                     未通过
                 </view>
                 <view wx:else class="btn">

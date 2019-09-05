@@ -34,7 +34,7 @@
         </view>
     </view>
     <view class="submit flex">
-        <view bindtap="del" style="width:40%;background:#fff;color:#4A4A4A">
+        <view bindtap="del" style="width:40%;background:#fff;color:#4A4A4A" wx:if="{{index}}" >
             删除
         </view>
         <view style="flex:1" bindtap="save">

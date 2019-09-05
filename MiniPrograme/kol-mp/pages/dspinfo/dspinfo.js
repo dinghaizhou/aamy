@@ -12,21 +12,22 @@ Page({
         dsp_arr: [],
         fans_count_index: '',
         dsp_index: '',
-        home_url: ''
+        home_url: '',
+        index: ''
     },
   
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let { fans_count_arr, dsp_arr } = this.data
+        let { fans_count_arr, dsp_arr, index } = this.data
         fans_count_arr = wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): []
         dsp_arr = wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] 
         
-        this.index = options.index
-        if(this.index) {
+        index = options.index
+        if(index) {
             let information = app.globalData.userInfo
-            let dsp = information.dsp_list[this.index]
+            let dsp = information.dsp_list[index]
             this.id = dsp.id 
             let {fans_count_index, dsp_index, home_url} = this.data
             home_url = dsp.home_url
@@ -52,7 +53,7 @@ Page({
             })
         }
         this.setData({
-            fans_count_arr, dsp_arr
+            fans_count_arr, dsp_arr, index
         })
     },
     linkChange(e) {
@@ -71,7 +72,7 @@ Page({
         })
     },
     save() {
-        let { home_url,fans_count_index,dsp_index,fans_count_arr,dsp_arr} = this.data
+        let { home_url,fans_count_index,dsp_index,fans_count_arr,dsp_arr, index} = this.data
         if(!fans_count_index || !dsp_index ) {
             wx.showToast({
                 title: '请先选择平台和粉丝量',
@@ -91,7 +92,7 @@ Page({
             return 
         }
 
-        if(this.index) {
+        if(index) {
             api.updateKolDsp({
                 id: this.id,
                 home_url,

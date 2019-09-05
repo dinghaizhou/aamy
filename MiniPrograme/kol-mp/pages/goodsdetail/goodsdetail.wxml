@@ -4,6 +4,10 @@
             <view>返回</view>
             <view>首页</view>
         </view>
+        <view class="back-index flex" wx:if="{{detail.order_status == 3}}" bindtap="showReason">
+            <view>查看</view>
+            <view>原因</view>
+        </view>
 
         <swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#D83B2A" autoplay="true" circular="true">
             <block wx:for="{{detail.img_list}}" wx:key="item.id">
@@ -110,7 +114,7 @@
                 </view>
             </view>
             <view class="apply-input">
-                <input type="number" bindinput="handlePriceInput" placeholder="请输入报价" maxlength="20" auto-focus/>
+                <input type="number" bindinput="handlePriceInput" placeholder="请输入报价" maxlength="20"/>
             </view>
             <view class="apply-title">
                 <view class="flex">
@@ -119,12 +123,12 @@
                     </view>
                     手机号
                 </view>
-                <view type="number" class="txt-num" hover-class="none" hover-stop-propagation="false">
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
                     {{phoneCount}}/20
                 </view>
             </view>
             <view class="apply-input">
-                <input placeholder="请输入手机号码" bindinput="handlePhoneInput" maxlength="20" auto-focus/>
+                <input type="number" placeholder="请输入手机号码" bindinput="handlePhoneInput" maxlength="20"/>
             </view>
             <view class="apply-title">
                 <view class="flex">
