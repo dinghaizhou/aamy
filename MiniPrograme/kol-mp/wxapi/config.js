@@ -29,7 +29,17 @@ const request = (url, method, data, loading) => {
                 let code = request.data.code
                 switch (code) {
                     case 0: resolve(request.data.data);break;
+                    case 1: 
+                        if(request.data.msg) {
+                            wx.showToast({
+                                title: request.data.msg,
+                                icon: 'none',
+                                duration: 2000
+                            }) 
+                        }
+                        reject(request.data.data);break;
                     case -1:
+                        wx.removeStorageSync('token');
                         wx.navigateTo({
                             url: '/pages/login/login',
                             success: (result) => {
@@ -52,10 +62,11 @@ const request = (url, method, data, loading) => {
             },
             fail(error) {
                 wx.showToast({
-                    title: '网络异常',
+                    title: error.errMsg ? error.errMsg : '网络异常',
                     icon: 'none',
                     duration: 2000
                 })
+                console.log(error)
                 reject(error)
             },
             complete(res) {

@@ -62,9 +62,32 @@
     </view>
     <view class="my-cells">
         <view class="my-cell required">
+            <view class="cell-hd">性别</view>
+            <view  class="cell-bd">
+                <picker 
+                mode="selector" 
+                value="{{gender_index}}" 
+                range="{{gender_arr}}" 
+                range-key="name"  
+                bindchange="bindGenderChange">
+                    <view class="my-select">{{gender_arr[gender_index].name}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="my-cell required">
+            <view class="cell-hd">地区</view>
+            <view  class="cell-bd">
+                <regionPicker value="{{region}}" bind:regionChange="bindRegionChange">
+                    <view class="my-select">
+                    {{region[0] ? region[0] : ''}}{{region[1] ?',  ' +  region[1]  : ''}}
+                    </view>
+                </regionPicker>
+            </view>
+        </view>
+        <view class="my-cell required">
             <view class="cell-hd">联系方式</view>
             <view  class="cell-bd">
-                 <input placeholder="请输入" bindinput="phoneChange"/>
+                 <input type="number" placeholder="请输入" value="{{phone}}" bindinput="phoneChange"/>
             </view>
         </view>
         <view class="my-cell">
@@ -85,8 +108,8 @@
                 <icon class="weui-icon-checkbox_success" type="success" size="20" color="#D83B2A" wx:if="{{is_agree}}"></icon>
             </view>
         </label>
-        <view bindtap="showContract">
-            同意《入驻协议》
+        <view>
+            同意<text bindtap="showContract" style="color:#D83B2A">《入驻协议》</text>
         </view>
     </view>
     <view bindtap="submit" class="submit" hover-class="none" hover-stop-propagation="false">
@@ -98,9 +121,15 @@
                 <view selectable="false" space="false" decode="false">
                     入驻协议
                 </view>
-                <view selectable="false" space="false" decode="false">
-                    入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议入驻协议
-                </view>
+                <text>
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                    最终解释权为本平台所有。
+                </text>
             </view>
         </view>
     </myDialog>   

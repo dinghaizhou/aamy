@@ -2,14 +2,13 @@
 const util = require('../../utils/util.js')
 
 Page({
-  data: {
-    logs: []
-  },
-  onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
-      })
-    })
-  }
+    data: {
+        region: ['辽宁', '沈阳']
+    },
+    onLoad: function () {
+        
+    },
+    bindRegionChange(e) {
+        console.log(e)
+    }
 })

@@ -1,12 +1,14 @@
 // pages/region/region.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
     data: {
-        region: ['','',''],
+        region: [],
     },
 
     /**
@@ -14,16 +16,16 @@ Page({
      */
     onLoad: function (options) {
         let region = this.data.region
-        let information = wx.getStorageSync('information');
-        region[0] = information.province
-        region[1] = information.city
+        let information = app.globalData.userInfo
+        region[0] = information.province ? information.province : ''
+        region[1] = information.city ? information.city : ''
         this.setData({
             region
         })
     },
     bindRegionChange: function (e) {
         this.setData({
-            region: e.detail.value
+            region: e.detail
         })
     },
     save() {

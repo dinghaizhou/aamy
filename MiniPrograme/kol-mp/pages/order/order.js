@@ -12,7 +12,7 @@ Page({
         list_1: null,
         list_2: null,
         list_3: null,
-        list: [],
+        list: null,
         has_more: false,
         is_loading: false 
     },
@@ -25,6 +25,11 @@ Page({
             list,
             has_more
         })
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 300
+        });
+          
     },
     /**
      * 生命周期函数--监听页面加载
@@ -75,18 +80,37 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-  
+        this.initList()
+        app.getUnreadCount()
+    },
+    goToDetail(e) {
+        let item = e.target.dataset.item
+        if(item.msg_status == 1) {
+            let msg_count = wx.getStorageSync('msg_count');
+            if(msg_count > 0) msg_count = msg_count - 1
+            wx.setStorageSync('msg_count', msg_count);
+            if(msg_count == 0) {
+                wx.removeTabBarBadge({
+                    index: 1,
+                })
+            } else {
+                wx.setTabBarBadge({
+                    index: 1,
+                    text: msg_count + ''
+                })
+            }
+            this.changeMsgStatusById(item.id)
+        }
+        wx.navigateTo({
+            url: '/pages/goodsdetail/goodsdetail?order_id=' + item.id + '&id=' + item.goods_id,
+        });
     },
   
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.initList()
-        app.getUnreadCount()
-        this.setData({
-            index: 0
-        })
+        
     },
   
     /**
@@ -107,6 +131,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        app.getUnreadCount()
         let { index } = this.data
         api.getOrderList({status: index, page: 1}, true)
         .then((res) => {
@@ -156,7 +181,15 @@ Page({
             })
         })
     },
-  
+    changeMsgStatusById(id) {
+        let {list, list_0, list_1, list_2, list_3} = this.data
+        for(var item of list) {if(item.id == id){item.msg_status = 2}} 
+        for(var item of list_0.list) {if(item.id == id){item.msg_status = 2}} 
+        for(var item of list_1.list) {if(item.id == id){item.msg_status = 2}} 
+        for(var item of list_2.list) {if(item.id == id){item.msg_status = 2}} 
+        for(var item of list_3.list) {if(item.id == id){item.msg_status = 2}} 
+        this.setData({list, list_0, list_1, list_2, list_3})
+    },
     /**
      * 用户点击右上角分享
      */

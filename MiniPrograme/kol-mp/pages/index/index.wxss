@@ -1,5 +1,5 @@
 .index {
-    padding-top:48px;
+    padding-bottom: 40px;
 }
 .top-search {
     position: fixed;
@@ -9,6 +9,7 @@
 }
 
 .tab {
+    background: #fff;
     font-weight: bold;
     padding:0 10px;
     height:38px;
@@ -39,6 +40,7 @@
     -webkit-transition: left ease 0.3s;
 }
 .tab-big {
+    background: #fff;
     height:37px;
     font-size: 14px;
     line-height: 37px;

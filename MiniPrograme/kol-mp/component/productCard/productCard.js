@@ -17,7 +17,6 @@ Component({
      * 组件的初始数据
      */
     data: {
-        
         beyond_deadline: false
     },
     /**
@@ -28,7 +27,6 @@ Component({
             // 在组件实例进入页面节点树时执行
         },
         detached: function() {
-            console.log('detached')
             // 在组件实例被从页面节点树移除时执行
         },
     },

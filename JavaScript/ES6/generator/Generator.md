@@ -19,6 +19,9 @@ http://es6.ruanyifeng.com/#docs/generator
   - yield表达式如果用在另一个表达式之中，必须放在圆括号里面。
   - yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号。
 
+## 与 Iterator 接口的关系
+1. 由于 Generator 函数就是遍历器生成函数，因此可以把 Generator 赋值给对象的Symbol.iterator属性，从而使得该对象具有 Iterator 接口。
+2. 除了for...of循环以外，扩展运算符（...）、解构赋值和Array.from方法内部调用的，都是遍历器接口。这意味着，它们都可以将 Generator 函数返回的 Iterator 对象，作为参数。
 
 
 

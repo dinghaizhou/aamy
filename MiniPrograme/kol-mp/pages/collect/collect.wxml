@@ -1,6 +1,6 @@
 <!--pages/collect/collect.wxml-->
 <view class="collect" hover-class="none" hover-stop-propagation="false">
-    <view style="padding-top:100rpx;" wx:if="{{collect_list.length == 0}}">
+    <view style="padding-top:400rpx;" wx:if="{{collect_list.length == 0}}">
         <view class="weui-loadmore weui-loadmore_line">
             <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无收藏</view>
         </view>
@@ -21,14 +21,17 @@
                     </view>
                     <view class="content" hover-class="none" hover-stop-propagation="false">
                         <view class="name" hover-class="none" hover-stop-propagation="false">
-                            RAV4 还剩多长时间还剩多长时间
+                            {{item.name}}
                         </view>
-                        <view class="time" hover-class="none" hover-stop-propagation="false">
+                        <view class="time flex" hover-class="none" hover-stop-propagation="false">
                             <view class="flex" wx:if="{{item.status_name == '进行中'}}">
-                                还剩:<cutdownSimple deadline="{{item.end_date}}"></cutdownSimple>
+                                还剩:<cutdownSimple deadline="{{item.remain_time}}"></cutdownSimple>
                             </view>
                             <view wx:else hover-class="none" hover-stop-propagation="false">
-                                {{status_name}}
+                                {{item.status_name}}
+                            </view>
+                            <view wx:if="{{item.city}}" hover-class="none" hover-stop-propagation="false">
+                                {{item.city}}
                             </view>
                         </view>
                     </view>
@@ -70,7 +73,18 @@
             </view>
         </view>
     </view>
-      
-
+    <myDialog istrue="{{show_dialog}}">
+        <view style="font-size:18px;">
+            确定取消收藏吗？
+        </view>
+        <view style="font-size:18px;margin-top:32px;justify-content: space-around" class="flex" hover-class="none" hover-stop-propagation="false">
+            <view hover-class="none" hover-stop-propagation="false" bindtap="confirm">
+                确认
+            </view>
+            <view style="color: #D83B2A" hover-class="none" hover-stop-propagation="false" bindtap="closeDialog">
+                取消
+            </view>
+        </view>
+    </myDialog>
 </view>
   

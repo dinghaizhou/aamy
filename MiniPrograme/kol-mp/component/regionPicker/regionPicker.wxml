@@ -1,0 +1,9 @@
+<!--component/regionPicker/regionPicker.wxml-->
+<view class="section">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" bindcancel="bindPickerCancel" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+        <!-- 当前选择：{{resultArray[0][resultIndex[0]]}}，{{resultArray[1][resultIndex[1]]}} -->
+            <slot></slot>
+        </view>
+    </picker>
+</view>

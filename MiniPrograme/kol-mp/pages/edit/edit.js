@@ -1,5 +1,6 @@
 // pages/edit/edit.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
 Page({
 
     /**
@@ -14,12 +15,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let type = options.type
-        console.log(type)
-        let information = wx.getStorageSync('information');
+        let type = options.type ? options.type : ''
+        let information = app.globalData.userInfo
         let title, value;
-        value = information[type]
-      console.log(information[type])
+        value = information[type] ? information[type]:''
         if(type == 'phone') {
             title = '联系方式'
         }
@@ -37,11 +36,22 @@ Page({
     },
     save() {
         let {value, type} = this.data
+        if(type == 'phone') {
+            if(!(/^1[3456789]\d{9}$/.test(value))){ 
+                wx.showToast({
+                    title: '请填写正确的电话号码',
+                    icon: 'none',
+                    duration: 1500,
+                    mask: true
+                })
+                return false; 
+            }
+        }
+
         api.updateKolUser({
             [type]: value
         })
         .then((res) => {
-            console.log(res)
             wx.navigateBack({
                 delta: 1
             });

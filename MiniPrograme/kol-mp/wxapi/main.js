@@ -40,4 +40,14 @@ export const getKolUserInfo = (data, loading =false) => request('/kol_user/info'
 export const saveKolDsp = (data, loading =false) => request('/kol_dsp/save', 'post', data, true)
 // 平台更新
 export const updateKolDsp = (data, loading =false) => request('/kol_dsp/update', 'post', data, true)
+// 平台删除
+export const delKolDsp = (data, loading =false) => request('/kol_dsp/del', 'post', data, true)
+
+
+// 城市地址
+export const getRegion = (data, loading =false) => request('/region/index', 'get', data, true)
+// 平台条件
+export const getDspCondition = (data, loading =false) => request('/kol_dsp/condition', 'get', data, loading)
+
+
 

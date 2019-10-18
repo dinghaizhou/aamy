@@ -1,4 +1,7 @@
 /* pages/order/order.wxss */
+.order {
+    padding-top: 38px;
+}
 .tab {
     height:38px;
     font-weight: bold;
@@ -6,8 +9,11 @@
     line-height: 38px;
     letter-spacing: 0;
     text-align: center;
-    position: relative;
-    border-bottom: 1px solid #F5F5F5;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid #dddddd;
+    width: 100%;
+    background: #fff;
 }
 .tab .tab-items {
     width: 25%;

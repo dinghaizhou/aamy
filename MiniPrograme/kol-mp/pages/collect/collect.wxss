@@ -9,7 +9,8 @@
     align-items: center;
     height: 100px;
     background: #fff;
-    margin-bottom:6px;
+    margin-bottom: 6px;
+    border-bottom: 1rpx solid #DDDDDD;
 }
 .card image {
     width: 116px;
@@ -21,6 +22,7 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 60px;
+    flex: 1;
 }
 .content .name{
     line-height:22px;
@@ -34,6 +36,7 @@
 }
 .content .time {
     font-size: 14px;
+    justify-content: space-between;
 }
 
 .bottom-bar {
@@ -49,4 +52,7 @@
     width: 100%;
     padding: 0 20px;
     font-size: 30rpx;
+}
+.weui-loadmore__tips_in-line {
+    background:#F5F5F5;
 }

@@ -1,7 +1,8 @@
 {
-  "usingComponents": {
-    "cutdown": "/component/cutdown/cutdown",
-    "myDialog": "/component/dialog/dialog",
-    "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader"
-  }
+    "usingComponents": {
+        "cutdown": "/component/cutdown/cutdown",
+        "myDialog": "/component/dialog/dialog",
+        "mp-uploader": "/component/uploader/uploader"
+    },
+    "navigationBarTitleText": "详情"
 }

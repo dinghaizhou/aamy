@@ -16,6 +16,7 @@ image {
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 1px solid #DDDDDD;
+    box-shadow: 2px 3px 2px 1px rgba(156, 154, 154, 0.1);
 }
 .content .title {
     line-height: 22px;
@@ -47,7 +48,8 @@ image {
     opacity: 0.5;
 }
 .content .btn.disabled {
-    background: #eee;
+    color: #9B9B9B;
+    background:  #D7D7D7;
 }
 .content .btn.disabled:active {
     opacity: 1;

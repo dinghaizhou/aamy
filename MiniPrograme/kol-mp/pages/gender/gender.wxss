@@ -1,6 +1,6 @@
 /* pages/region/region.wxss */
 .gender {
-    padding:20px
+    padding: 20px 0;
 }
 .gender .save {
     border-top: 1px solid #dddddd;
@@ -17,4 +17,13 @@
 }
 .gender .save:active {
     background-color:rgb(219, 68, 68)
+}
+.container {
+    display: flex;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;
+}
+.radio {
+    display: flex;
+    align-items: center;
 }

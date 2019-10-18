@@ -4,5 +4,5 @@
         "productCard": "/component/productCard/productCard"
     },
     "enablePullDownRefresh": true,
-    "navigationBarTitleText": "KOL首页"
+    "navigationBarTitleText": "资源"
 }

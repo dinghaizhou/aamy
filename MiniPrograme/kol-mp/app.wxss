@@ -134,5 +134,7 @@ view {
     right:16px;
 }
 
+.clear::after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
+
  
  

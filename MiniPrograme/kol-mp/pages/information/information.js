@@ -19,14 +19,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        api.getDspCondition()
+        .then((res) => {
+            // 获取选择条件
+            wx.setStorageSync('dsp_arr', res.dsp_list);
+            wx.setStorageSync('fans_count_arr', res.fans_count_list);
+        })
+        this.setData({
+            information: app.globalData.userInfo
+        })
     },
     changeDsp(e) {
         let index = e.currentTarget.dataset.index
-        var dsp = this.data.information.dsp_list[index]
-        wx.setStorageSync('dsp', dsp);
         wx.navigateTo({
-            url: '/pages/dspinfo/dspinfo?id=' + dsp.id,
+            url: '/pages/dspinfo/dspinfo?index=' + index,
             success: (result) => {
                 
             },
@@ -75,6 +81,16 @@ Page({
             complete: () => {}
         });
     },
+    goToAvatar() {
+        wx.navigateTo({
+            url: '/pages/avatar/avatar',
+            success: (result) => {
+                
+            },
+            fail: () => {},
+            complete: () => {}
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -86,17 +102,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        api.getKolUserInfo()
-        .then((res) => {
-            let userInfo = app.globalData.userInfo
-            if(!res.avatar_url) {
-                res.avatar_url = userInfo.avatarUrl
-                res.nick_name = userInfo.nickName
-            }
+        app.getUserInfo()
+        .then(() => {
             this.setData({
-                information: res
+                information: app.globalData.userInfo
             })
-            wx.setStorageSync('information', res)
         })
     },
     
@@ -112,7 +122,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        wx.removeStorageSync('dsp_arr')
+        wx.removeStorageSync('fans_count_arr')
     },
 
     /**

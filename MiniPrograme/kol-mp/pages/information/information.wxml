@@ -1,11 +1,11 @@
 <!--pages/information/information.wxml-->
 <view wx:if="{{information}}" class="information" hover-class="none" hover-stop-propagation="false">
     <view class="my-cells">
-        <view class="my-cell" style="height:102px;">
+        <view class="my-cell" style="height:102px;" bindtap="goToAvatar">
             <view class="cell-hd">头像</view>
             <view class="cell-bd">
-                <view class="my-link">
-                    <image style="width:57px;height:57px;border-radius:50%;" src="{{information.avatar_url}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                <view class="my-link" style="height:57px;">
+                    <image style="width:57px;height:57px;border-radius:50%;" src="{{information.avatar_url}}" mode="aspectFill"/>
                 </view>
             </view>
         </view>
@@ -56,7 +56,7 @@
                 <view class="cell-hd">粉丝量</view>
                 <view class="cell-bd">
                     <view class="my-link">
-                        {{fans_count_arr[item.fans_count-1].name}}
+                        {{item.fans_count_name}}
                     </view>
                 </view>
             </view>

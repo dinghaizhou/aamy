@@ -45,12 +45,11 @@ Component({
      */
     methods: {
         showTime() {
-            let deadline = new Date(this.data.deadline.replace(/-/g,'/')).getTime();
-            let set = setInterval(setTime, 1000)
             var _this = this
+            let time_left = this.data.deadline*1
+            
+            var set = setInterval(setTime, 1000)
             function setTime() {
-                let now = new Date().getTime()
-                let time_left = parseInt((deadline - now)/1000)
                 if(time_left >= 0) {
                     let day = parseInt(time_left/24/60/60)
                     var hour = parseInt(time_left/60/60%24);
@@ -68,6 +67,7 @@ Component({
                         beyond_deadline: true
                     })
                 }
+                time_left = time_left - 1
             }
         },  
         addZero(str, len, ch) {

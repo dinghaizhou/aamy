@@ -1,12 +1,11 @@
 <!--pages/region/region.wxml-->
 <view class="gender" hover-class="none" hover-stop-propagation="false">
     <radio-group class="radio-group" bindchange="radioChange">
-        <view style="padding:0 0px 5px 0px;border-bottom: 1px solid #dddddd;">
-            <label wx:for="{{items}}" wx:key="{{index}}" class="radio" style="margin-left:20px;">
+        <view class="container">
+            <label wx:for="{{items}}" wx:key="{{index}}" class="radio" style="margin-left:40px;" >
                 <radio color="#D83B2A" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
             </label>
         </view>
-          
     </radio-group>
     <view class="save flex">
         <view style="flex:1" bindtap="save">

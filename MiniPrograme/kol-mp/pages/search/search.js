@@ -8,7 +8,9 @@ Page({
     data: {
         list: [],
         has_more: false,
-        page: 1
+        page: 1,
+        has_searched: false,
+        name: ''
     },
 
     /**
@@ -18,18 +20,27 @@ Page({
         this.search = this.selectComponent('#search')
         this.search.showInput()
     },
-    searchaa(e) {
+    searchaa() {
         api.getResourceList({
-            name: e.detail,
+            name: this.data.name,
             page: 1
-        })
+        }, true)
         .then((res) => {
             this.setData({
                 page: 1,
                 list: res.list,
                 has_more: res.has_more,
-                name: e.detail
+                has_searched: true
             })
+        })
+    },
+    handleInput(e) {
+        this.setData({
+            name: e.detail,
+            page: 1,
+            list: [],
+            has_more: false,
+            has_searched: false
         })
     },
     /**
@@ -78,7 +89,7 @@ Page({
             this.setData({
                 is_loading: true,
             })
-            api.collectList({
+            api.getResourceList({
                 page,
                 name
             })

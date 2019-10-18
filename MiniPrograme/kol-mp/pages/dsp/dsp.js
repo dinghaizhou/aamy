@@ -5,24 +5,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        fans_count_arr: [
-            {value: '1', name: '10万以内'},
-            {value: '2', name: '10万~50万'},
-            {value: '3', name: '50万以上'},
-        ],
-        dsp_arr: [
-            {value: '1', name: '抖音'},
-            {value: '2', name: '小红书'},
-            {value: '3', name: '火山'},
-            {value: '4', name: '微博'},
-            {value: '5', name: '其他'},
-        ],
+        fans_count_arr: [],
+        dsp_arr: [],
         fans_count_index: '',
-        dsp_index: '',
+        dsp_index: '0',
         home_url: '',
         dsp_list: [],
         index: ''
-
     },
   
     /**
@@ -30,34 +19,38 @@ Page({
      */
     onLoad: function (options) {
         let {fans_count_index, dsp_index, home_url, dsp_arr, fans_count_arr} = this.data
-        let index = options.index
-        let dsp_list = wx.getStorageSync('dsp_list');
-        let dsp = dsp_list[index*1]
-        home_url = dsp.home_url
-        for(var i in dsp_arr) {
-            if(dsp_arr[i].value == dsp.dsp_id) {
-                dsp_index = i
-                break
-            }
-        }
-        for(var i in fans_count_arr) {
-            if(fans_count_arr[i].value == dsp.fans_count) {
-                fans_count_index = i
-                break 
-            }
-        }
+        fans_count_arr = wx.getStorageSync('fans_count_arr') ? wx.getStorageSync('fans_count_arr'): []
+        dsp_arr = wx.getStorageSync('dsp_arr') ? wx.getStorageSync('dsp_arr'): [] 
 
+        let dsp_list = wx.getStorageSync('dsp_list');
+        let index = options.index
+        if(index) {
+            let dsp = dsp_list[index*1]
+            home_url = dsp.home_url
+            for(var i in dsp_arr) {
+                if(dsp_arr[i].id == dsp.dsp_id) {
+                    dsp_index = i
+                    break
+                }
+            }
+            for(var i in fans_count_arr) {
+                if(fans_count_arr[i].id == dsp.fans_count) {
+                    fans_count_index = i
+                    break 
+                }
+            }
+        }
         this.setData({
+            fans_count_arr,
+            dsp_arr,
             index,
             dsp_list,
             fans_count_index,
             dsp_index,
-            home_url
+            home_url,
         })
     },
     linkChange(e) {
-
-        console.log(e)
         this.setData({
             home_url: e.detail.value
         })
@@ -74,21 +67,43 @@ Page({
     },
     save() {
         let { home_url,fans_count_index,dsp_index, index, dsp_list,fans_count_arr,dsp_arr} = this.data
-        if(!fans_count_index || !dsp_index || !home_url.trim()) {
+        if(!fans_count_index || !dsp_index ) {
             wx.showToast({
-                title: '请填写主页地址',
+                title: '请先选择平台和粉丝量',
                 icon: 'none',
                 duration: 2000,
                 mask: true
             })
             return 
         }
-        dsp_list[index*1] = {
-            home_url,
-            fans_count: fans_count_arr[fans_count_index].value,
-            dsp_id: dsp_arr[dsp_index].value,
-            fans_count_name: fans_count_arr[fans_count_index].name,
-            dsp_name: dsp_arr[dsp_index].name
+        if( !/^(http:\/\/|https:\/\/)/.test(home_url)) {
+            wx.showToast({
+                title: '请填写正确的主页链接',
+                icon: 'none',
+                duration: 2000,
+                mask: true
+            })
+            return 
+        }
+
+        if(index) {
+            dsp_list[index*1] = {
+                home_url,
+                fans_count: fans_count_arr[fans_count_index].id,
+                dsp_id: dsp_arr[dsp_index].id,
+                fans_count_name: fans_count_arr[fans_count_index].name,
+                dsp_name: dsp_arr[dsp_index].name
+            }
+        } else {
+            dsp_list.push(
+                {
+                    home_url,
+                    fans_count: fans_count_arr[fans_count_index].id,
+                    dsp_id: dsp_arr[dsp_index].id,
+                    fans_count_name: fans_count_arr[fans_count_index].name,
+                    dsp_name: dsp_arr[dsp_index].name
+                }
+            )
         }
         wx.setStorageSync('dsp_list', dsp_list);
         wx.navigateBack({
@@ -96,15 +111,16 @@ Page({
         });
     },
     del() {
-        console.log('del')
         var _this = this
         wx.showModal({
             title: '确定删除？',
             success (res) {
                 if (res.confirm) {
                     let { index, dsp_list } = _this.data
-                    dsp_list.splice(index*1, 1)
-                    wx.setStorageSync('dsp_list', dsp_list);
+                    if(index) {
+                        dsp_list.splice(index*1, 1)
+                        wx.setStorageSync('dsp_list', dsp_list);
+                    }
                     wx.navigateBack({
                         delta: 1
                     });
@@ -139,7 +155,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-  
+        
     },
   
     /**

@@ -1,5 +1,14 @@
 <view class="goodsDetails">
     <view wx:if="{{detail}}">
+        <view class="back-index flex" wx:if="{{share_type == 'goods'}}" bindtap="goToIndex">
+            <view>返回</view>
+            <view>首页</view>
+        </view>
+        <view class="back-index flex" wx:if="{{detail.order_status == 3}}" bindtap="showReason">
+            <view>查看</view>
+            <view>原因</view>
+        </view>
+
         <swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.3)" indicator-active-color="#D83B2A" autoplay="true" circular="true">
             <block wx:for="{{detail.img_list}}" wx:key="item.id">
                 <swiper-item>
@@ -16,7 +25,7 @@
                     还剩：
                 </view>
                 <view class="content" hover-class="none" hover-stop-propagation="false">
-                    <cutdown deadline="{{detail.end_date}}"></cutdown>
+                    <cutdown deadline="{{detail.remain_time}}"></cutdown>
                 </view>
                 
             </view>
@@ -27,8 +36,22 @@
                 <view class="content" hover-class="none" hover-stop-propagation="false">
                     {{detail.company}}
                 </view>
-                
-                
+            </view>
+            <view class="detail flex" wx:if="{{detail.type == 2 || detail.type == 3}}">
+                <view class="title" selectable="false" space="false" decode="false">
+                    活动类型：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.type == 2 ? '线上' : '线下'}}
+                </view>
+            </view>
+            <view class="detail flex" wx:if="{{detail.type == 3}}">
+                <view class="title" selectable="false" space="false" decode="false">
+                    活动地区：
+                </view>
+                <view class="content" hover-class="none" hover-stop-propagation="false">
+                    {{detail.city}}
+                </view>
             </view>
             <view class="detail flex">
                 <view class="title" selectable="false" space="false" decode="false">
@@ -41,22 +64,22 @@
             </view>
         </view>
         <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
-            <view class="title">商品介绍:</view>
+            <view class="title">{{detail.type == 1 ? '商品介绍：' : '活动介绍：'}}</view>
             <view class="content">
                 {{detail.content}}
             </view>
         </view>
         <view class="pro-introd box" hover-class="none" hover-stop-propagation="false">
-            <view class="title">KOL要求:</view>
+            <view class="title">KOL要求：</view>
             <view class="content">
                 {{detail.condition}}
             </view>
         </view>
         <view class="bottom-bar flex">
-            <view class="love flex" style="align-items: center;">
-                <image catchtap="collect" style="width:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
-                <view style="font-size:14px;margin-left: 8px;" class="" hover-class="none" hover-stop-propagation="false">
-                    收藏
+            <view catchtap="collect" class="love flex" style="align-items: center;">
+                <image style="width:22px;height:22px;" src="{{has_collect?'../../images/shoucang_01@3x.png':'../../images/shoucang_02@3x.png'}}" mode="widthFix"/>
+                <view style="font-size:14px;margin-left: 8px;min-width:120rpx;" class="" hover-class="none" hover-stop-propagation="false">
+                    {{has_collect ? '取消收藏' : '收藏'}}
                 </view>
             </view>
             
@@ -74,20 +97,51 @@
             </view>
         </view> 
     </view>
-
-
-
-
     <myDialog istrue="{{apply_dialog}}">
         <view class="apply">
-            <view class="apply-title" hover-class="none" hover-stop-propagation="false">
-                可附加申请信息（选填)
+            <view style="font-size:17px;color:#4A4A4A;padding:0 0 6px 0;text-align:center" hover-class="none" hover-stop-propagation="false">
+                申请信息
             </view>
-            <view class="txt-num">{{contentCount}}/200</view>
+            <view class="apply-title">
+                <view class="flex">
+                    <view style="color:red;margin-right:4px;">
+                        *
+                    </view>
+                    报价（元）
+                </view>
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{priceCount}}/20
+                </view>
+            </view>
+            <view class="apply-input">
+                <input type="number" bindinput="handlePriceInput" placeholder="请输入报价" maxlength="20"/>
+            </view>
+            <view class="apply-title">
+                <view class="flex">
+                    <view style="color:red;margin-right:4px;">
+                        *
+                    </view>
+                    手机号
+                </view>
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{phoneCount}}/20
+                </view>
+            </view>
+            <view class="apply-input">
+                <input type="number" placeholder="请输入手机号码" bindinput="handlePhoneInput" maxlength="20"/>
+            </view>
+            <view class="apply-title">
+                <view class="flex">
+                    可附加申请信息(选填)
+                </view>
+                <view class="txt-num" hover-class="none" hover-stop-propagation="false">
+                    {{contentCount}}/200
+                </view>
+            </view>
             <view class="apply-content" hover-class="none" hover-stop-propagation="false">
-                <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput">
+                <textarea wx:if="apply_dialog"  maxlength="200" placeholder="请填写自己申请此款产品的优势，增加通过机率" bindinput="handleContentInput" fixed>
                 </textarea>
-                <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="8" title="图片上传"></mp-uploader>
+                <mp-uploader binddelete="deleteFile" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uplaodFile}}" max-count="5" title="图片上传"></mp-uploader>
             </view>
             <view class="apply-btn" hover-class="none" hover-stop-propagation="false">
                 <view class="btn" bindtap="confirmApply">
@@ -98,15 +152,17 @@
     </myDialog>
     <myDialog istrue="{{show_auth_dialog}}">
         <view class="auth">
-            <view wx:if="{{detail.auth_status == 1}}">
+            <view class="auth-title" wx:if="{{detail.auth_status == 1}}">
                 您尚未入驻本平台
             </view>
-            <view wx:elif="{{detail.auth_status == 2}}">
+            <view class="auth-title" wx:elif="{{detail.auth_status == 2}}">
                 您的入驻审核还未通过，请耐心等待
             </view>
             <view wx:else>
-                您的入驻审核被拒
-                <view>
+                <view class="auth-title" hover-class="none" hover-stop-propagation="false">
+                    您的入驻审核被拒
+                </view>
+                <view class="auth-content">
                     原因：{{detail.auth_audit_note}}
                 </view>
             </view>
@@ -117,9 +173,15 @@
             </view>
         </view>
     </myDialog>
+
     <myDialog istrue="{{reason_dialog}}">
-        <view class="reason_dialog">
-            {{detail.order_audit_note}}
+        <view class="auth">
+            <view class="auth-title" hover-class="none" hover-stop-propagation="false">
+                您的申请被拒
+            </view>
+            <view class="auth-content">
+                原因：{{detail.order_audit_note}}
+            </view>
         </view>
          <view class="apply-btn" hover-class="none" hover-stop-propagation="false">
             <view class="btn" bindtap="applyAgain">

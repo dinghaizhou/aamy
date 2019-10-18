@@ -1,14 +1,15 @@
 // pages/region/region.js
 import * as api from '../../wxapi/main.js'
+let app =  getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
     data: {
-        gender: '',
+        gender: '1',
         items: [
-            {name: '未知', value: '0'},
             {name: '男', value: '1'},
             {name: '女', value: '2'},
         ]
@@ -19,12 +20,15 @@ Page({
      */
     onLoad: function (options) {
         let { items } = this.data
-        let information = wx.getStorageSync('information');
+        let information = app.globalData.userInfo
+
         let gender = information.gender
-        items[gender*1].checked = true
-        this.setData({
-            items
-        })
+        if(gender > 0) {
+            items[gender*1 - 1].checked = true
+            this.setData({
+                items
+            })
+        }
     },
     radioChange: function (e) {
         this.setData({

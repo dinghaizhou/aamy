@@ -38,20 +38,26 @@ Component({
                 inputVal: "",
                 inputShowed: false
             });
+            this.triggerEvent('input', '')
         },
         clearInput: function () {
             this.setData({
                 inputVal: ""
             });
+            this.triggerEvent('input', '')
         },
         inputTyping: function (e) {
             this.setData({
                 inputVal: e.detail.value
             });
+            this.triggerEvent('input', e.detail.value)
         },
-        search(e) {
-            console.log(e)
-            this.triggerEvent('search', e.detail.value)
+        search() {
+            if(this.data.inputVal.length > 0) {
+                this.triggerEvent('search')
+            } else {
+                this.hideInput()
+            }
         }
     }
 })
