@@ -1,0 +1,103 @@
+http://pm.optaim.com
+
+http://code.optaim.com/  gitlab地址
+
+
+
+
+http://pm.optaim.com/story-view-2020-3-project-138.html
+dinghaizhou@Optaim.com
+
+
+智云众 dinghaizhou !QAZ@WSX
+
+clone 地址
+git@code.optaim.com:frontend/adm.git
+
+
+gitlab  dinghaizhou heyuting1992
+pm dinghaizhou  ding3792264110
+hris dinghaizhou Heyuting@1992
+crt dinghaizhou  Heyuting@1992
+pm  登录用户名：pmadm ，密码optaim#2018#ABC
+Email 
+dinghaizhou@optaim.com Huahua19940409
+
+
+GitHub 
+name:dinghaizhou pwd:ding3792264 email:18914512044@163.com
+
+
+ftp 落地页
+账号：dinghaizhou
+密码：QHK8Vt8Lmd0=
+主机106.75.104.123:21
+
+
+
+
+测试环境用的    appid：wx0220f37bc057fa57
+合法域名	
+http://wechattest.optaim.com
+https://www.optaim.com
+
+
+
+正式环境用的appid：wx1424c190dd8748f4
+合法域名	
+https://wechat.optaim.com
+
+
+第三方平台
+https://open.weixin.qq.com/
+
+
+帐号：frontend@optaim.com
+密码：optaim,wx
+
+
+【链接】微信开放平台
+https://open.weixin.qq.com/cgi-bin/showdocumentaction=dir_list&t=resource/res_list&verify=1&id=open1489140610_Uavc4&token=&lang=zh_CN
+
+
+腾讯社交广告
+e.qq.com
+账号：3452894134	
+密码：zhiyunzhong2016
+
+adm online
+User：dinghaizhou 
+Password：!qaz2wsx
+
+admtest 
+User:admin
+Password:zyzrd@123456
+
+
+http://mgtest.optaim.com
+Admin
+abc123@abc
+
+
+部署 测服
+106.75.114.241 
+walle.compony.com 
+chenzhijie@optaim.com / czj123
+dinghaizhou@optaim.com/ dhz@123
+
+线索平台
+http://sleads.520igo.com/
+admin
+xsptgly@optm789
+
+微信公众后台（爱点击主体）
+登录邮箱：aidianji2019@sina.com
+密码：aidianji2019
+
+iacess内测
+http://iaccesstest.optimix.cn  admin   abc123@abc
+
+
+sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+
+
