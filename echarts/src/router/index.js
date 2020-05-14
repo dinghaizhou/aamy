@@ -38,6 +38,16 @@ const routes = [
         path: '/UE',
         name: 'ue',
         component: () => import('../views/TestUE.vue')
+    },
+    {
+        path: '/lineLegend',
+        name: 'lineLegend',
+        component: () => import('../views/lineLegend.vue')
+    },
+    {
+        path: '/driver',
+        name: 'driver',
+        component: () => import('../views/Driver.vue')
     }
 ]
 

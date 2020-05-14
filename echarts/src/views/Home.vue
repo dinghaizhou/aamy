@@ -42,6 +42,14 @@ export default {
                     name: 'UE',
                     path: 'UE'
                 },
+                 {
+                    name: '折线图图例开关',
+                    path: 'lineLegend'
+                },
+                {
+                    name: '站点引导',
+                    path: 'driver'
+                },
             ]
         }
     }
