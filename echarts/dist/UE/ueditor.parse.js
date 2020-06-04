@@ -308,7 +308,7 @@
             })
         }
     };
-    uParse = function(selector,opt){
+    window.uParse = function(selector,opt){
         utils.domReady(function(){
             var contents;
             if(document.querySelectorAll){

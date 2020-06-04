@@ -19,7 +19,7 @@
      * 因此，UEditor提供了针对不同页面的编辑器可单独配置的根路径，具体来说，在需要实例化编辑器的页面最顶部写上如下代码即可。当然，需要令此处的URL等于对应的配置。
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
-    window.UEDITOR_HOME_URL = "./UE/";
+    window.UEDITOR_HOME_URL = "/UE/";
 
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
 
@@ -32,7 +32,7 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        , serverUrl: 'http://my.com/Vue/dist/UE/' + "php/controller.php"
+        , serverUrl: URL + "php/controller.php"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[
@@ -42,12 +42,8 @@
             'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
             'directionalityltr', 'directionalityrtl', 'indent', '|',
             'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-            'link', 'unlink', 'anchor', '|', 
-            'imagenone', 'imageleft', 'imageright', 
-            'imagecenter', '|',
-            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map'
-            // , 'gmap'
-            , 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
             'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
             'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
             'print', 'preview', 'searchreplace', 'drafts', 'help'
@@ -103,9 +99,9 @@
         //,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
 
         //启用自动保存
-        ,enableAutoSave: false
+        //,enableAutoSave: true
         //自动保存间隔时间， 单位ms
-        ,saveInterval: 0
+        //,saveInterval: 500
 
         //,fullscreen : false //是否开启初始化时即全屏，默认关闭
 
@@ -421,7 +417,7 @@
 			sub:    ['class', 'style'],
 			sup:    ['class', 'style'],
 			strong: ['class', 'style'],
-			table:  ['width', 'border', 'align', 'valign', 'class', 'style'],
+			table:  ['width', 'border', 'align', 'valign', 'class', 'style', 'cellpadding', 'cellspacing'],
 			tbody:  ['align', 'valign', 'class', 'style'],
 			td:     ['width', 'rowspan', 'colspan', 'align', 'valign', 'class', 'style'],
 			tfoot:  ['align', 'valign', 'class', 'style'],
