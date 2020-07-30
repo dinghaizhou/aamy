@@ -1,2 +1,0 @@
-全局安装
-sudo npm install -g typescript
