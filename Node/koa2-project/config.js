@@ -1,10 +1,10 @@
 const config = {
   port: 3001,
   database: {
-    DATABASE: 'koa_demo',
+    DATABASE: 'node_test',
     USERNAME: 'root',
     PASSWORD: 'root',
-    PORT: 8889,
+    PORT: 3306,
     HOST: 'localhost'
   }
 }

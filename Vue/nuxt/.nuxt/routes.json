@@ -1,0 +1,30 @@
+[
+  {
+    "name": "users-id",
+    "path": "/users/:id?",
+    "component": "/Users/haizhou/Documents/project/aamy/Vue/nuxt/pages/users/_id.vue",
+    "chunkName": "pages/users/_id",
+    "_name": "_7e4a4bf0"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/haizhou/Documents/project/aamy/Vue/nuxt/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_52f768a7"
+  },
+  {
+    "name": "slug",
+    "path": "/:slug",
+    "component": "/Users/haizhou/Documents/project/aamy/Vue/nuxt/pages/_slug/index.vue",
+    "chunkName": "pages/_slug/index",
+    "_name": "_0e8c0aa2"
+  },
+  {
+    "name": "slug-comment",
+    "path": "/:slug/comment",
+    "component": "/Users/haizhou/Documents/project/aamy/Vue/nuxt/pages/_slug/comment.vue",
+    "chunkName": "pages/_slug/comment",
+    "_name": "_07f613af"
+  }
+]
