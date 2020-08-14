@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let point = {
+        x: 1,
+        y: 2,
+        roll: () => {
+            console.log(this.x)
+        }
+    }
+    let pointB = Object.create(point)
+    console.log(pointB.x, pointB.y)
+
+
+</script>
+
+</html>
